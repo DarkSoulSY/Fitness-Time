@@ -35,7 +35,7 @@
                     android:gravity="center"
                     android:text="Enter the gender that you want us to use for our calculations"
                     android:textSize="18sp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/accent"/>
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -72,7 +72,7 @@
                     android:gravity="center"
                     android:text="How old are you?"
                     android:textSize="18sp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/accent"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -108,7 +108,7 @@
                     android:gravity="center"
                     android:text="How tall are  you?"
                     android:textSize="18sp"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/accent"/>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"

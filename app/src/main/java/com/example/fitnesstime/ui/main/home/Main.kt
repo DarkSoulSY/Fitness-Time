@@ -14,11 +14,13 @@ class Main : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        //Initializing View Group with a fragment
+        replaceFragment(Dashboard())
 
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId){
 
-                R.id.home -> replaceFragment(HomeFragment())
+                R.id.dashboard -> replaceFragment(Dashboard())
                 R.id.progress -> replaceFragment(ProgressFragment())
                 R.id.diary -> replaceFragment(DiaryFragment())
                 R.id.bmi -> replaceFragment(BodyMassIndexFragment())

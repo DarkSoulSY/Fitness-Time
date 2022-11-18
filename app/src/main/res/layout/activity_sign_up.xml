@@ -42,7 +42,7 @@
             android:fontFamily="sans-serif"
             android:text="Sign Up"
             android:textAlignment="center"
-            android:textColor="@color/black"
+            android:textColor="@color/accent"
             android:textSize="35sp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -50,15 +50,15 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="@string/full_name"
-            android:textColorHint="@color/black"
-            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/accent"
+            app:boxStrokeColor="@color/accent"
             android:layout_marginTop="32dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:textColor="@color/black"
+                android:textColor="@color/accent"
                 android:inputType="text"
                 android:singleLine="true"/>
 
@@ -69,15 +69,15 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="@string/email"
-            android:textColorHint="@color/black"
-            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/accent"
+            app:boxStrokeColor="@color/accent"
             android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:textColor="@color/black"
+                android:textColor="@color/accent"
                 android:inputType="text"
                 android:singleLine="true"/>
 
@@ -94,7 +94,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="+962"
-                android:textColor="@color/black"
+                android:textColor="@color/accent"
                 android:textSize="20sp"
                 android:fontFamily="sans-serif"/>
 
@@ -103,15 +103,15 @@
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:hint="@string/mobilenumber"
-                android:textColorHint="@color/black"
-                app:boxStrokeColor="@color/black"
+                android:textColorHint="@color/accent"
+                app:boxStrokeColor="@color/accent"
                 android:layout_marginStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
-                    android:textColor="@color/black"
+                    android:textColor="@color/accent"
                     android:inputType="number"
                     android:singleLine="true"/>
 
@@ -124,15 +124,15 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="@string/password"
             app:passwordToggleEnabled="true"
-            android:textColorHint="@color/black"
-            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/accent"
+            app:boxStrokeColor="@color/accent"
             android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:textColor="@color/black"
+                android:textColor="@color/accent"
                 android:inputType="textPassword"
                 android:singleLine="true"/>
 
@@ -143,8 +143,8 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:hint="@string/confirm_password"
-            android:textColorHint="@color/black"
-            app:boxStrokeColor="@color/black"
+            android:textColorHint="@color/accent"
+            app:boxStrokeColor="@color/accent"
             android:layout_marginTop="16dp"
             app:passwordToggleEnabled="true">
 
@@ -152,7 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:textColor="@color/black"
+                android:textColor="@color/accent"
                 android:inputType="textPassword"
                 android:singleLine="true"/>
 

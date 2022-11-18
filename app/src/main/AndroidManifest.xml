@@ -14,7 +14,7 @@
         android:theme="@style/Theme.FitnessTime"
         tools:targetApi="31">
         <activity
-            android:name=".ui.main.home.Home"
+            android:name=".ui.main.home.Main"
             android:exported="false" />
         <activity
             android:name=".ui.main.progress.Progress"

@@ -3,8 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/bmi_icon.xml" value="0.1" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/food_icon.xml" value="0.1" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/home_icon.xml" value="0.1" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/progress_icon.xml" value="0.1" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_progress.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_sign_in.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_body_mass_index.xml" value="0.1" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_diary.xml" value="0.13796296296296295" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_home.xml" value="0.1" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_progress.xml" value="0.1" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_settings.xml" value="0.1" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/toolbar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/menu/bottom_nav.xml" value="0.33" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/FitnessTime2/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.212" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/FitnessTime2/app/src/main/res/drawable/complete_signup_radio_normal.xml" value="0.1855" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/FitnessTime2/app/src/main/res/drawable/complete_signup_radio_selector.xml" value="0.1" />

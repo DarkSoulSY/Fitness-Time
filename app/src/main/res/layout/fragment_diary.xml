@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:layout_marginStart="20dp">
 
     <ImageView
         android:layout_width="30dp"
@@ -41,5 +42,94 @@
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:background="@color/accent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Calories Equation here -->"
+                    android:textSize="40sp"
+                    android:textStyle="bold"
+                    />
+
+
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Breakfast"
+                android:textSize="25sp"/>
+
+            <Button
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:text="Food Items"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lunch"
+                android:textSize="25sp"/>
+
+            <Button
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:text="Food Items"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dinner"
+                android:textSize="25sp"/>
+
+            <Button
+                android:layout_width="350dp"
+                android:layout_height="200dp"
+                android:text="Food Items"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="30dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Water:"
+                    android:textSize="25sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Amount"
+                    android:textSize="25sp"
+                    android:layout_marginStart="20sp"/>
+
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 </LinearLayout>

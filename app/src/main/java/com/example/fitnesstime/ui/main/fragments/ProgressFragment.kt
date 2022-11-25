@@ -17,45 +17,48 @@ import kotlinx.android.synthetic.main.fragment_progress.*
 
 class ProgressFragment : Fragment() {
 
-    private var _binding: FragmentProgressBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentProgressBinding
 
-    private lateinit var newRecyclerView: RecyclerView
-    private lateinit var newArrayList: ArrayList<DailyWeight>
-    lateinit var imageId: Array<Int>
-    lateinit var weight: Array<String>
-    lateinit var date: Array<String>
+    private  val newArrayList = mutableListOf<DailyWeight>()
+    private val imageId = mutableListOf<Int>()
+    val weight = mutableListOf<String>()
+    val date = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {_binding = FragmentProgressBinding.inflate(inflater, container, false)
-        val view = binding.root
+    ): View? {binding = FragmentProgressBinding.inflate(inflater, container, false)
 
-        imageId = arrayOf(
+        return binding.root
+    }
+
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        imageId.addAll(listOf(
             R.drawable.nig,
             R.drawable.nig,
             R.drawable.nig
-        )
-        weight = arrayOf(
+        ))
+        weight.addAll(listOf(
             "90",
             "70",
             "80"
 
-        )
-        date = arrayOf(
+        ))
+        date.addAll(listOf(
             "1992-01-20",
             "2005-01-20",
             "2010-01-20"
 
-        )
+        ))
 
-        newRecyclerView = progress_recycler_view
-        newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        newRecyclerView.setHasFixedSize(true)
+        binding.progressRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.progressRecyclerView.setHasFixedSize(true)
         newArrayList = arrayListOf<DailyWeight>()
         getUserdata()
-        return view
     }
 
     private fun getUserdata(){
@@ -63,7 +66,7 @@ class ProgressFragment : Fragment() {
             val dailyWeight = DailyWeight(imageId[i],weight[i],date[i])
             newArrayList.add(dailyWeight)
         }
-        newRecyclerView.adapter = MyRecyclerViewAdapter(newArrayList)
+        binding.progressRecyclerView.adapter = MyRecyclerViewAdapter(newArrayList)
 
     }
 }

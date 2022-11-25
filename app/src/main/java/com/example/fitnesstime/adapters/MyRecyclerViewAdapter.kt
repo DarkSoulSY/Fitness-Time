@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnesstime.R
 import com.example.fitnesstime.data.DailyWeight
 
-class MyRecyclerViewAdapter(private val checkIns: ArrayList<DailyWeight>): RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder>() {
+class MyRecyclerViewAdapter(private val dailyCheckIns: ArrayList<DailyWeight>): RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -22,7 +22,7 @@ class MyRecyclerViewAdapter(private val checkIns: ArrayList<DailyWeight>): Recyc
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        val currentItem = checkIns[position]
+        val currentItem = dailyCheckIns[position]
         holder.imageTitle.setImageResource(currentItem.imageTitle)
         holder.date.text = currentItem.date
         holder.weight.text = currentItem.weight
@@ -30,7 +30,7 @@ class MyRecyclerViewAdapter(private val checkIns: ArrayList<DailyWeight>): Recyc
     }
 
     override fun getItemCount(): Int {
-        return checkIns.size
+        return dailyCheckIns.size
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -38,8 +38,6 @@ class MyRecyclerViewAdapter(private val checkIns: ArrayList<DailyWeight>): Recyc
         val imageTitle: ImageView = itemView.findViewById(R.id.image_title)
         val weight: TextView = itemView.findViewById(R.id.weight)
         val date: TextView = itemView.findViewById(R.id.date)
-
-
 
     }
 }

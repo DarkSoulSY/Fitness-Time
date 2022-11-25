@@ -52,12 +52,10 @@
             android:layout_margin="30dp"
             android:orientation="vertical">
 
-            <TextView
+            <com.robinhood.spark.SparkView
+                android:id="@+id/progress_chart"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Some Chart is gonna be inserted here"
-                android:textSize="50sp"
-                />
+                android:layout_height="match_parent" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -69,6 +67,7 @@
 
 
                 <TextView
+                    android:id="@+id/hello"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -87,15 +86,17 @@
 
                     />
 
+
+
             </LinearLayout>
 
-            <TextView
-                android:layout_marginTop="70dp"
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/progress_recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Scroll View here of the last user daily \n weight in and his pictures"
-                android:textSize="20sp"
+                android:layout_height="match_parent"
                 />
+
         </LinearLayout>
 
 

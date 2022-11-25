@@ -18,16 +18,19 @@ import kotlinx.android.synthetic.*
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
-
     private val binding get() = _binding!!
-    override fun onCreateView(
 
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSettingsBinding.inflate(inflater, container, false)
         val view = binding.root
 
+        binding.bo7meedidiotic.setOnClickListener {
+            val intent = Intent(this@SettingsFragment.requireContext(), Profile::class.java)
+            startActivity(intent)
+        }
         // Inflate the layout for this fragment
         return view
 
@@ -36,11 +39,4 @@ class SettingsFragment : Fragment() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-        binding.bo7meedidiotic.setOnClickListener {
-            val intent = Intent(this@SettingsFragment.requireContext(), Profile::class.java)
-            startActivity(intent)
-        }
-    }
 }

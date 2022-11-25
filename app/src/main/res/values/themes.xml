@@ -23,4 +23,5 @@
         <item name="android:progressDrawable">@drawable/circle_determinate</item>
     </style>
 
+
 </resources>

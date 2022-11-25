@@ -15,6 +15,8 @@ class BodyMassIndexFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_body_mass_index, container, false)
+
+
     }
 
 }

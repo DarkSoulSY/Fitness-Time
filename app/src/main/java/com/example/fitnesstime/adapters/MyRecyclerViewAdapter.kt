@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnesstime.R
 import com.example.fitnesstime.data.DailyWeight
 
-class MyRecyclerViewAdapter(private val dailyCheckIns: ArrayList<DailyWeight>): RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder>() {
+class MyRecyclerViewAdapter(private val dailyCheckIns: MutableList<DailyWeight>): RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 

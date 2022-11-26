@@ -1,25 +1,27 @@
 package com.example.fitnesstime.ui.main.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnesstime.R
 import com.example.fitnesstime.adapters.MyRecyclerViewAdapter
 import com.example.fitnesstime.data.DailyWeight
 import com.example.fitnesstime.databinding.FragmentProgressBinding
-import com.example.fitnesstime.databinding.FragmentSettingsBinding
-import kotlinx.android.synthetic.main.fragment_progress.*
+import com.github.mikephil.charting.charts.LineChart
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 
 
 class ProgressFragment : Fragment() {
 
     private lateinit var binding: FragmentProgressBinding
-
-    private  val newArrayList = mutableListOf<DailyWeight>()
+    private var newArrayList = mutableListOf<DailyWeight>()
     private val imageId = mutableListOf<Int>()
     val weight = mutableListOf<String>()
     val date = mutableListOf<String>()
@@ -55,10 +57,13 @@ class ProgressFragment : Fragment() {
 
         ))
 
+
         binding.progressRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.progressRecyclerView.setHasFixedSize(true)
-        newArrayList = arrayListOf<DailyWeight>()
+        newArrayList = mutableListOf()
         getUserdata()
+        setUpLineChart()
+
     }
 
     private fun getUserdata(){
@@ -69,4 +74,24 @@ class ProgressFragment : Fragment() {
         binding.progressRecyclerView.adapter = MyRecyclerViewAdapter(newArrayList)
 
     }
+
+    private fun setUpLineChart() {
+        var entries: ArrayList<Entry> = ArrayList<Entry>()
+        entries.add(Entry(1f,80f))
+        entries.add(Entry(2f,90f))
+        entries.add(Entry(3f,100f))
+
+        var dataSet: LineDataSet = LineDataSet(entries, "Weight Entries")
+        var dataSets: ArrayList<ILineDataSet> =  ArrayList<ILineDataSet>()
+        dataSets.add(dataSet)
+
+        var data: LineData = LineData(dataSets)
+        binding.weightChart.data = data
+        binding.weightChart.invalidate()
+
+    }
+
+
+
+
 }

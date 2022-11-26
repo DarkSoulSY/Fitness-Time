@@ -33,10 +33,12 @@ android {
     buildFeatures{
         viewBinding = true
     }
+
 }
 
 dependencies {
-
+    
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.robinhood.spark:spark:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
     implementation 'com.google.android.material:material:1.7.0'
@@ -45,6 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 
 
 }

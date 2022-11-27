@@ -45,27 +45,83 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Calories Remaining"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:orientation="vertical"
-                >
+                android:orientation="horizontal"
+                android:layout_margin="15dp">
+
                 <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Calories Remaining"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    />
+                    android:layout_weight="1"
+                    android:text="2820"
+                    android:textSize="18sp"
+                    android:textColor="@color/accent"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-"
+                    android:textSize="18sp"
+                    android:textColor="@color/accent"/>
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="200"
+                    android:textSize="18sp"
+                    android:textColor="@color/accent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="+"
+                    android:textSize="18sp"
+                    android:textColor="@color/accent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="400"
+                    android:textSize="18sp"
+                    android:textColor="@color/accent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="="
+                    android:textSize="18sp"
+                    android:textColor="@color/accent"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="2820"
+                    android:textSize="18sp"
+                    android:textColor="@color/accent"/>
 
 
 
@@ -78,58 +134,98 @@
                 android:layout_margin="15dp">
 
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Breakfast"
-                android:textSize="25sp"/>
-
-            <Button
-                android:layout_width="350dp"
-                android:layout_height="200dp"
-                android:text="Food Items"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lunch"
-                android:textSize="25sp"/>
-
-            <Button
-                android:layout_width="350dp"
-                android:layout_height="200dp"
-                android:text="Food Items"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Dinner"
-                android:textSize="25sp"/>
-
-            <Button
-                android:layout_width="350dp"
-                android:layout_height="200dp"
-                android:text="Food Items"/>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="30dp">
-
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Water:"
-                    android:textSize="25sp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Amount"
+                    android:text="Breakfast"
                     android:textSize="25sp"
-                    android:layout_marginStart="20sp"/>
-            </LinearLayout>
+                    android:textColor="@color/Secondary"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/breakfast"
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lunch"
+                    android:textSize="25sp"
+                    android:textColor="@color/Secondary"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/lunch"
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dinner"
+                    android:textSize="25sp"
+                    android:textColor="@color/Secondary"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dinner"
+                    android:layout_width="350dp"
+                    android:layout_height="200dp"
+                    />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="30dp">
+
+                    <LinearLayout
+                        android:id="@+id/watercontainer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true">
+
+                        <ImageView
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/water_image"
+                            android:layout_gravity="center"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Water"
+                            android:textColor="@color/Primary"
+                            android:textSize="14sp"
+                            android:layout_gravity="center"
+                            android:gravity="center"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20sp"
+                        android:layout_toEndOf="@+id/watercontainer"
+                        android:text="1 Cup"
+                        android:textColor="@color/Primary"
+                        android:textSize="25sp" />
+
+                    <ImageButton
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="200dp"
+                        android:layout_marginTop="200dp"
+                        android:layout_marginEnd="200dp"
+                        android:layout_marginBottom="200dp"
+                        android:background="@color/accent"
+                        android:src="@drawable/ic_baseline_add" />
+
+                </RelativeLayout>
 
             </LinearLayout>
 

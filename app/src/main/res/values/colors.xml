@@ -12,4 +12,8 @@
     <color name="Primary_Dark">#0086c3</color>
     <color name="Secondary">#25a59a</color>
     <color name="Secondary_Dark">#00756c</color>
+    <color name="Bone_White">#F9F6EE</color>
+    <color name="pink">#FFC0CB</color>
+    <color name="light_pink">#FFB6C1</color>
+
 </resources>

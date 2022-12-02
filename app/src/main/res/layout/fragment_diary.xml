@@ -5,14 +5,15 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.fragments.DiaryFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#eaeaea">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:layout_marginStart="20dp">
+        android:background="@color/white">
 
     <ImageView
         android:layout_width="30dp"
@@ -59,11 +60,11 @@
                 android:text="Calories Remaining"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                />
+                /> <!-- Calories Equation -->
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:layout_margin="15dp">
 
@@ -125,13 +126,13 @@
 
 
 
-            </LinearLayout>
+            </LinearLayout> <!-- Calories Equation -->
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_margin="15dp">
+                android:background="@color/white">
 
 
                 <TextView
@@ -139,95 +140,79 @@
                     android:layout_height="wrap_content"
                     android:text="Breakfast"
                     android:textSize="25sp"
-                    android:textColor="@color/Secondary"/>
+                    android:textColor="@color/Secondary" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/breakfast"
-                    android:layout_width="350dp"
-                    android:layout_height="200dp"
-                    />
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+            </LinearLayout> <!-- First Recycler View -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="40dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Lunch"
                     android:textSize="25sp"
-                    android:textColor="@color/Secondary"/>
+                    android:textColor="@color/Secondary"
+                    android:layout_marginTop="20dp"
+                    />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/lunch"
-                    android:layout_width="350dp"
+                    android:layout_width="match_parent"
                     android:layout_height="200dp"
                     />
+            </LinearLayout> <!-- Second Recycler View -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="40dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Dinner"
                     android:textSize="25sp"
-                    android:textColor="@color/Secondary"/>
+                    android:textColor="@color/Secondary"
+                    android:layout_marginTop="20dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/dinner"
-                    android:layout_width="350dp"
-                    android:layout_height="200dp"
-                    />
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+            </LinearLayout> <!-- Third Recycler View -->
 
-                <RelativeLayout
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="40dp">
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="30dp">
+                    android:text="Water"
+                    android:textSize="25sp"
+                    android:textColor="@color/Secondary"
+                    android:layout_marginTop="20dp" />
 
-                    <LinearLayout
-                        android:id="@+id/watercontainer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="true">
-
-                        <ImageView
-                            android:layout_width="25dp"
-                            android:layout_height="25dp"
-                            android:src="@drawable/water_image"
-                            android:layout_gravity="center"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Water"
-                            android:textColor="@color/Primary"
-                            android:textSize="14sp"
-                            android:layout_gravity="center"
-                            android:gravity="center"/>
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20sp"
-                        android:layout_toEndOf="@+id/watercontainer"
-                        android:text="1 Cup"
-                        android:textColor="@color/Primary"
-                        android:textSize="25sp" />
-
-                    <ImageButton
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="200dp"
-                        android:layout_marginTop="200dp"
-                        android:layout_marginEnd="200dp"
-                        android:layout_marginBottom="200dp"
-                        android:background="@color/accent"
-                        android:src="@drawable/ic_baseline_add" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/water"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+            </LinearLayout> <!-- Third Recycler View -->
 
         </LinearLayout>
 

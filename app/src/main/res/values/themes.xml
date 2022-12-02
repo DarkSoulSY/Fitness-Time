@@ -16,11 +16,11 @@
 
     <style name="textviews">
         <item name="android:textSize">18sp</item>
-
     </style>
+
     <style name="CircularProgressBar">
         <item name="android:indeterminateOnly">false</item>
-        <item name="android:progressDrawable">@drawable/circle_determinate</item>
+        <item name="android:progressDrawable">@drawable/circular_progress_bar</item>
     </style>
 
 

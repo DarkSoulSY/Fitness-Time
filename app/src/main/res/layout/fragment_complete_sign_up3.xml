@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.signup.CompleteSignUp3">
+    tools:context=".ui.fragments.CompleteSignUp3Fragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -82,11 +82,14 @@
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/completesignup3next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Done"
+                android:text="Next"
                 android:backgroundTint="#3277a8"
-                android:layout_marginTop="50dp"/>
+                android:layout_marginTop="50dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"/>
         </LinearLayout>
 
     </ScrollView>

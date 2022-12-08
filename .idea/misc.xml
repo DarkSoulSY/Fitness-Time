@@ -15,7 +15,9 @@
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/dashboard_icon.xml" value="0.1985" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/food_icon.xml" value="0.1" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/home_icon.xml" value="0.1" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/ic_baseline_add.xml" value="0.104" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2365" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/ic_baseline_email_24.xml" value="0.2545" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.2365" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/image.xml" value="0.1825" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/drawable/linear_determinate.xml" value="0.2365" />
@@ -28,18 +30,29 @@
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_complete_sign_up2.xml" value="0.33" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_complete_sign_up3.xml" value="0.33" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_finish_sign_up.xml" value="0.18802083333333333" />
-        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_progress.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_sign_in.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/activity_welcoming.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/application_status_bar.xml" value="0.14351851851851852" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_about.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_body_mass_index.xml" value="0.33" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_complete_sign_up1.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_complete_sign_up2.xml" value="0.33" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_complete_sign_up3.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_dashboard.xml" value="0.33" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_diary.xml" value="0.33" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_finish_sign_up.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_nutrition_facts.xml" value="0.4495530012771392" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_profile.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_progress.xml" value="0.33" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_settings.xml" value="0.5" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_sign_in.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_sign_up.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/fragment_welcoming.xml" value="0.35260416666666666" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/list_item.xml" value="0.33" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/progress_list_item.xml" value="0.5" />
         <entry key="..\:/Users/Darks/AndroidStudioProjects/Fitness-Application/app/src/main/res/layout/recyclerview_viewgroup_background.xml" value="0.1" />

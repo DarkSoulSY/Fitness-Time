@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.main.fragments.Dashboard"
+    tools:context=".ui.fragments.DashboardFragment"
     android:scrollbars="none"
     android:background="#f4f4f4">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -217,7 +218,7 @@
                     android:layout_height="30dp"
                     android:src="@drawable/shoe_icon"
                     android:contentDescription="Taken Steps"
-                    android:tint="#FFC0CB"/>
+                    app:tint="#FFC0CB"/>
 
                 <TextView
                     android:layout_width="wrap_content"

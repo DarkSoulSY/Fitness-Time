@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.signin.SignIn"
+    tools:context=".ui.fragments.SignInFragment"
     android:background="@color/white"
     android:scrollbars="none">
 
@@ -96,7 +96,7 @@
                 android:visibility="visible"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_signin"
+                android:id="@+id/signin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#3277a8"
@@ -126,6 +126,7 @@
                 android:textSize="14sp"/>
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/doesnothaveanaccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.signup.CompleteSignUp2">
+    tools:context=".ui.fragments.CompleteSignUp2Fragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -151,7 +151,7 @@
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/next"
+                    android:id="@+id/completesignup2next"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Next"

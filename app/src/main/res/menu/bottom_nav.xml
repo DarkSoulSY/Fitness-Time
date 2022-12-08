@@ -3,27 +3,32 @@
 
     <item
         android:title="Dashboard"
-        android:id="@+id/dashboard"
-        android:icon="@drawable/dashboard_icon"/>
+        android:id="@+id/dashboardFragment"
+        android:icon="@drawable/dashboard_icon"
+        android:menuCategory="secondary"/>
 
     <item
         android:title="Progress"
-        android:id="@+id/progress"
-        android:icon="@drawable/progress_icon"/>
+        android:id="@+id/progressFragment"
+        android:icon="@drawable/progress_icon"
+        android:menuCategory="secondary"/>
 
     <item
         android:title="Diary"
-        android:id="@+id/diary"
-        android:icon="@drawable/food_icon"/>
+        android:id="@+id/diaryFragment"
+        android:icon="@drawable/food_icon"
+        android:menuCategory="secondary"/>
 
     <item
         android:title="BMI"
-        android:id="@+id/bmi"
-        android:icon="@drawable/bmi_icon"/>
+        android:id="@+id/bodyMassIndexFragment"
+        android:icon="@drawable/bmi_icon"
+        android:menuCategory="secondary"/>
 
     <item
         android:title="Settings"
-        android:id="@+id/settings"
-        android:icon="@drawable/settings_icon"/>
+        android:id="@+id/settingsFragment"
+        android:icon="@drawable/settings_icon"
+        android:menuCategory="secondary"/>
 
 </menu>

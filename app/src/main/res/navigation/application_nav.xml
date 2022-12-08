@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/application_nav"
+    app:startDestination="@id/welcomingFragment">
+
+    <fragment
+        android:id="@+id/welcomingFragment"
+        android:name="com.example.fitnesstime.ui.fragments.WelcomingFragment"
+        android:label="Welcoming"
+        tools:layout="@layout/fragment_welcoming" >
+        <action
+            android:id="@+id/action_welcomingFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_welcomingFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.example.fitnesstime.ui.fragments.SignInFragment"
+        android:label="Sign In"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_signInFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_signInFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.fitnesstime.ui.fragments.SignUpFragment"
+        android:label="Sign Up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_signUpFragment_to_completeSignUp1Fragment"
+            app:destination="@id/completeSignUp1Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/completeSignUp1Fragment"
+        android:name="com.example.fitnesstime.ui.fragments.CompleteSignUp1Fragment"
+        android:label="Complete Sign Up"
+        tools:layout="@layout/fragment_complete_sign_up1" >
+        <action
+            android:id="@+id/action_completeSignUp1Fragment_to_completeSignUp2Fragment"
+            app:destination="@id/completeSignUp2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/completeSignUp2Fragment"
+        android:name="com.example.fitnesstime.ui.fragments.CompleteSignUp2Fragment"
+        android:label="Complete Sign Up"
+        tools:layout="@layout/fragment_complete_sign_up2" >
+        <action
+            android:id="@+id/action_completeSignUp2Fragment_to_completeSignUp3Fragment"
+            app:destination="@id/completeSignUp3Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/completeSignUp3Fragment"
+        android:name="com.example.fitnesstime.ui.fragments.CompleteSignUp3Fragment"
+        android:label="Complete Sign Up"
+        tools:layout="@layout/fragment_complete_sign_up3" >
+        <action
+            android:id="@+id/action_completeSignUp3Fragment_to_finishSignUpFragment"
+            app:destination="@id/finishSignUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.example.fitnesstime.ui.fragments.DashboardFragment"
+        android:label="Dashboard"
+        tools:layout="@layout/fragment_dashboard"
+        >
+
+    </fragment>
+    <fragment
+        android:id="@+id/progressFragment"
+        android:name="com.example.fitnesstime.ui.fragments.ProgressFragment"
+        android:label="Progress"
+        tools:layout="@layout/fragment_progress" />
+    <fragment
+        android:id="@+id/diaryFragment"
+        android:name="com.example.fitnesstime.ui.fragments.DiaryFragment"
+        android:label="Diary"
+        tools:layout="@layout/fragment_diary" />
+    <fragment
+        android:id="@+id/bodyMassIndexFragment"
+        android:name="com.example.fitnesstime.ui.fragments.BodyMassIndexFragment"
+        android:label="Body Mass Index"
+        tools:layout="@layout/fragment_body_mass_index" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.example.fitnesstime.ui.fragments.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.fitnesstime.ui.fragments.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
+
+
+
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.fitnesstime.ui.fragments.AboutFragment"
+        android:label="About"
+        tools:layout="@layout/fragment_about" />
+
+    <fragment
+        android:id="@+id/finishSignUpFragment"
+        android:name="com.example.fitnesstime.ui.fragments.FinishSignUpFragment"
+        android:label="Finish Sign Up"
+        tools:layout="@layout/fragment_finish_sign_up" >
+        <action
+            android:id="@+id/action_finishSignUpFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/nutritionFactsFragment"
+        android:name="com.example.fitnesstime.ui.fragments.NutritionFactsFragment"
+        android:label="Nutritional Facts"
+        tools:layout="@layout/fragment_nutrition_facts" />
+</navigation>

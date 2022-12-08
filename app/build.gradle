@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android-extensions'
+
 }
 
 android {
@@ -37,7 +38,12 @@ android {
 }
 
 dependencies {
+
+
     
+    implementation("androidx.navigation:navigation-fragment-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-ui-ktx:2.5.3")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:2.5.3")
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
     implementation 'com.robinhood.spark:spark:1.2.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -47,6 +53,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 
 
 

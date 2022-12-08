@@ -1,21 +1,23 @@
-package com.example.fitnesstime.ui.main.fragments
+package com.example.fitnesstime.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnesstime.R
 import com.example.fitnesstime.adapters.MyRecyclerViewAdapter
 import com.example.fitnesstime.data.DailyWeight
 import com.example.fitnesstime.databinding.FragmentProgressBinding
-import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class ProgressFragment : Fragment() {
@@ -31,13 +33,17 @@ class ProgressFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {binding = FragmentProgressBinding.inflate(inflater, container, false)
 
+
         return binding.root
     }
 
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+        (activity as AppCompatActivity?)!!.supportActionBar!!.show()
+
+        activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)!!.isVisible = true
 
         imageId.addAll(listOf(
             R.drawable.nig,
@@ -64,6 +70,7 @@ class ProgressFragment : Fragment() {
         getUserdata()
         setUpLineChart()
 
+        super.onViewCreated(view, savedInstanceState)
     }
 
     private fun getUserdata(){

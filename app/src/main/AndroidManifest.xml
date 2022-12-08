@@ -14,41 +14,14 @@
         android:theme="@style/Theme.FitnessTime"
         tools:targetApi="31">
         <activity
-            android:name=".ui.main.home.Main"
-            android:exported="false" />
-        <activity
-            android:name=".ui.main.progress.Progress"
-            android:exported="false" />
-        <activity
-            android:name=".ui.profile.Profile"
-            android:exported="false" />
-        <activity
-            android:name=".ui.signup.FinishSignUp"
-            android:exported="false" />
-        <activity
-            android:name=".ui.signup.CompleteSignUp3"
-            android:exported="false" />
-        <activity
-            android:name=".ui.signup.CompleteSignUp2"
-            android:exported="false" />
-        <activity
-            android:name=".ui.signup.CompleteSignUp1"
-            android:exported="false" />
-        <activity
-            android:name=".ui.signup.SignUp"
-            android:exported="false" />
-        <activity
-            android:name=".ui.signin.SignIn"
-            android:exported="false" />
-        <activity
-            android:name=".Welcoming"
-            android:exported="true">
+            android:name=".ui.home.Main"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

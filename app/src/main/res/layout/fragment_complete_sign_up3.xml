@@ -1,105 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.CompleteSignUp3Fragment">
-
-    <ScrollView
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <LinearLayout
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.CompleteSignUp3Fragment">
+
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
             <LinearLayout
-                android:id="@+id/viewgroup1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginEnd="35dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <com.google.android.material.textview.MaterialTextView
-
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/viewgroup1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="How would you describe your activity during your week"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    android:layout_marginTop="70dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
 
-                <RadioGroup
-                    android:id="@+id/complete3_activity"
+                    <com.google.android.material.textview.MaterialTextView
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="@string/complete_signup3_user_activity"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+                    <RadioGroup
+                        android:id="@+id/complete3_activity"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp">
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/activity1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:button="@color/transparent"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:gravity="center"
+                            android:layout_margin="10dp"
+                            android:text="@string/complete_signup3_user_activity1"
+                            android:checked="@{viewModel.weeklyActivity.equals(@string/complete_signup3_user_activity1)}"
+                            android:onClick="@{() -> viewModel.setGender(@string/complete_signup3_user_activity1)}"/>
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/activity2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:button="@color/transparent"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:text="@string/complete_signup3_user_activity2"
+                            android:checked="@{viewModel.weeklyActivity.equals(@string/complete_signup3_user_activity2)}"
+                            android:onClick="@{() -> viewModel.setGender(@string/complete_signup3_user_activity2)}"
+                            />
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/activity3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:button="@color/transparent"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:text="@string/complete_signup3_user_activity3"
+                            android:checked="@{viewModel.weeklyActivity.equals(@string/complete_signup3_user_activity3)}"
+                            android:onClick="@{() -> viewModel.setGender(@string/complete_signup3_user_activity3)}"/>
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/activity4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:button="@color/transparent"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:text="@string/complete_signup3_user_activity4"
+                            android:checked="@{viewModel.weeklyActivity.equals(@string/complete_signup3_user_activity4)}"
+                            android:onClick="@{() -> viewModel.setWeeklyActivity(@string/complete_signup3_user_activity4)}"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/completesignup3next"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp">
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/activity1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:button="@color/transparent"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:gravity="center"
-                        android:layout_margin="10dp"
-                        android:text="Not Very Active" />
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/activity2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:button="@color/transparent"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:text="Lightly Active"
-                        />
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/activity3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:button="@color/transparent"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:text="Active"
-                        android:checked="true"/>
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/activity4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:button="@color/transparent"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:text="Very Active"/>
-
-                </RadioGroup>
-
+                    android:text="@string/button_next"
+                    android:backgroundTint="#3277a8"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginEnd="20dp"/>
             </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/completesignup3next"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Next"
-                android:backgroundTint="#3277a8"
-                android:layout_marginTop="50dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="20dp"/>
-        </LinearLayout>
+        </ScrollView>
 
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

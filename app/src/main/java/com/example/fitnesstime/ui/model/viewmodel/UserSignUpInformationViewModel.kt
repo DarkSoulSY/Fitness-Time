@@ -22,10 +22,10 @@ class UserSignUpInformationViewModel : ViewModel() {
     private val _password = MutableLiveData<String>("")
     val password: LiveData<String> = _password
 
-    private val _goal = MutableLiveData<String>("")
+    private val _goal = MutableLiveData<String>("Lose Weight")
     val goal : LiveData<String> = _goal
 
-    private val _gender = MutableLiveData<String>("")
+    private val _gender = MutableLiveData<String>("Male")
     val gender: LiveData<String> = _gender
 
     private val _age = MutableLiveData<Int>()
@@ -34,7 +34,7 @@ class UserSignUpInformationViewModel : ViewModel() {
     private val _height = MutableLiveData<Float>()
     val height : LiveData<Float> = _height
 
-    private val _ratio = MutableLiveData<Float>()
+    private val _ratio = MutableLiveData<Float>(0.2f)
     val ratio : LiveData<Float> = _ratio
 
     private val _weight = MutableLiveData<Float>()
@@ -96,6 +96,11 @@ class UserSignUpInformationViewModel : ViewModel() {
 
     fun setWeeklyActivity(activity: String){
         _weeklyActivity.value = activity
+    }
+
+    fun convertFloatToString(F: Float): String
+    {
+        return F.toString()
     }
 
 }

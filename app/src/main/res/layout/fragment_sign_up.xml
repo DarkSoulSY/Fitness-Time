@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#3277a8"
-                android:text="Fit For Life"
+                android:text="@string/app_name"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:fontFamily="sans-serif"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="sans-serif"
-            android:text="Sign Up"
+            android:text="@string/signup"
             android:textAlignment="center"
             android:textColor="@color/accent"
             android:textSize="35sp" />
@@ -48,7 +48,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="First Name"
+            android:hint="@string/signup_user_first_name_hint"
             android:textColorHint="@color/accent"
             app:boxStrokeColor="@color/accent"
             android:layout_marginTop="32dp">
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="Last Name"
+            android:hint="@string/signup_user_last_name_hint"
             android:textColorHint="@color/accent"
             app:boxStrokeColor="@color/accent"
             android:layout_marginTop="32dp">
@@ -88,7 +88,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="@string/email"
+            android:hint="@string/sign_user_email_hint"
             android:textColorHint="@color/accent"
             app:boxStrokeColor="@color/accent"
             android:layout_marginTop="16dp">
@@ -114,7 +114,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="+962"
+                android:text="@string/signup_user_international_code_hint"
                 android:textColor="@color/accent"
                 android:textSize="20sp"
                 android:fontFamily="sans-serif"/>
@@ -123,7 +123,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="Phone Number"
+                android:hint="@string/signup_user_phone_number_hint"
                 android:textColorHint="@color/accent"
                 app:boxStrokeColor="@color/accent"
                 android:layout_marginStart="10dp">
@@ -144,7 +144,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="@string/password"
+            android:hint="@string/sign_user_password_hint"
             app:passwordToggleEnabled="true"
             android:textColorHint="@color/accent"
             app:boxStrokeColor="@color/accent"
@@ -165,7 +165,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="@string/confirm_password"
+            android:hint="@string/signup_user_password_confirm_hint"
             android:textColorHint="@color/accent"
             app:boxStrokeColor="@color/accent"
             android:layout_marginTop="16dp"
@@ -203,7 +203,7 @@
                 android:paddingTop="10dp"
                 android:paddingEnd="20dp"
                 android:paddingBottom="20dp"
-                android:text="Next"
+                android:text="@string/button_next"
                 app:cornerRadius="10dp"/>
 
 
@@ -214,13 +214,14 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="32dp">
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp">
 
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:text="Already have an Account ?"
+                android:text="@string/signing_got_account1"
                 android:textSize="14sp"/>
 
             <com.google.android.material.textview.MaterialTextView
@@ -228,7 +229,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
-                android:text="Sign in"
+                android:text="@string/sign_in"
                 android:textSize="14sp"
                 android:layout_marginStart="10dp"
                 android:textColor="#3277a8"/>

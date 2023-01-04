@@ -39,7 +39,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="Choose the rate at which you want to lose or gain weight"
+                        android:text="@string/complete_signup2_user_rate"
                         android:textSize="18sp"
                         android:textColor="@color/accent"/>
 
@@ -57,9 +57,9 @@
                             android:background="@drawable/complete_signup_radio_selector"
                             android:gravity="center"
                             android:layout_margin="10dp"
-                            android:text="0.2 Kilogram per week"
-                            android:checked="true"
-                            />
+                            android:text="@string/complete_signup2_user_rate1"
+                            android:checked="@{viewModel.ratio.equals(0.2f)}"
+                            android:onClick="@{() -> viewModel.setRatio(0.2f)}"/>
 
                         <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/complete2_ratio2"
@@ -69,7 +69,9 @@
                             android:background="@drawable/complete_signup_radio_selector"
                             android:layout_margin="10dp"
                             android:gravity="center"
-                            android:text="0.5 Kilogram per week"/>
+                            android:text="@string/complete_signup2_user_rate2"
+                            android:checked="@{viewModel.ratio.equals(0.5f)}"
+                            android:onClick="@{() -> viewModel.setRatio(0.5f)}"/>
 
                         <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/complete2_ratio3"
@@ -79,7 +81,9 @@
                             android:background="@drawable/complete_signup_radio_selector"
                             android:layout_margin="10dp"
                             android:gravity="center"
-                            android:text="0.8 Kilogram per week"/>
+                            android:text="@string/complete_signup2_user_rate3"
+                            android:checked="@{viewModel.ratio.equals(0.8f)}"
+                            android:onClick="@{() -> viewModel.setRatio(0.8f)}"/>
 
                         <com.google.android.material.radiobutton.MaterialRadioButton
                             android:id="@+id/complete2_ratio4"
@@ -89,7 +93,9 @@
                             android:background="@drawable/complete_signup_radio_selector"
                             android:layout_margin="10dp"
                             android:gravity="center"
-                            android:text="1 kitlogram per week"/>
+                            android:text="@string/complete_signup2_user_rate4"
+                            android:checked="@{viewModel.ratio.equals(1f)}"
+                            android:onClick="@{() -> viewModel.setRatio(1f)}"/>
 
                     </RadioGroup>
 
@@ -109,7 +115,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="How much do you weight?"
+                        android:text="@string/complete_signup2_user_current_weight"
                         android:textSize="18sp"
                         android:textColor="@color/accent"/>
 
@@ -122,7 +128,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="30dp"
-                            android:hint="Enter Weight E.g 80 kgs"
+                            android:hint="@string/complete_signup2_user_current_weight_hint"
                             android:inputType="number"
                             android:backgroundTint="@color/cardview_light_background"
                             android:gravity="center">
@@ -146,7 +152,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="What is your weight goal?"
+                        android:text="@string/complete_signup2_user_weight_goal"
                         android:textSize="18sp"
                         android:textColor="@color/accent"/>
 
@@ -159,7 +165,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="30dp"
-                            android:hint="Enter weight goal E.g 60 kgs"
+                            android:hint="@string/complete_signup2_user_weight_goal_hint"
                             android:inputType="number"
                             android:backgroundTint="@color/cardview_light_background"
                             android:gravity="center">
@@ -171,7 +177,7 @@
                         android:id="@+id/completesignup2next"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Next"
+                        android:text="@string/button_next"
                         android:backgroundTint="#3277a8"
                         android:layout_marginTop="50dp"/>
                 </LinearLayout>

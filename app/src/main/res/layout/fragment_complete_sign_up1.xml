@@ -1,205 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.CompleteSignUp1Fragment">
-
-    <ScrollView
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.fragments.CompleteSignUp1Fragment">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:scrollbars="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/viewgroup1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="70dp"
-                android:layout_marginEnd="35dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:orientation="vertical">
 
-                <com.google.android.material.textview.MaterialTextView
-
+                <LinearLayout
+                    android:id="@+id/viewgroup1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="What is your Intention"
-                    android:textColor="@color/accent"
-                    android:textSize="18sp"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="70dp"
+                    android:layout_marginEnd="35dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <RadioGroup
-                    android:id="@+id/complete_intention"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp">
+                    <com.google.android.material.textview.MaterialTextView
 
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/complete_intention1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:button="@color/transparent"
                         android:gravity="center"
-                        android:text="Lose Weight"
-                        android:checked="true"/>
+                        android:text="@string/complete_signup1_user_intention"
+                        android:textColor="@color/accent"
+                        android:textSize="18sp"
+                        android:layout_marginBottom="5dp"/>
 
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/complete_intention2"
+                    <RadioGroup
+                        android:id="@+id/complete_intention"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:button="@color/transparent"
-                        android:gravity="center"
-                        android:text="Gain Weight" />
+                        android:layout_marginStart="30dp">
 
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/complete_intention3"
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/complete_intention1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:button="@color/transparent"
+                            android:gravity="center"
+                            android:text="@string/complete_signup1_user_intention1"
+                            android:checked="@{viewModel.goal.equals(@string/complete_signup1_user_intention1)}"
+                            android:onClick="@{() -> viewModel.setGoal(@string/complete_signup1_user_intention1)}"/>
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/complete_intention2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:button="@color/transparent"
+                            android:gravity="center"
+                            android:text="@string/complete_signup1_user_intention2"
+                            android:checked="@{viewModel.goal.equals(@string/complete_signup1_user_intention2)}"
+                            android:onClick="@{() -> viewModel.setGoal(@string/complete_signup1_user_intention2)}"/>
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/complete_intention3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:button="@color/transparent"
+                            android:gravity="center"
+                            android:text="@string/complete_signup1_user_intention3"
+                            android:checked="@{viewModel.goal.equals(@string/complete_signup1_user_intention3)}"
+                            android:onClick="@{() -> viewModel.setGoal(@string/complete_signup1_user_intention3)}"/>
+
+                    </RadioGroup>
+
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:button="@color/transparent"
+                        android:layout_marginTop="35dp"
                         android:gravity="center"
-                        android:text="Maintain Weight" />
+                        android:text="@string/complete_signup1_user_gender"
+                        android:textColor="@color/accent"
+                        android:textSize="18sp" />
 
-                </RadioGroup>
+                    <RadioGroup
+                        android:id="@+id/complete_gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="30dp">
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/complete_male"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/complete_signup1_user_gender1"
+                            android:checked="@{viewModel.gender.equals(@string/complete_signup1_user_gender1)}"
+                            android:onClick="@{() -> viewModel.setGender(@string/complete_signup1_user_gender1)}"/>
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/complete_female"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/complete_signup1_user_gender2"
+                            android:checked="@{viewModel.gender.equals(@string/complete_signup1_user_gender2)}"
+                            android:onClick="@{() -> viewModel.setGender(@string/complete_signup1_user_gender2)}"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:layout_marginTop="35dp"
-                    android:gravity="center"
-                    android:text="Enter the gender that you want us to use for our calculations"
-                    android:textColor="@color/accent"
-                    android:textSize="18sp" />
-
-                <RadioGroup
-                    android:id="@+id/complete_gender"
+                    android:id="@+id/viewgroup2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp">
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/viewgroup1">
 
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/complete_male"
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="Male" />
 
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:id="@+id/complete_female"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Female" />
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_marginTop="35dp"
-                android:id="@+id/viewgroup2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginEnd="35dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewgroup1">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:gravity="center"
-                    android:text="How old are you?"
-                    android:textColor="@color/accent"
-                    android:textSize="18sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/complete_age"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="30dp"
-                        android:backgroundTint="@color/cardview_light_background"
                         android:gravity="center"
-                        android:hint="Enter Age E.g 20"
-                        android:inputType="date">
+                        android:text="@string/complete_signup1_user_age"
+                        android:textColor="@color/accent"
+                        android:textSize="18sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/complete_age"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="30dp"
+                            android:backgroundTint="@color/cardview_light_background"
+                            android:gravity="center"
+                            android:hint="@string/complete_signup1_user_age_hint"
+                            android:inputType="date">
 
 
-                    </com.google.android.material.textfield.TextInputEditText>
+                        </com.google.android.material.textfield.TextInputEditText>
 
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginTop="35dp"
-                android:layout_marginEnd="35dp"
-                android:orientation="vertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/viewgroup2">
-
-                <com.google.android.material.textview.MaterialTextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="How tall are  you?"
-                    android:textColor="@color/accent"
-                    android:textSize="18sp" />
+                    android:layout_marginStart="35dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/viewgroup2">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/complete_height"
+                    <com.google.android.material.textview.MaterialTextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="30dp"
-                        android:backgroundTint="@color/cardview_light_background"
                         android:gravity="center"
-                        android:hint="Enter Height E.g 176 cm"
-                        android:inputType="number">
+                        android:text="@string/complete_signup1_user_height"
+                        android:textColor="@color/accent"
+                        android:textSize="18sp" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/complete_height"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="30dp"
+                            android:backgroundTint="@color/cardview_light_background"
+                            android:gravity="center"
+                            android:hint="@string/complete_signup1_user_height_hint"
+                            android:inputType="number">
 
 
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/completesignup1next"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:backgroundTint="#3277a8"
-                    android:text="Next" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/completesignup1next"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:backgroundTint="#3277a8"
+                        android:text="@string/button_next" />
+                </LinearLayout>
+
             </LinearLayout>
+        </ScrollView>
 
-        </LinearLayout>
-    </ScrollView>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

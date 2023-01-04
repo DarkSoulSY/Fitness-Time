@@ -62,9 +62,9 @@ class SignUpFragment : Fragment() {
                         if (signupPassword.text.toString() == signupConfirmPassword.text.toString()){
                             //Fill User View Model with Data
                             sharedViewModel.apply {
-                                setFirstName(signupFirstName.text.toString())
-                                setLastName(signupLastName.text.toString())
-                                setEmail(signupEmail.text.toString())
+                                setFirstName(signupFirstName.text.toString().toUpperCase())
+                                setLastName(signupLastName.text.toString().toUpperCase())
+                                setEmail(signupEmail.text.toString().toLowerCase())
                                 setPhoneNumber(signupPhoneNumber.text.toString())
                                 setPassword(signupPassword.text.toString())
                             }

@@ -41,15 +41,9 @@ class CompleteSignUp3Fragment : Fragment() {
     override fun onStart() {
 
         binding.apply {
+            viewModel = sharedViewModel
+
             completesignup3next.setOnClickListener {
-                //getting male female radio input
-                val activity = complete3Activity.checkedRadioButtonId
-                val selectedActivity = resources.getResourceEntryName(activity)
-
-                //saving input into a bundle
-                sharedViewModel.setWeeklyActivity(selectedActivity)
-
-                //Move to next Activity
                 findNavController().navigate(R.id.action_completeSignUp3Fragment_to_finishSignUpFragment)
             }
 

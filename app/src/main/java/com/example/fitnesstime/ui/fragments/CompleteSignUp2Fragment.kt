@@ -47,12 +47,9 @@ class CompleteSignUp2Fragment : Fragment() {
                 //Check if input are empty
                 if (Validation.validateInput(complete2Weight, requireContext()) && Validation.validateInput(complete2GoalWeight, requireContext())) {
 
-                    //getting the ratio that the user want to progress with
-                    val progressRatio = complete2Ratio.checkedRadioButtonId
-                    val selectedRatio = resources.getResourceEntryName(progressRatio).toFloat()
-
+                    //Fill User View Model with Data
                     sharedViewModel.apply {
-                        setRatio(selectedRatio)
+
                         setWeight(complete2Weight.text.toString().toFloat())
                         setGoalWeight(complete2GoalWeight.text.toString().toFloat())
                     }

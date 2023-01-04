@@ -42,22 +42,14 @@ class CompleteSignUp1Fragment : Fragment() {
 
         binding.apply {
 
+            viewModel = sharedViewModel
             completesignup1next.setOnClickListener {
 
                 //Checking if input are not empty
                 if (Validation.validateInput(completeAge, requireContext()) && Validation.validateInput(completeHeight, requireContext())) {
-                    //getting gender radio input
-                    val genderId = completeGender.checkedRadioButtonId
-                    val selectedGender = resources.getResourceEntryName(genderId)
-
-                    //getting intention input
-                    val intention = completeIntention.checkedRadioButtonId
-                    val selectedIntention = resources.getResourceEntryName(intention)
 
                     //Fill User View Model with Data
                     sharedViewModel.apply {
-                        setGender(selectedGender)
-                        setGoal(selectedIntention)
                         setAge(completeAge.text.toString().toInt())
                         setHeight(completeHeight.text.toString().toFloat())
                     }

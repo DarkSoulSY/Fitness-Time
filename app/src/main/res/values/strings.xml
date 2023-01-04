@@ -1,10 +1,5 @@
 <resources>
     <string name="app_name">Fitness Time</string>
-    <string name="full_name">Full Name</string>
-    <string name="email">Email</string>
-    <string name="mobilenumber">Mobile Number</string>
-    <string name="password">Password</string>
-    <string name="confirm_password">Confirm Password</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dashboard_bottom_navigation">Dashboard</string>
@@ -12,4 +7,58 @@
     <string name="diary_bottom_navigation">Diary</string>
     <string name="bmi_bottom_navigation">BMI</string>
     <string name="settings_bottom_navigation">Settings</string>
+
+    <!-- Signing -->
+    <string name="sign_user_password_hint">Password</string>
+    <string name="sign_user_email_hint">Email Address</string>
+    <string name="signing_got_account1">Already have an Account ?</string>
+    <string name="signing_got_account2">Don\'t have an Account ?</string>
+
+    <!-- Sign In -->
+    <string name="sign_in">Sign In</string>
+
+    <!-- Sign Up -->
+    <string name="button_next">Next</string>
+
+    <string name="signup">Sign Up</string>
+    <string name="signup_user_first_name_hint">First Name</string>
+    <string name="signup_user_last_name_hint">Last Name</string>
+    <string name="signup_user_phone_number_hint">Phone Number</string>
+    <string name="signup_user_password_confirm_hint">Confirm Password</string>
+    <string name="signup_user_international_code_hint">+962</string>
+
+    <string name="complete_signup1_user_intention">What is your Intention</string>
+    <string name="complete_signup1_user_intention1">Lose Weight</string>
+    <string name="complete_signup1_user_intention2">Gain Weight</string>
+    <string name="complete_signup1_user_intention3">Maintain Weight</string>
+
+    <string name="complete_signup1_user_gender">Enter the gender that you want us to use for our calculations</string>
+    <string name="complete_signup1_user_gender1">Male</string>
+    <string name="complete_signup1_user_gender2">Female</string>
+
+    <string name="complete_signup1_user_age">How old are you?</string>
+    <string name="complete_signup1_user_age_hint">Enter Age E.g 20</string>
+
+    <string name="complete_signup1_user_height">What is your height?</string>
+    <string name="complete_signup1_user_height_hint">Enter Height E.g 176 cm</string>
+
+    <string name="complete_signup2_user_rate">Choose the rate at which you want to lose or gain weight</string>
+    <string name="complete_signup2_user_rate1">0.2 Kilogram per week</string>
+    <string name="complete_signup2_user_rate2">0.5 Kilogram per week</string>
+    <string name="complete_signup2_user_rate3">0.8 Kilogram per week</string>
+    <string name="complete_signup2_user_rate4">1 Kilogram per week</string>
+
+    <string name="complete_signup2_user_current_weight">How much do you weight?</string>
+    <string name="complete_signup2_user_current_weight_hint">Enter Weight E.g 80 kgs</string>
+
+    <string name="complete_signup2_user_weight_goal">What is your weight goal?</string>
+    <string name="complete_signup2_user_weight_goal_hint">Enter weight goal E.g 60 kgs</string>
+
+    <string name="complete_signup3_user_activity">How would you describe your activity during your week</string>
+    <string name="complete_signup3_user_activity1">Not Very Active</string>
+    <string name="complete_signup3_user_activity2">Lightly Active</string>
+    <string name="complete_signup3_user_activity3">Active</string>
+    <string name="complete_signup3_user_activity4">Very Active</string>
+
+
 </resources>

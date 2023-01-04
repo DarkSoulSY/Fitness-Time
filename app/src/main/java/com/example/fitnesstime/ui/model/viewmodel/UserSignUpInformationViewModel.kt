@@ -98,9 +98,4 @@ class UserSignUpInformationViewModel : ViewModel() {
         _weeklyActivity.value = activity
     }
 
-    fun convertFloatToString(F: Float): String
-    {
-        return F.toString()
-    }
-
 }

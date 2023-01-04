@@ -4,6 +4,7 @@ package com.example.fitnesstime.ui.home
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -12,6 +13,7 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.ActivityMainBinding
+import com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel
 
 
 class Main : AppCompatActivity() {
@@ -33,6 +35,7 @@ class Main : AppCompatActivity() {
 
         val sharePreferences = getSharedPreferences("User Session", MODE_PRIVATE)
         val editor = sharePreferences.edit()
+        editor.putString()
 
 
     }

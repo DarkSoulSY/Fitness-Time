@@ -23,4 +23,12 @@
     <color name="pink">#FFC0CB</color>
     <color name="light_pink">#FFB6C1</color>
 
+    <!-- Calories & Macros Colors-->
+    <color name="purple">#A020F0</color>
+    <color name="orange">#FFA500</color>
+    <color name="dark_purple">#301934</color>
+    <color name="dark_blue">#006199</color>
+    <color name="dark_blue_butlighter">#0091E6</color>
+    <color name="light_blue">#079BF5</color>
+
 </resources>

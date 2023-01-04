@@ -61,6 +61,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/dashboard_circle_remaining_calories"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -107,6 +108,7 @@
                             android:text="Base Goal" />
 
                         <TextView
+                            android:id="@+id/dashboard_caloric_goal"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="2820"
@@ -142,6 +144,7 @@
                             android:text="Food" />
 
                         <TextView
+                            android:id="@+id/dashboard_eaten_food"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="1000"
@@ -176,6 +179,7 @@
                             android:text="Exercise" />
 
                         <TextView
+                            android:id="@+id/dashboard_exercised"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="22"
@@ -221,6 +225,7 @@
                     app:tint="#FFC0CB"/>
 
                 <TextView
+                    android:id="@+id/dashboard_running_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -245,6 +250,7 @@
                     android:textColor="@color/accent" />
 
                 <TextView
+                    android:id="@+id/dashboard_running_goal_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="3dp"

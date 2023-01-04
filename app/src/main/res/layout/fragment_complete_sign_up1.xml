@@ -10,82 +10,143 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <LinearLayout
                 android:id="@+id/viewgroup1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
                 android:layout_marginStart="35dp"
+                android:layout_marginTop="70dp"
                 android:layout_marginEnd="35dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.textview.MaterialTextView
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Enter the gender that you want us to use for our calculations"
+                    android:text="What is your Intention"
+                    android:textColor="@color/accent"
                     android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    android:layout_marginBottom="5dp"/>
 
                 <RadioGroup
+                    android:id="@+id/complete_intention"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp">
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/complete_intention1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/complete_signup_radio_selector"
+                        android:button="@color/transparent"
+                        android:gravity="center"
+                        android:text="Lose Weight"
+                        android:checked="true"/>
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/complete_intention2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/complete_signup_radio_selector"
+                        android:button="@color/transparent"
+                        android:gravity="center"
+                        android:text="Gain Weight" />
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/complete_intention3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/complete_signup_radio_selector"
+                        android:button="@color/transparent"
+                        android:gravity="center"
+                        android:text="Maintain Weight" />
+
+                </RadioGroup>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:gravity="center"
+                    android:text="Enter the gender that you want us to use for our calculations"
+                    android:textColor="@color/accent"
+                    android:textSize="18sp" />
+
+                <RadioGroup
+                    android:id="@+id/complete_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="30dp">
+
+                    <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/complete_male"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
                         android:text="Male" />
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/complete_female"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Female"/>
+                        android:text="Female" />
 
                 </RadioGroup>
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_margin="35dp"
+                android:layout_marginTop="35dp"
                 android:id="@+id/viewgroup2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginEnd="35dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/viewgroup1"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/viewgroup1">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+
                     android:gravity="center"
                     android:text="How old are you?"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    android:textColor="@color/accent"
+                    android:textSize="18sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/complete_age"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="30dp"
-                        android:hint="Enter Age E.g 20"
-                        android:inputType="number"
                         android:backgroundTint="@color/cardview_light_background"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:hint="Enter Age E.g 20"
+                        android:inputType="date">
 
 
                     </com.google.android.material.textfield.TextInputEditText>
@@ -94,45 +155,48 @@
             </LinearLayout>
 
             <LinearLayout
-                android:layout_margin="35dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="35dp"
+                android:layout_marginEnd="35dp"
                 android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/viewgroup2"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
+                app:layout_constraintTop_toBottomOf="@id/viewgroup2">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="How tall are  you?"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    android:textColor="@color/accent"
+                    android:textSize="18sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/complete_height"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="30dp"
-                        android:hint="Enter Height E.g 176 cm"
-                        android:inputType="number"
                         android:backgroundTint="@color/cardview_light_background"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:hint="Enter Height E.g 176 cm"
+                        android:inputType="number">
 
 
                     </com.google.android.material.textfield.TextInputEditText>
                 </com.google.android.material.textfield.TextInputLayout>
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/completesignup1next"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Next"
                     android:backgroundTint="#3277a8"
-                    android:layout_marginTop="50dp"/>
+                    android:text="Next" />
             </LinearLayout>
 
         </LinearLayout>

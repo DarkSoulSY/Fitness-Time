@@ -2,31 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:title="Dashboard"
+        android:title="@string/dashboard_bottom_navigation"
         android:id="@+id/dashboardFragment"
         android:icon="@drawable/dashboard_icon"
         android:menuCategory="secondary"/>
 
     <item
-        android:title="Progress"
+        android:title="@string/progress_bottom_navigation"
         android:id="@+id/progressFragment"
         android:icon="@drawable/progress_icon"
         android:menuCategory="secondary"/>
 
     <item
-        android:title="Diary"
+        android:title="@string/diary_bottom_navigation"
         android:id="@+id/diaryFragment"
         android:icon="@drawable/food_icon"
         android:menuCategory="secondary"/>
 
     <item
-        android:title="BMI"
+        android:title="@string/bmi_bottom_navigation"
         android:id="@+id/bodyMassIndexFragment"
         android:icon="@drawable/bmi_icon"
         android:menuCategory="secondary"/>
 
     <item
-        android:title="Settings"
+        android:title="@string/settings_bottom_navigation"
         android:id="@+id/settingsFragment"
         android:icon="@drawable/settings_icon"
         android:menuCategory="secondary"/>

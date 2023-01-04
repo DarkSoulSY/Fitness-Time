@@ -29,6 +29,7 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <com.google.android.material.textview.MaterialTextView
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -37,11 +38,13 @@
                     android:textColor="@color/accent"/>
 
                 <RadioGroup
+                    android:id="@+id/complete3_activity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="30dp">
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/activity1"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:button="@color/transparent"
@@ -51,24 +54,29 @@
                         android:text="Not Very Active" />
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/activity2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:button="@color/transparent"
                         android:background="@drawable/complete_signup_radio_selector"
                         android:layout_margin="10dp"
                         android:gravity="center"
-                        android:text="Lightly Active"/>
+                        android:text="Lightly Active"
+                        />
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/activity3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:button="@color/transparent"
                         android:background="@drawable/complete_signup_radio_selector"
                         android:layout_margin="10dp"
                         android:gravity="center"
-                        android:text="Active"/>
+                        android:text="Active"
+                        android:checked="true"/>
 
                     <com.google.android.material.radiobutton.MaterialRadioButton
+                        android:id="@+id/activity4"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:button="@color/transparent"

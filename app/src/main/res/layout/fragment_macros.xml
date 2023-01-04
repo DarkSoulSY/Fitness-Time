@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.MacrosFragment"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/macros_ratios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/macros_ratios"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginEnd="95dp"
+                    android:text="Total" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:text="Goal"
+                    android:layout_marginEnd="3dp"/>
+
+            </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/square_image"
+                    android:backgroundTint="@color/Secondary"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:text="Carbohydrates"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="115dp"
+                    android:text="(0)"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0%"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="100dp"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_blue"
+                    android:text="50%"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+            <View
+                android:layout_marginTop="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:background="@color/accent"
+                android:layout_marginBottom="10dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/square_image"
+                    android:backgroundTint="@color/purple" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:text="Fat"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="43dp"
+                    android:text="(0)"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0%"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="100dp"
+                    android:layout_centerInParent="true"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_blue"
+                    android:text="50%"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+            <View
+                android:layout_marginTop="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:background="@color/accent"
+                android:layout_marginBottom="10dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/square_image"
+                    android:backgroundTint="@color/orange" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="20dp"
+                    android:text="Protein"
+                    android:layout_centerInParent="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="70dp"
+                    android:text="(0)" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0%"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="100dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/light_blue"
+                    android:text="50%"
+                    android:layout_alignParentEnd="true"/>
+
+            </RelativeLayout>
+            <View
+                android:layout_marginTop="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:background="@color/accent"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+</ScrollView>

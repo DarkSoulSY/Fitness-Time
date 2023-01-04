@@ -48,12 +48,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:hint="@string/full_name"
+            android:hint="First Name"
             android:textColorHint="@color/accent"
             app:boxStrokeColor="@color/accent"
             android:layout_marginTop="32dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_first_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
@@ -73,6 +74,7 @@
             android:layout_marginTop="32dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_last_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
@@ -92,6 +94,7 @@
             android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
@@ -120,12 +123,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:hint="@string/mobilenumber"
+                android:hint="Phone Number"
                 android:textColorHint="@color/accent"
                 app:boxStrokeColor="@color/accent"
                 android:layout_marginStart="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/signup_phone_number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif"
@@ -147,6 +151,7 @@
             android:layout_marginTop="16dp">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
@@ -167,6 +172,7 @@
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/signup_confirm_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
@@ -188,7 +194,7 @@
                 android:visibility="visible"/>
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/signupnext"
+                android:id="@+id/signup1_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#3277a8"

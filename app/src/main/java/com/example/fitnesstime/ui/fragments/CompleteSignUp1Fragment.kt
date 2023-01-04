@@ -5,17 +5,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentCompleteSignUp1Binding
+import com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.example.fitnesstime.validation.Validation
 
 class CompleteSignUp1Fragment : Fragment() {
 
     private lateinit var binding: FragmentCompleteSignUp1Binding
+    private val sharedViewModel: UserSignUpInformationViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,9 +34,42 @@ class CompleteSignUp1Fragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
         activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)!!.isGone = true
-        binding.completesignup1next.setOnClickListener {
-            findNavController().navigate(R.id.action_completeSignUp1Fragment_to_completeSignUp2Fragment)
-        }
+
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onStart() {
+
+        binding.apply {
+
+            completesignup1next.setOnClickListener {
+
+                //Checking if input are not empty
+                if (Validation.validateInput(completeAge, requireContext()) && Validation.validateInput(completeHeight, requireContext())) {
+                    //getting gender radio input
+                    val genderId = completeGender.checkedRadioButtonId
+                    val selectedGender = resources.getResourceEntryName(genderId)
+
+                    //getting intention input
+                    val intention = completeIntention.checkedRadioButtonId
+                    val selectedIntention = resources.getResourceEntryName(intention)
+
+                    //Fill User View Model with Data
+                    sharedViewModel.apply {
+                        setGender(selectedGender)
+                        setGoal(selectedIntention)
+                        setAge(completeAge.text.toString().toInt())
+                        setHeight(completeHeight.text.toString().toFloat())
+                    }
+
+                    //Moving to complete sign up 2!
+                    findNavController().navigate(R.id.action_completeSignUp1Fragment_to_completeSignUp2Fragment)
+                }
+                else
+                    Toast.makeText(activity, "Please fill all the required information", Toast.LENGTH_SHORT).show()
+
+            }
+        }
+        super.onStart()
     }
 }

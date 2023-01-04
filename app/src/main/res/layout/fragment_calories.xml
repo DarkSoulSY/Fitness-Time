@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.CaloriesFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/calories_graph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"/>
+
+
+        <LinearLayout
+            android:id="@+id/calories_square_images"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/calories_graph"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical"
+            android:layout_marginTop="50dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/calories_graph"
+                    android:layout_marginEnd="25dp"
+                    android:layout_marginBottom="25dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/square_image"
+                        android:backgroundTint="@color/dark_blue" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Breakfast"
+                            android:textColor="@color/accent"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="0%" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="(o cal)" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/calories_graph"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/square_image"
+                        android:backgroundTint="@color/dark_purple" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Lunch"
+
+                            android:textColor="@color/accent"
+                            android:textSize="14sp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="5dp"
+                                android:text="0%" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="(o cal)" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calories_graph"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/square_image"
+                    android:backgroundTint="@color/light_blue" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dinner"
+                        android:textColor="@color/accent"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:text="0%" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="(o cal)" />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_below="@+id/calories_square_images"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            >
+            <View
+                android:layout_marginTop="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:background="@color/accent"
+                android:layout_marginBottom="10dp"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="10dp"
+                    android:text="Total Calories"
+                    android:textColor="@color/accent" />
+
+                <TextView
+                    android:id="@+id/calories_eaten"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="9" />
+
+            </RelativeLayout> <!-- Eaten Calories summed up -->
+
+
+            <View
+                android:layout_marginTop="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:background="@color/accent"
+                android:layout_marginBottom="10dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Calories"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/accent"
+                    android:layout_alignParentStart="true"
+                    />
+
+                <TextView
+                    android:id="@+id/calories_burned_from_exercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="80"
+                     />
+
+            </RelativeLayout> <!-- Burned calories from exercise -->
+
+            <View
+                android:layout_marginTop="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:background="@color/accent"
+                android:layout_marginBottom="10dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Calories"
+                    android:layout_marginStart="10dp"
+                    android:textColor="@color/accent"
+                    android:layout_alignParentStart="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:text="2820"
+                     />
+
+            </RelativeLayout> <!-- Goal Calories -->
+
+            <View
+                android:layout_marginTop="9dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0.5dp"
+                android:background="@color/accent"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+
+
+
+
+
+    </RelativeLayout>
+
+</ScrollView>

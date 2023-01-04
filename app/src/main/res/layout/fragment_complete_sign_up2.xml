@@ -1,165 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.fragments.CompleteSignUp2Fragment">
-
-    <ScrollView
+<layout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="none"
-        android:orientation="vertical">
-        <LinearLayout
+        tools:context=".ui.fragments.CompleteSignUp2Fragment">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
             android:orientation="vertical">
-            <LinearLayout
-                android:id="@+id/viewgroup1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="70dp"
-                android:layout_marginStart="35dp"
-                android:layout_marginEnd="35dp"
-                android:orientation="vertical"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Enter the gender that you want us to use for our calculations"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
-
-                <RadioGroup
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp">
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:button="@color/transparent"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:gravity="center"
-                        android:layout_margin="10dp"
-                        android:text="Lose 0.2 Kilogram per week" />
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:button="@color/transparent"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:text="Lose 0.5 Kilogram per week"/>
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:button="@color/transparent"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:text="Lose 0.8 Kilogram per week"/>
-
-                    <com.google.android.material.radiobutton.MaterialRadioButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:button="@color/transparent"
-                        android:background="@drawable/complete_signup_radio_selector"
-                        android:layout_margin="10dp"
-                        android:gravity="center"
-                        android:text="Lose 1 kitlogram per week"/>
-
-                </RadioGroup>
-
-            </LinearLayout>
 
             <LinearLayout
-                android:layout_margin="35dp"
-                android:id="@+id/viewgroup2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/viewgroup1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <com.google.android.material.textview.MaterialTextView
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/viewgroup1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="How much do you weight?"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    android:layout_marginTop="70dp"
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    <com.google.android.material.textview.MaterialTextView
 
-                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="30dp"
-                        android:hint="Enter Weight E.g 80 kgs"
-                        android:inputType="number"
-                        android:backgroundTint="@color/cardview_light_background"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:text="Choose the rate at which you want to lose or gain weight"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
 
-
-                    </com.google.android.material.textfield.TextInputEditText>
-
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_margin="35dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintTop_toBottomOf="@id/viewgroup2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="What is your weight goal?"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.textfield.TextInputEditText
+                    <RadioGroup
+                        android:id="@+id/complete2_ratio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="30dp"
-                        android:hint="Enter weight goal E.g 60 kgs"
-                        android:inputType="number"
-                        android:backgroundTint="@color/cardview_light_background"
-                        android:gravity="center">
+                        android:layout_marginStart="30dp">
 
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/complete2_ratio1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:button="@color/transparent"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:gravity="center"
+                            android:layout_margin="10dp"
+                            android:text="0.2 Kilogram per week"
+                            android:checked="true"
+                            />
 
-                    </com.google.android.material.textfield.TextInputEditText>
-                </com.google.android.material.textfield.TextInputLayout>
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/completesignup2next"
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/complete2_ratio2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:button="@color/transparent"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:text="0.5 Kilogram per week"/>
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/complete2_ratio3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:button="@color/transparent"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:text="0.8 Kilogram per week"/>
+
+                        <com.google.android.material.radiobutton.MaterialRadioButton
+                            android:id="@+id/complete2_ratio4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:button="@color/transparent"
+                            android:background="@drawable/complete_signup_radio_selector"
+                            android:layout_margin="10dp"
+                            android:gravity="center"
+                            android:text="1 kitlogram per week"/>
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="35dp"
+                    android:id="@+id/viewgroup2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Next"
-                    android:backgroundTint="#3277a8"
-                    android:layout_marginTop="50dp"/>
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/viewgroup1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="How much do you weight?"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/complete2_weight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="30dp"
+                            android:hint="Enter Weight E.g 80 kgs"
+                            android:inputType="number"
+                            android:backgroundTint="@color/cardview_light_background"
+                            android:gravity="center">
+
+
+                        </com.google.android.material.textfield.TextInputEditText>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_margin="35dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintTop_toBottomOf="@id/viewgroup2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="What is your weight goal?"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/complete2_goal_weight"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="30dp"
+                            android:hint="Enter weight goal E.g 60 kgs"
+                            android:inputType="number"
+                            android:backgroundTint="@color/cardview_light_background"
+                            android:gravity="center">
+
+
+                        </com.google.android.material.textfield.TextInputEditText>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/completesignup2next"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Next"
+                        android:backgroundTint="#3277a8"
+                        android:layout_marginTop="50dp"/>
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
 
-    </ScrollView>
+        </ScrollView>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

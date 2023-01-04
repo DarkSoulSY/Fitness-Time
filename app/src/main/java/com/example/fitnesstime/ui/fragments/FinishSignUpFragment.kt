@@ -7,16 +7,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
-import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentFinishSignUpBinding
+import com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class FinishSignUpFragment : Fragment() {
 
     private lateinit var binding: FragmentFinishSignUpBinding
+    private val sharedViewModel: UserSignUpInformationViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -32,12 +35,20 @@ class FinishSignUpFragment : Fragment() {
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
         activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)!!.isGone = true
 
-        binding.finishsignupdone.setOnClickListener {
-            findNavController().navigate(R.id.action_finishSignUpFragment_to_dashboardFragment)
-        }
 
         super.onViewCreated(view, savedInstanceState)
     }
 
+    override fun onStart() {
+        binding.apply {
+            finishWelcome.text = sharedViewModel.firstName.value
 
+            finishsignupdone.setOnClickListener {
+                findNavController().navigate(R.id.action_finishSignUpFragment_to_dashboardFragment)
+            }
+
+        }
+
+        super.onStart()
+    }
 }

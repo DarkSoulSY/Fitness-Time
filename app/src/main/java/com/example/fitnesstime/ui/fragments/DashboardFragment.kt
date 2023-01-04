@@ -12,6 +12,7 @@ import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentDashboardBinding
 import com.example.fitnesstime.databinding.FragmentDiaryBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.progress_list_item.*
 
 
 class DashboardFragment : Fragment() {
@@ -34,6 +35,7 @@ class DashboardFragment : Fragment() {
         activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)!!.isVisible = true
 
         super.onViewCreated(view, savedInstanceState)
+
     }
 
 }

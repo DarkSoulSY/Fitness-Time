@@ -3,16 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.FinishSignUpFragment">
+    tools:context=".ui.fragments.FinishSignUpFragment"
+    style="@style/FragmentBackground">
 
     <TextView
         android:id="@+id/finish_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Welcome!"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="629dp"
+        android:text="@string/finish_welcome"
         android:textColor="@color/Primary"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:layout_centerVertical="true"/>
 
     <Button
         android:id="@+id/finishsignupdone"
@@ -21,11 +24,12 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/Primary_Dark"
+        android:textColor="@color/white"
         android:gravity="center"
-        android:text="Done" />
+        android:text="@string/finish_finish" />
 
 
 </RelativeLayout>

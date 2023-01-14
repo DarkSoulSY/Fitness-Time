@@ -6,9 +6,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.fragments.DiaryFragment"
     android:orientation="vertical"
-    android:background="#eaeaea">
+    style="@style/FragmentBackground">
 
-    <ScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:scrollbars="none">
@@ -24,73 +24,132 @@
                 android:text="Calories Remaining"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:textColor="@color/accent"
                 /> <!-- Calories Equation -->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_margin="15dp">
+                android:orientation="vertical"
+                android:background="@color/white"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:paddingBottom="20dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="2820"
-                    android:textColor="@color/accent"
-                    android:textSize="18sp" />
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Base Goal"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Consumed"
+                        android:textSize="15sp" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Burned"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Remaining"
+                        android:textSize="15sp" />
+
+
+
+                </LinearLayout> <!-- Calories Equation Description -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="-"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    android:orientation="horizontal"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="200"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    <TextView
+                        android:id="@+id/diary_base_goal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2820"
+                        android:textColor="@color/accent"
+                        android:textSize="18sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="+"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="-"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="400"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    <TextView
+                        android:id="@+id/diary_consumed_calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="200"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="="
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="+"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="2820"
-                    android:textSize="18sp"
-                    android:textColor="@color/accent"/>
+                    <TextView
+                        android:id="@+id/diary_burned_calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="400"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="="
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+                    <TextView
+                        android:id="@+id/diary_remaining_calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="2820"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
 
 
 
-            </LinearLayout> <!-- Calories Equation -->
+                </LinearLayout> <!-- Calories Equation -->
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -109,16 +168,25 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/breakfast"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="200dp"
+                    tools:listitem="@layout/food_list_item"/>
+
 
             </LinearLayout> <!-- First Recycler View -->
+            <Button
+                android:id="@+id/diary_add_breakfast_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Item"
+                android:backgroundTint="@color/Secondary"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/white"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="20dp">
 
                 <TextView
                     android:layout_width="match_parent"
@@ -133,8 +201,15 @@
                     android:id="@+id/lunch"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    />
+                    tools:listitem="@layout/food_list_item"/>
             </LinearLayout> <!-- Second Recycler View -->
+            <Button
+                android:id="@+id/diary_add_lunch_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Item"
+                android:backgroundTint="@color/Secondary"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -154,10 +229,18 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/dinner"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp" />
+                    android:layout_height="200dp"
+                    tools:listitem="@layout/food_list_item"/>
             </LinearLayout> <!-- Third Recycler View -->
+            <Button
+                android:id="@+id/diary_add_dinner_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Item"
+                android:backgroundTint="@color/Secondary"
+                tools:listitem="@layout/food_list_item"/>
 
-            <LinearLayout
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -176,10 +259,11 @@
                     android:id="@+id/water"
                     android:layout_width="match_parent"
                     android:layout_height="200dp" />
-            </LinearLayout> <!-- Third Recycler View -->
+            </LinearLayout>
+            -->
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

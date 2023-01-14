@@ -17,7 +17,7 @@ class AboutFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_about, container, false)
     }
@@ -25,6 +25,7 @@ class AboutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
         activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)!!.isGone = true
+
         super.onViewCreated(view, savedInstanceState)
     }
 }

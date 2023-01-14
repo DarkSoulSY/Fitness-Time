@@ -12,9 +12,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentSignUpBinding
-import com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel
+import com.example.fitnesstime.ui.viewmodel.UserSignUpInformationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.example.fitnesstime.validation.Validation
+import com.example.fitnesstime.utilities.Validator
 
 
 class SignUpFragment : Fragment() {
@@ -25,7 +25,7 @@ class SignUpFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
 
@@ -42,39 +42,36 @@ class SignUpFragment : Fragment() {
         binding.apply {
 
             //Moving to Sign in Page in case he has an account
-            alreadyhaveanaccount.setOnClickListener {
+            haveAnAccount.setOnClickListener {
                 findNavController().navigate(R.id.action_signUpFragment_to_signInFragment)
             }
 
             signup1Next.setOnClickListener {
                 if
-                    (Validation.validateInput(signupFirstName, requireActivity())&&
-                    Validation.validateInput(signupLastName, requireActivity())&&
-                    Validation.validateInput(signupEmail, requireActivity())&&
-                    Validation.validateInput(signupPhoneNumber, requireActivity())&&
-                    Validation.validateInput(signupPassword, requireActivity())) {
+                    (Validator.validateInput(signupFirstName, requireActivity())&& Validator.validateInput(signupLastName, requireActivity())&&
+                    Validator.validateInput(signupEmail, requireActivity())&& Validator.validateInput(signupPhoneNumber, requireActivity())&&
+                    Validator.isValidPassword(signupPassword.text.toString(), binding.root)) {
 
-                    if (!Patterns.EMAIL_ADDRESS.matcher(signupEmail.text).matches())
-                        Toast.makeText(activity, "${signupEmail.hint} is not written in the correct way!", Toast.LENGTH_SHORT).show()
-
-                    else{
+                    if (!Patterns.EMAIL_ADDRESS.matcher(signupEmail.text.toString()).matches())
+                        Toast.makeText(activity, "${signupEmail.hint} email should follow: \n username@domain.domain! \n Structure!", Toast.LENGTH_SHORT).show()
+                    else
                         //If the passwords are matching
                         if (signupPassword.text.toString() == signupConfirmPassword.text.toString()){
                             //Fill User View Model with Data
                             sharedViewModel.apply {
-                                setFirstName(signupFirstName.text.toString().toUpperCase())
-                                setLastName(signupLastName.text.toString().toUpperCase())
-                                setEmail(signupEmail.text.toString().toLowerCase())
+                                setFirstName(signupFirstName.text.toString().uppercase())
+                                setLastName(signupLastName.text.toString().uppercase())
+                                setEmail(signupEmail.text.toString().lowercase())
                                 setPhoneNumber(signupPhoneNumber.text.toString())
                                 setPassword(signupPassword.text.toString())
                             }
-
                             //Move to next fragment
                             findNavController().navigate(R.id.action_signUpFragment_to_completeSignUp1Fragment)
                         }
                         else
                             Toast.makeText(activity, "passwords mismatch!", Toast.LENGTH_SHORT).show()
-                    }
+
+
                 }
             }
         }

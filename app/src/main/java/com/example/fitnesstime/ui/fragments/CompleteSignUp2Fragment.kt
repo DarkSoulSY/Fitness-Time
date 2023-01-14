@@ -11,9 +11,9 @@ import androidx.core.view.isGone
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstime.R
+import com.example.fitnesstime.utilities.Validator
 import com.example.fitnesstime.databinding.FragmentCompleteSignUp2Binding
-import com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel
-import com.example.fitnesstime.validation.Validation
+import com.example.fitnesstime.ui.viewmodel.UserSignUpInformationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -25,7 +25,7 @@ class CompleteSignUp2Fragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentCompleteSignUp2Binding.inflate(inflater, container, false)
 
@@ -40,12 +40,12 @@ class CompleteSignUp2Fragment : Fragment() {
 
     override fun onStart() {
 
-        binding?.apply {
+        binding.apply {
 
             viewModel = sharedViewModel
             completesignup2next.setOnClickListener {
                 //Check if input are empty
-                if (Validation.validateInput(complete2Weight, requireContext()) && Validation.validateInput(complete2GoalWeight, requireContext())) {
+                if (Validator.validateInput(complete2Weight, requireContext()) && Validator.validateInput(complete2GoalWeight, requireContext())) {
 
                     //Fill User View Model with Data
                     sharedViewModel.apply {

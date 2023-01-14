@@ -11,8 +11,9 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentCompleteSignUp3Binding
-import com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel
+import com.example.fitnesstime.ui.viewmodel.UserSignUpInformationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.fragment_finish_sign_up.*
 
 
 class CompleteSignUp3Fragment : Fragment() {
@@ -23,7 +24,7 @@ class CompleteSignUp3Fragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentCompleteSignUp3Binding.inflate(inflater, container, false)
 
@@ -46,7 +47,6 @@ class CompleteSignUp3Fragment : Fragment() {
             completesignup3next.setOnClickListener {
                 findNavController().navigate(R.id.action_completeSignUp3Fragment_to_finishSignUpFragment)
             }
-
         }
 
         super.onStart()

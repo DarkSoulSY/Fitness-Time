@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:scrollbars="vertical"
     tools:context=".ui.fragments.ProgressFragment"
-    android:background="#f4f4f4">
+    style="@style/FragmentBackground">
 
         <LinearLayout
             android:layout_width="match_parent"

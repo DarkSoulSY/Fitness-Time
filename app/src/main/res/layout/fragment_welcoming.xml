@@ -5,17 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.WelcomingFragment"
-    android:background="#ce0e2d">
+    style="@style/FragmentBackground">
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fitness Time"
-        android:textSize="30dp"
         android:gravity="center"
-        android:textColor="#ffffff"
+        android:text="@string/app_name"
+        android:textColor="@color/Primary_Dark"
+        android:textSize="35sp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -30,24 +31,27 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnsignin"
+            android:id="@+id/sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@id/btnsignup"
             android:layout_margin="20dp"
-            android:backgroundTint="#24272a"
-            android:text="Sign in"
-            app:cornerRadius="0dp" />
+            android:backgroundTint="@color/Primary_Dark"
+            android:text="@string/sign_in"
+            android:textColor="@color/white"
+            app:cornerRadius="0dp"
+            android:textStyle="bold"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnsignup"
+            android:id="@+id/sign_up"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#24272a"
-            android:text="Sign Up"
+            android:backgroundTint="@color/Primary_Dark"
+            android:text="@string/signup"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             app:cornerRadius="0dp" />
     </LinearLayout>
 

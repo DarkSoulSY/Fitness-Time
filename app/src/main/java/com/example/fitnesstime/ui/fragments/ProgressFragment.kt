@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,12 +25,12 @@ class ProgressFragment : Fragment() {
     private var newArrayList = mutableListOf<DailyWeight>()
     private val imageId = mutableListOf<Int>()
     val weight = mutableListOf<String>()
-    val date = mutableListOf<String>()
+    private val date = mutableListOf<String>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {binding = FragmentProgressBinding.inflate(inflater, container, false)
+    ): View {binding = FragmentProgressBinding.inflate(inflater, container, false)
 
 
         return binding.root
@@ -83,13 +82,13 @@ class ProgressFragment : Fragment() {
     }
 
     private fun setUpLineChart() {
-        var entries: ArrayList<Entry> = ArrayList<Entry>()
+        var entries: ArrayList<Entry> = ArrayList()
         entries.add(Entry(1f,80f))
         entries.add(Entry(2f,90f))
         entries.add(Entry(3f,100f))
 
         var dataSet: LineDataSet = LineDataSet(entries, "Weight Entries")
-        var dataSets: ArrayList<ILineDataSet> =  ArrayList<ILineDataSet>()
+        var dataSets: ArrayList<ILineDataSet> =  ArrayList()
         dataSets.add(dataSet)
 
         var data: LineData = LineData(dataSets)

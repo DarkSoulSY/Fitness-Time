@@ -2,18 +2,30 @@ package com.example.fitnesstime.ui.home
 
 
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
+import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.fitnesstime.R
+import com.example.fitnesstime.connection.RetrofitInstance
 import com.example.fitnesstime.databinding.ActivityMainBinding
-import com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel
+import com.example.fitnesstime.ui.fragments.DashboardFragment
+import com.example.fitnesstime.ui.fragments.WelcomingFragment
+import com.example.fitnesstime.ui.repositories.UserAccountInformationRepository
+import com.tbruyelle.rxpermissions2.RxPermissions
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.util.jar.Manifest
 
 
 class Main : AppCompatActivity() {
@@ -21,9 +33,7 @@ class Main : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
     private lateinit var sharedPreferences: SharedPreferences
-
-
-
+    private var userRepo = UserAccountInformationRepository(RetrofitInstance.retrofit)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,16 +43,14 @@ class Main : AppCompatActivity() {
         toolbar = findViewById(R.id.mystatusbar)
         setSupportActionBar(toolbar)
 
-        val sharePreferences = getSharedPreferences("User Session", MODE_PRIVATE)
-        val editor = sharePreferences.edit()
-        editor.putString()
-
-
+        sharedPreferences = getSharedPreferences("User Session", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
     }
 
     override fun onStart() {
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView1) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainerView1) as NavHostFragment
         navController = navHostFragment.navController
 
         val appBarConfiguration = AppBarConfiguration(
@@ -65,13 +73,6 @@ class Main : AppCompatActivity() {
         )
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
         binding.bottomNavigationView.setupWithNavController(navController)
-
-
         super.onStart()
-
     }
-
-
-
-
 }

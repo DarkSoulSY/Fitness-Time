@@ -59,6 +59,9 @@
     <string name="complete_signup3_user_activity2">Lightly Active</string>
     <string name="complete_signup3_user_activity3">Active</string>
     <string name="complete_signup3_user_activity4">Very Active</string>
+    <string name="plus_button">+</string>
+    <string name="finish_welcome">Welcome</string>
+    <string name="finish_finish">Finish</string>
 
 
 </resources>

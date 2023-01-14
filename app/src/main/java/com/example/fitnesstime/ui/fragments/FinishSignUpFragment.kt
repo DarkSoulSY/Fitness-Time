@@ -1,18 +1,25 @@
 package com.example.fitnesstime.ui.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentFinishSignUpBinding
-import com.example.fitnesstime.ui.model.viewmodel.UserSignUpInformationViewModel
+import com.example.fitnesstime.ui.viewmodel.UserSignUpInformationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.android.synthetic.main.fragment_finish_sign_up.*
+import kotlinx.coroutines.*
 
 
 class FinishSignUpFragment : Fragment() {
@@ -23,10 +30,16 @@ class FinishSignUpFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentFinishSignUpBinding.inflate(inflater, container, false)
-
+        val observer = Observer<Boolean> {
+            if (it) {
+                sharedViewModel.success.removeObservers(requireActivity())
+                findNavController().navigate(R.id.action_finishSignUpFragment_to_dashboardFragment)
+            }
+        }
+        sharedViewModel.success.observe(requireActivity(), observer)
         return binding.root
     }
 
@@ -39,16 +52,26 @@ class FinishSignUpFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
+
     override fun onStart() {
+
+
         binding.apply {
-            finishWelcome.text = sharedViewModel.firstName.value
+
+            finishWelcome.text = resources.getResourceName(R.id.finish_welcome)
+                .toString() + sharedViewModel.firstName.value + '!'
 
             finishsignupdone.setOnClickListener {
-                findNavController().navigate(R.id.action_finishSignUpFragment_to_dashboardFragment)
+                activity?.let { it1 ->
+                    sharedViewModel.createAccountAndAssociatedPreferences(it1.applicationContext)
+
+                }
+                //sharedViewModel.success.removeObserver(observer)
+                //sharedViewModel.success.removeObserver(observer)
             }
 
+            super.onStart()
         }
 
-        super.onStart()
     }
 }

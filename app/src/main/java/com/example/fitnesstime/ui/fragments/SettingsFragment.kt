@@ -35,12 +35,21 @@ class SettingsFragment : Fragment() {
     }
 
     override fun onStart() {
-        binding.navigatetoprofile.setOnClickListener {
-            findNavController().navigate(R.id.action_settingsFragment_to_profileFragment)
+        binding.apply {
+            settingsProfile.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsFragment_to_profileFragment)
+            }
+            settingsAbout.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsFragment_to_aboutFragment)
+            }
+            settingsCalories.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsFragment_to_editMacrosAndCaloriesFragment)
+            }
+            settingsMacros.setOnClickListener {
+                findNavController().navigate(R.id.action_settingsFragment_to_macrosFragment)
+            }
         }
-        binding.navigatetoedit.setOnClickListener {
-            findNavController().navigate(R.id.action_settingsFragment_to_editMacrosAndCaloriesFragment)
-        }
+
         super.onStart()
     }
 

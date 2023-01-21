@@ -14,8 +14,8 @@
             <shape android:shape="rectangle">
                 <corners android:radius="9dp"/>
                 <solid android:color="@color/Secondary"/>
-                <gradient android:endColor="@color/pink"
-                    android:startColor="@color/light_pink"
+                <gradient android:endColor="@color/Primary"
+                    android:startColor="@color/Secondary"
                     android:type="linear"/>
 
             </shape>

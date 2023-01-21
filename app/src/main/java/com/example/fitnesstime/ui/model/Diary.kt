@@ -1,8 +1,11 @@
 package com.example.fitnesstime.ui.model
 
-class Diary {
-    val DEmail: String = ""
-    val DDate: String = ""
-    val DConsumed_calories: Float = 500f
-    val DCurrent_weight: Float = 0f
-}
+import com.google.gson.annotations.SerializedName
+
+
+data class Diary(
+    @SerializedName("current_weight")
+    var currentWeight: String,
+    @SerializedName("date")
+    var date : String
+)

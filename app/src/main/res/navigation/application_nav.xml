@@ -91,7 +91,15 @@
         android:id="@+id/diaryFragment"
         android:name="com.example.fitnesstime.ui.fragments.DiaryFragment"
         android:label="Diary"
-        tools:layout="@layout/fragment_diary" />
+        tools:layout="@layout/fragment_diary" >
+        <action
+            android:id="@+id/action_diaryFragment_to_searchProductFragment"
+            app:destination="@id/searchProductFragment" />
+        <argument
+            android:name="meal_type"
+            app:argType="string"
+            android:defaultValue="http://sohamerp.com/avo/avo_privacy_policy.html"/>
+    </fragment>
     <fragment
         android:id="@+id/bodyMassIndexFragment"
         android:name="com.example.fitnesstime.ui.fragments.BodyMassIndexFragment"
@@ -111,12 +119,22 @@
         <action
             android:id="@+id/action_settingsFragment_to_editMacrosAndCaloriesFragment"
             app:destination="@id/editMacrosAndCaloriesFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_macrosFragment"
+            app:destination="@id/macrosFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_caloriesFragment"
+            app:destination="@id/caloriesFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.fitnesstime.ui.fragments.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_welcomingFragment"
+            app:destination="@id/welcomingFragment" />
+    </fragment>
 
 
 
@@ -140,10 +158,37 @@
         android:id="@+id/nutritionFactsFragment"
         android:name="com.example.fitnesstime.ui.fragments.NutritionFactsFragment"
         android:label="Nutritional Facts"
-        tools:layout="@layout/fragment_nutrition_facts" />
+        tools:layout="@layout/fragment_nutrition_facts">
+        <argument
+            android:name="Product Name"
+            app:argType="string"
+            android:defaultValue="http://sohamerp.com/avo/avo_privacy_policy.html"/>
+    </fragment>
     <fragment
         android:id="@+id/editMacrosAndCaloriesFragment"
         android:name="com.example.fitnesstime.ui.fragments.EditMacrosAndCaloriesFragment"
         android:label="fragment_edit_macros_and_calories"
         tools:layout="@layout/fragment_edit_macros_and_calories" />
+    <fragment
+        android:id="@+id/caloriesFragment"
+        android:name="com.example.fitnesstime.ui.fragments.CaloriesFragment"
+        android:label="fragment_calories"
+        tools:layout="@layout/fragment_calories" />
+    <fragment
+        android:id="@+id/macrosFragment"
+        android:name="com.example.fitnesstime.ui.fragments.MacrosFragment"
+        android:label="fragment_macros"
+        tools:layout="@layout/fragment_macros" />
+    <fragment
+        android:id="@+id/searchProductFragment"
+        android:name="com.example.fitnesstime.ui.fragments.SearchProductFragment"
+        android:label="fragment_search_product"
+        tools:layout="@layout/fragment_search_product" >
+        <action
+            android:id="@+id/action_searchProductFragment_to_nutritionFactsFragment"
+            app:destination="@id/nutritionFactsFragment" />
+        <action
+            android:id="@+id/action_searchProductFragment_to_diaryFragment"
+            app:destination="@id/diaryFragment" />
+    </fragment>
 </navigation>

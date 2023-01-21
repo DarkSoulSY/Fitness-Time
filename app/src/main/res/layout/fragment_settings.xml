@@ -23,32 +23,52 @@
                 android:layout_height="90dp"
                 android:layout_width="90dp"
                 android:layout_marginBottom="40dp"
-                android:src="@drawable/nig"
+                android:src="@drawable/userempty"
                 android:layout_gravity="center"/>
             
             
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/navigatetoprofile"
+                android:id="@+id/settings_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Profile"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/Primary_Dark"
                 android:layout_margin="10dp"
 
                 />
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/navigatetoedit"
+                android:id="@+id/settings_calories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Calories and macros"
+                android:text="Calories"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/Primary_Dark"
                 android:layout_margin="10dp"
                 />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/settings_macros"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Macros"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/Primary_Dark"
+                android:layout_margin="10dp"
+                />
+
             <com.google.android.material.button.MaterialButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Edit your meteric information"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/Primary_Dark"
                 android:layout_margin="10dp"
                 />
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/settings_about"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/Primary_Dark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="About"

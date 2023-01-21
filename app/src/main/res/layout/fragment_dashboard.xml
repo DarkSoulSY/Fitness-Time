@@ -25,7 +25,7 @@
                 android:id="@+id/profilepicture"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
-                android:src="@drawable/nig" />
+                android:src="@drawable/userempty" />
 
             <TextView
                 android:id="@+id/txtwlc"
@@ -65,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="1500 \nRemaining"
+                android:text=""
                 android:textColor="@color/accent"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="@+id/calories_progressbar"
@@ -111,8 +111,8 @@
                             android:id="@+id/dashboard_base_goal_calories"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="2820"
                             android:textColor="@color/accent"
+                            android:text=""
                             android:textStyle="bold" />
 
                     </LinearLayout>
@@ -147,7 +147,7 @@
                             android:id="@+id/dashboard_consumed_calories"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="1000"
+                            android:text=""
                             android:textColor="@color/accent"
                             android:textStyle="bold" />
 
@@ -182,10 +182,9 @@
                             android:id="@+id/dashboard_exercised"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="22"
+                            android:text=""
                             android:textColor="@color/accent"
                             android:textStyle="bold" />
-
                     </LinearLayout>
                 </LinearLayout>
 
@@ -222,7 +221,7 @@
                     android:layout_height="30dp"
                     android:src="@drawable/shoe_icon"
                     android:contentDescription="Taken Steps"
-                    app:tint="#FFC0CB"/>
+                    app:tint="@color/Secondary"/>
 
                 <TextView
                     android:id="@+id/dashboard_running_amount"

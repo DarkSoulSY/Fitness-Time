@@ -1,6 +1,7 @@
 package com.example.fitnesstime.ui.home
 
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
@@ -43,6 +44,7 @@ class Main : AppCompatActivity() {
         toolbar = findViewById(R.id.mystatusbar)
         setSupportActionBar(toolbar)
 
+
         sharedPreferences = getSharedPreferences("User Session", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
     }
@@ -53,8 +55,9 @@ class Main : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.fragmentContainerView1) as NavHostFragment
         navController = navHostFragment.navController
 
+
         val appBarConfiguration = AppBarConfiguration(
-            setOf(
+
                 /*R.id.welcomingFragment,
                 R.id.signInFragment,
                 R.id.signUpFragment,
@@ -69,10 +72,18 @@ class Main : AppCompatActivity() {
                 R.id.settingsFragment,
                 R.id.aboutFragment,
                 R.id.nutritionFactsFragment*/
-            )
+            navController.graph
+
         )
         NavigationUI.setupWithNavController(toolbar, navController, appBarConfiguration)
         binding.bottomNavigationView.setupWithNavController(navController)
+
         super.onStart()
+    }
+    fun signOut() {
+        Intent(this, Main::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        }.let { startActivity(it) }
+        finish()
     }
 }

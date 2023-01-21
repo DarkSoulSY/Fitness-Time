@@ -13,7 +13,7 @@ import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentCompleteSignUp3Binding
 import com.example.fitnesstime.ui.viewmodel.UserSignUpInformationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.fragment_finish_sign_up.*
+
 
 
 class CompleteSignUp3Fragment : Fragment() {

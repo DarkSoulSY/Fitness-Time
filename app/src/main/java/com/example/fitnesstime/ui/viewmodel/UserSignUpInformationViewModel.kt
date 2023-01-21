@@ -125,14 +125,15 @@ class UserSignUpInformationViewModel : ViewModel() {
     }
 
 
+    @OptIn(DelicateCoroutinesApi::class)
     fun createAccountAndAssociatedPreferences(context: Context){
         Log.v("viewModel success 1", success.toString())
         val createAccountDTO = CreateAccountDTO(
-            firstName.value!!,
-            lastName.value!!,
-            email.value!!,
+            firstName.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
+            lastName.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
+            email.value!!.lowercase(),
             password.value!!,
-            gender.value!!,
+            gender.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
             height.value!!,
             weight.value!!,
             birthDate.value!!.replace('-', ':'),
@@ -149,15 +150,23 @@ class UserSignUpInformationViewModel : ViewModel() {
         )
 
         val createAccountPreferencesDTO = CreateAccountPreferencesDTO(
-            email = email.value!!,
-            weight_plan_type = weightPlanType.value!!,
+            email = email.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
+            weight_plan_type = weightPlanType.value!!.toLowerCase().replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(
+                    Locale.ROOT
+                ) else it.toString()
+            },
             weight_goal = goalWeight.value!!,
-            weekly_activity = weeklyActivity.value!!,
+            weekly_activity = weeklyActivity.value!!.toLowerCase().replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(
+                    Locale.ROOT
+                ) else it.toString()
+            },
             caloric_plan_goal = cGoal
         )
         //viewModelScope.launch {
         job = GlobalScope.launch(Dispatchers.IO) {
-            val response = async { userAccountInformationRepository.createAccountPost(createAccountDTO) }.await()
+            val response = async { userAccountInformationRepository.createAccount(createAccountDTO) }.await()
             withContext(Dispatchers.Main){
                 if(response.isSuccessful)
                 {
@@ -171,7 +180,7 @@ class UserSignUpInformationViewModel : ViewModel() {
             Log.v("viewModel success 2", success.toString())
 
             val response2 = async { delay(1000L)
-                userAccountInformationRepository.createAccountPreferences(createAccountPreferencesDTO) }.await()
+                userAccountInformationRepository.addPreferences(createAccountPreferencesDTO) }.await()
             withContext(Dispatchers.Main)
             {
                 if(response2.isSuccessful){

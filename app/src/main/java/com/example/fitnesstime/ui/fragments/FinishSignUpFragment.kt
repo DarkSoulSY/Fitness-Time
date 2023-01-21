@@ -4,22 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentFinishSignUpBinding
 import com.example.fitnesstime.ui.viewmodel.UserSignUpInformationViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.fragment_finish_sign_up.*
-import kotlinx.coroutines.*
 
 
 class FinishSignUpFragment : Fragment() {

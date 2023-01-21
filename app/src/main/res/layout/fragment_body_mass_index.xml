@@ -14,86 +14,85 @@
 
         <TextView
             android:id="@+id/top_layout"
-            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
             android:text="Here is your BMI based on the current weight and height that is stored:"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
+            android:textColor="@color/accent"
             android:textSize="18sp"
-            android:textColor="@color/Secondary"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/body_mass_index_bmi"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottom_layout"
+            app:layout_constraintVertical_bias="0.354" />
 
         <TextView
-            android:id="@+id/bmi"
+            android:id="@+id/body_mass_index_bmi"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="31.0"
+            android:layout_marginBottom="140dp"
             android:gravity="center_horizontal"
-            android:layout_marginTop="80dp"
-            android:textSize="40sp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:text=""
+            android:textColor="@color/Secondary"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/top_layout"
-            />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
 
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
-            android:layout_marginTop="80dp"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/bmi"
-            app:layout_constraintBottom_toTopOf="@id/bottom_layout"
-            android:layout_marginBottom="50dp"
-            >
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="25dp">
 
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="70sp"
                 android:text="BMI Categories:"
-                android:textStyle="bold"
-                android:textSize="16sp"
                 android:textColor="@color/accent"
-                android:layout_marginTop="70sp"/>
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
                 android:text="Underweight = &lt;18.5"
-                android:textSize="16sp"
-                android:layout_marginStart="5dp"
-                />
+                android:textSize="16sp" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
                 android:text="Normal weight = 18.5–24.9"
-                android:textSize="16sp"
-                android:layout_marginStart="5dp"
-                />
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
                 android:text="Overweight = 25–29.9"
-                android:textSize="16sp"
-                android:layout_marginStart="5dp"
-                />
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Obesity = BMI of 30 or greater"
-                android:textSize="16sp"
                 android:layout_marginStart="5dp"
-                />
+                android:text="Obesity = BMI of 30 or greater"
+                android:textSize="16sp" />
 
         </LinearLayout>
 
@@ -103,11 +102,13 @@
             android:layout_height="wrap_content"
             android:text="Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women."
             android:textSize="16sp"
-            android:layout_margin="15dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="@color/accent"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

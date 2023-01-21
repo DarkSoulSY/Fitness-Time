@@ -5,7 +5,7 @@
         android:title="@string/dashboard_bottom_navigation"
         android:id="@+id/dashboardFragment"
         android:icon="@drawable/dashboard_icon"
-        android:menuCategory="secondary"/>
+        android:menuCategory="secondary" />
 
     <item
         android:title="@string/progress_bottom_navigation"

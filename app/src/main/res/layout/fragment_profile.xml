@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/FragmentBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.ProfileFragment"
-    android:orientation="vertical"
-    style="@style/FragmentBackground">
+    tools:context=".ui.fragments.ProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,173 +14,190 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profilepicture"
-            android:layout_height="150dp"
             android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
             android:layout_marginTop="50dp"
-            android:src="@drawable/nig"
-            android:layout_gravity="center"/>
+            android:src="@drawable/userempty" />
 
         <View
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="1dp"
-            android:layout_marginRight="25dp"
             android:layout_marginLeft="25dp"
-            android:background="@color/accent"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="25dp"
+            android:background="@color/accent" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp">
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal">
 
             <ImageView
 
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_baseline_person_24"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_person_24" />
 
             <TextView
                 android:id="@+id/proffirstname"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="First Name"
+                android:textColor="@color/accent"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profilepicture"
-                android:layout_gravity="center"
-                android:textColor="@color/accent"/>
+                app:layout_constraintTop_toBottomOf="@id/profilepicture" />
+
             <TextView
+                android:id="@+id/profile_first_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chris"
-                android:layout_marginStart="50dp"
                 android:layout_gravity="center"
-                android:textSize="15sp"/>
+                android:layout_marginStart="50dp"
+                android:text=""
+                android:textSize="15sp" />
 
         </LinearLayout>
 
         <View
-            android:layout_marginTop="9dp"
             android:layout_width="wrap_content"
             android:layout_height="0.5dp"
-            android:layout_marginRight="35dp"
             android:layout_marginLeft="35dp"
-            android:background="@color/accent"/>
+            android:layout_marginTop="9dp"
+            android:layout_marginRight="35dp"
+            android:background="@color/accent" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp">
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal">
 
             <ImageView
 
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_baseline_person_24"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_person_24" />
 
             <TextView
                 android:id="@+id/proflastname"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Last Name"
+                android:textColor="@color/accent"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profilepicture"
-                android:layout_gravity="center"
-                android:textColor="@color/accent"/>
+                app:layout_constraintTop_toBottomOf="@id/profilepicture" />
 
             <TextView
+                android:id="@+id/profile_last_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ohneal"
-                android:layout_marginStart="50dp"
                 android:layout_gravity="center"
-                android:textSize="15sp"/>
+                android:layout_marginStart="50dp"
+                android:text=""
+                android:textSize="15sp" />
 
         </LinearLayout>
 
         <View
-            android:layout_marginTop="9dp"
             android:layout_width="wrap_content"
             android:layout_height="0.5dp"
-            android:layout_marginRight="35dp"
             android:layout_marginLeft="35dp"
-            android:background="@color/accent"/>
+            android:layout_marginTop="9dp"
+            android:layout_marginRight="35dp"
+            android:background="@color/accent" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp">
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal">
 
             <ImageView
 
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_baseline_email_24"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:src="@drawable/ic_baseline_email_24" />
 
             <TextView
                 android:id="@+id/profemail"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Email"
+                android:textColor="@color/accent"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/profilepicture"
-                android:layout_gravity="center"
-                android:textColor="@color/accent"/>
+                app:layout_constraintTop_toBottomOf="@id/profilepicture" />
 
             <TextView
+                android:id="@+id/profile_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="myyahoo@yahoo.com"
-                android:layout_marginStart="50dp"
                 android:layout_gravity="center"
-                android:textSize="15sp"/>
+                android:layout_marginStart="50dp"
+                android:text=""
+                android:textSize="15sp" />
 
         </LinearLayout>
 
         <View
-            android:layout_marginTop="9dp"
             android:layout_width="wrap_content"
             android:layout_height="0.5dp"
-            android:layout_marginRight="35dp"
             android:layout_marginLeft="35dp"
-            android:background="@color/accent"/>
+            android:layout_marginTop="9dp"
+            android:layout_marginRight="35dp"
+            android:background="@color/accent" />
 
         <com.google.android.material.button.MaterialButton
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Edit Profile"
             android:layout_margin="30dp"
-            />
+            android:backgroundTint="@color/Primary_Dark"
+            android:textColor="@color/white"
+            android:text="Edit Profile" />
+
 
         <TextView
+            android:layout_alignParentStart="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Change Password for Your Account"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="70dp"
-            android:textColor="@color/Primary"/>
+            android:layout_marginTop="30dp"
+            android:text="Change Password for Your Account"
+            android:textColor="@color/Primary" />
+        <TextView
+            android:id="@+id/profile_log_out"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:text="Log Out"
+            android:textColor="@color/Red"
+            android:paddingBottom="50dp"/>
+
 
 
     </LinearLayout>
 
 
-
-
-</LinearLayout>
+</ScrollView>

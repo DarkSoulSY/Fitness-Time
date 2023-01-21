@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.SearchProductFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    style="@style/FragmentBackground">
 
     <TextView
         android:layout_marginTop="50dp"
@@ -15,51 +16,68 @@
         android:textColor="@color/accent"
         android:layout_gravity="center"/>
     <EditText
+        android:id="@+id/search_engine"
         android:layout_marginTop="25dp"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Apple?"/>
-    <LinearLayout
 
+    <RelativeLayout
+        android:id="@+id/search_first_container"
+        android:visibility="invisible"
+        android:layout_margin="15dp"
+        android:background="@drawable/dashboard_container_theme"
         android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+
         <TextView
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="Apple"
-            android:textSize="25sp"
-            android:textColor="@color/accent"
-            android:layout_gravity="left"/>
-        <LinearLayout
+            android:id="@+id/search_product_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:text="Apple"
+            android:textColor="@color/accent"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginStart="100dp"
+            android:layout_marginEnd="20dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Quantity"
+                android:text="Calories"
                 android:textSize="15sp"
                 android:layout_gravity="center"/>
-            <EditText
+
+            <TextView
+                android:id="@+id/search_product_calories"
+                android:textColor="@color/accent"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="25dp"
-                android:layout_marginStart="25dp"
-                android:hint="1"
-                android:gravity="center" />
+                android:text="260"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:layout_gravity="center"/>
+
         </LinearLayout>
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <Button
+        android:visibility="invisible"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:id="@+id/search_done"

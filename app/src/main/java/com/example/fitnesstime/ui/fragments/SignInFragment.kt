@@ -9,27 +9,20 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstime.R
 import com.example.fitnesstime.connection.RetrofitInstance
 import com.example.fitnesstime.databinding.FragmentSignInBinding
-import com.example.fitnesstime.ui.model.LoginAccountDTO
 import com.example.fitnesstime.ui.repositories.UserAccountInformationRepository
-import com.example.fitnesstime.ui.viewmodel.UserTrackingViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.fragment_sign_in.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 
 
 class SignInFragment : Fragment() {
 
     private lateinit var binding: FragmentSignInBinding
     private lateinit var sharedPreferences: SharedPreferences
-    private val sharedViewModel: UserTrackingViewModel by activityViewModels()
+
     private var userRepo = UserAccountInformationRepository(RetrofitInstance.retrofit)
 
     override fun onCreateView(
@@ -47,22 +40,25 @@ class SignInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onStart() {
         binding.signin.setOnClickListener {
-            val user = LoginAccountDTO(signin_email.text.toString(), signin_password.text.toString())
+            val email = binding.signinEmail.text.toString()
+            val password = binding.signinPassword.text.toString()
+
             GlobalScope.launch(Dispatchers.IO){
-                val response = userRepo.signUserIn(user.email, user.password)
+                val response = userRepo.signIn(email, password)
                 withContext(Dispatchers.Main){
                     if (response.body()!!.Success){
                         sharedPreferences = requireActivity().getSharedPreferences("User Session", MODE_PRIVATE)
-                        sharedPreferences.edit().putString("Email", user.email).apply()
-                        sharedPreferences.edit().putString("Password", user.password).apply()
+                        sharedPreferences.edit().putString("Email", email).apply()
+                        sharedPreferences.edit().putString("Password", password).apply()
                         sharedPreferences.edit().putBoolean("Logged", true).apply()
-                        sharedViewModel.sharedPreferences = sharedPreferences
                         Toast.makeText(requireContext(),response.body()!!.Message.toString(),Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_signInFragment_to_dashboardFragment)
                     }
                     else{
+                        sharedPreferences = requireActivity().getSharedPreferences("User Session", MODE_PRIVATE)
                         sharedPreferences.edit().putBoolean("Logged", false).apply()
                         Toast.makeText(requireContext(),response.body()!!.Message.toString(),Toast.LENGTH_SHORT).show()
                     }

@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">Fitness Time</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dashboard_bottom_navigation">Dashboard</string>
     <string name="progress_bottom_navigation">Progress</string>
     <string name="diary_bottom_navigation">Diary</string>
@@ -37,7 +36,6 @@
     <string name="complete_signup1_user_gender2">Female</string>
 
     <string name="complete_signup1_user_age">How old are you?</string>
-    <string name="complete_signup1_user_age_hint">Enter Age E.g 20</string>
 
     <string name="complete_signup1_user_height">What is your height?</string>
     <string name="complete_signup1_user_height_hint">Enter Height E.g 176 cm</string>
@@ -63,5 +61,11 @@
     <string name="finish_welcome">Welcome</string>
     <string name="finish_finish">Finish</string>
 
+
+    <string-array name="meal_type">
+        <item name="breakfast">Breakfast</item>
+        <item name="lunch">Lunch</item>
+        <item name="dinner">Dinner</item>
+    </string-array>
 
 </resources>

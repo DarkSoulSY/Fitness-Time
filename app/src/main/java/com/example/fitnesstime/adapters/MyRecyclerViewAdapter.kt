@@ -3,13 +3,12 @@ package com.example.fitnesstime.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnesstime.R
-import com.example.fitnesstime.data.DailyWeight
+import com.example.fitnesstime.ui.model.Diary
 
-class MyRecyclerViewAdapter(private val dailyCheckIns: MutableList<DailyWeight>): RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder>() {
+class MyRecyclerViewAdapter(private val history: List<Diary>): RecyclerView.Adapter<MyRecyclerViewAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 
@@ -22,20 +21,18 @@ class MyRecyclerViewAdapter(private val dailyCheckIns: MutableList<DailyWeight>)
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        val currentItem = dailyCheckIns[position]
-        holder.imageTitle.setImageResource(currentItem.imageTitle)
+        val currentItem = history[position]
         holder.date.text = currentItem.date
-        holder.weight.text = currentItem.weight
+        holder.weight.text = currentItem.currentWeight + " Kg"
 
     }
 
     override fun getItemCount(): Int {
-        return dailyCheckIns.size
+        return history.size
     }
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        val imageTitle: ImageView = itemView.findViewById(R.id.image_title)
         val weight: TextView = itemView.findViewById(R.id.weight)
         val date: TextView = itemView.findViewById(R.id.date)
 

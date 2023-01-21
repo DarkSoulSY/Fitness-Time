@@ -19,6 +19,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Calories Remaining"
@@ -26,20 +27,97 @@
                 android:textStyle="bold"
                 android:textColor="@color/accent"
                 /> <!-- Calories Equation -->
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@color/white"
-                android:layout_marginTop="10dp"
+                android:paddingTop="10dp"
                 android:layout_marginBottom="20dp"
-                android:paddingBottom="20dp">
+                >
 
                 <LinearLayout
+                    android:id="@+id/equation_container"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp">
+
+                    <TextView
+                        android:id="@+id/diary_base_goal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textColor="@color/accent"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="-"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+                    <TextView
+                        android:id="@+id/diary_consumed_calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="+"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+                    <TextView
+                        android:id="@+id/diary_burned_calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="0"
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="="
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+                    <TextView
+                        android:id="@+id/diary_remaining_calories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text=""
+                        android:textSize="18sp"
+                        android:textColor="@color/accent"/>
+
+
+
+                </LinearLayout> <!-- Calories Equation -->
+                <LinearLayout
+                    app:layout_constraintTop_toBottomOf="@id/equation_container"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="15dp">
 
@@ -76,86 +154,17 @@
 
 
                 </LinearLayout> <!-- Calories Equation Description -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp">
 
-                    <TextView
-                        android:id="@+id/diary_base_goal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="2820"
-                        android:textColor="@color/accent"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="-"
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
-
-                    <TextView
-                        android:id="@+id/diary_consumed_calories"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="200"
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="+"
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
-
-                    <TextView
-                        android:id="@+id/diary_burned_calories"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="400"
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="="
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
-
-                    <TextView
-                        android:id="@+id/diary_remaining_calories"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="2820"
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
-
-
-
-                </LinearLayout> <!-- Calories Equation -->
-
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp">
 
 
                 <TextView
@@ -163,55 +172,72 @@
                     android:layout_height="wrap_content"
                     android:text="Breakfast"
                     android:textSize="25sp"
-                    android:textColor="@color/Secondary" />
+                    android:textColor="@color/accent" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/breakfast"
+                    android:id="@+id/diary_breakfast_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    tools:listitem="@layout/food_list_item"/>
+                    tools:listitem="@layout/product_item_list"/>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/diary_add_breakfast_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Item"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/Primary_Dark"
+                    android:textStyle="bold"
+                    />
+
 
 
             </LinearLayout> <!-- First Recycler View -->
-            <Button
-                android:id="@+id/diary_add_breakfast_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add Item"
-                android:backgroundTint="@color/Secondary"
-                />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:background="@color/white"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Lunch"
                     android:textSize="25sp"
-                    android:textColor="@color/Secondary"
+                    android:textColor="@color/accent"
                     android:layout_marginTop="20dp"
                     />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/lunch"
+                    android:id="@+id/diary_lunch_recyclerlunch"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
-                    tools:listitem="@layout/food_list_item"/>
+                    tools:listitem="@layout/product_item_list"/>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/diary_add_lunch_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Item"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/Primary_Dark"
+                    android:textStyle="bold"
+                    android:backgroundTint="@color/Secondary"
+                    />
             </LinearLayout> <!-- Second Recycler View -->
-            <Button
-                android:id="@+id/diary_add_lunch_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add Item"
-                android:backgroundTint="@color/Secondary"
-                />
+
 
             <LinearLayout
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -223,22 +249,27 @@
                     android:layout_height="wrap_content"
                     android:text="Dinner"
                     android:textSize="25sp"
-                    android:textColor="@color/Secondary"
+                    android:textColor="@color/accent"
                     android:layout_marginTop="20dp" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/dinner"
+                    android:id="@+id/diary_dinner_recycler"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
+                    tools:listitem="@layout/product_item_list"/>
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="5dp"
+                    android:textSize="15sp"
+                    android:textColor="@color/Primary_Dark"
+                    android:textStyle="bold"
+                    android:id="@+id/diary_add_dinner_item"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Item"
                     tools:listitem="@layout/food_list_item"/>
             </LinearLayout> <!-- Third Recycler View -->
-            <Button
-                android:id="@+id/diary_add_dinner_item"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add Item"
-                android:backgroundTint="@color/Secondary"
-                tools:listitem="@layout/food_list_item"/>
+
 
             <!--<LinearLayout
                 android:layout_width="match_parent"

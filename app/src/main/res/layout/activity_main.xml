@@ -26,6 +26,9 @@
         app:labelVisibilityMode="labeled"
         app:layout_constraintVertical_weight="1"
         app:menu="@menu/bottom_nav"
+        android:background="@color/Secondary"
+        app:itemIconTint="@drawable/bottom_nav_icon_color_selector"
+        app:itemTextColor="@drawable/bottom_nav_icon_color_selector"
         android:layout_weight="0"/>
 
 

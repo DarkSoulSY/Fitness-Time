@@ -172,7 +172,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="@string/plus_button"
                                 android:backgroundTint="@color/Primary_Dark"
-                                android:textColor="@color/white"/>
+                                android:textColor="@color/on_background"/>
                         </LinearLayout>
 
 
@@ -221,7 +221,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:backgroundTint="@color/Primary_Dark"
-                        android:textColor="@color/white"
+                        android:textColor="@color/on_background"
                         android:text="@string/button_next" />
                 </LinearLayout>
 

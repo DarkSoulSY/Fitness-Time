@@ -12,13 +12,16 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentWelcomingBinding
+import com.example.fitnesstime.network.NetworkConnection
+import com.example.fitnesstime.ui.home.Main
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class WelcomingFragment : Fragment() {
 
     private lateinit var binding: FragmentWelcomingBinding
-    private lateinit var sharedPreferences : SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var networkConnection: NetworkConnection
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,8 +29,17 @@ class WelcomingFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentWelcomingBinding.inflate(inflater, container, false)
         sharedPreferences = requireActivity().getSharedPreferences("User Session", MODE_PRIVATE)
-        checkLoginStatus()
 
+
+        networkConnection = NetworkConnection(requireActivity().application)
+        networkConnection.observe(requireActivity()) { isConnected ->
+            if (isConnected)
+                checkLoginStatus()
+            else{
+                (requireActivity() as Main).binding.Disconnected.isGone = false
+                (requireActivity() as Main).binding.Connected.isGone = true
+            }
+        }
         return binding.root
     }
 
@@ -52,9 +64,12 @@ class WelcomingFragment : Fragment() {
     private fun checkLoginStatus() {
         val email = sharedPreferences.getString("Email", null)
         val password = sharedPreferences.getString("Password", null)
+        binding.apply {
 
-        if (!email.isNullOrBlank() && !password.isNullOrBlank()) {
-            findNavController().navigate(R.id.action_welcomingFragment_to_dashboardFragment)
+            if (!email.isNullOrBlank() && !password.isNullOrBlank()) {
+                findNavController().navigate(R.id.action_welcomingFragment_to_dashboardFragment)
+            }
         }
     }
+
 }

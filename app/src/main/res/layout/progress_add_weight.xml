@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/FragmentBackground">
+
+    <EditText
+        android:id="@+id/progress_add_current_weight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:hint="Enter your current weight"
+        android:inputType="numberDecimal"/>
+
+    <Button
+        android:id="@+id/progress_add_weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/progress_add_current_weight"
+        android:layout_alignParentStart="true"
+        android:layout_margin="25dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:text="Add"
+        android:textColor="@color/on_background" />
+
+    <Button
+        android:id="@+id/progress_cancle_operation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@id/progress_add_current_weight"
+        android:layout_margin="25dp"
+        android:textColor="@color/on_background"
+        android:text="Cancle"
+        />
+
+
+</RelativeLayout>

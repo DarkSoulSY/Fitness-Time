@@ -1,5 +1,7 @@
 package com.example.fitnesstime.connection
 
+import androidx.annotation.Nullable
+import com.example.fitnesstime.ui.fragments.AddConsumedCalories
 import com.example.fitnesstime.ui.model.*
 import retrofit2.Response
 import retrofit2.http.Body
@@ -10,12 +12,8 @@ import retrofit2.http.Query
 interface ApiInterface {
 
     // Sign Up And Sign In end points
-
-    @POST("User/signup.php")
-    suspend fun createAccount(@Body createAccountDTO: CreateAccountDTO): Response<ServiceResponse<String>?>
-
-    @POST("User/preferences.php")
-    suspend fun addPreferences(@Body createAccountPreferencesDTO: CreateAccountPreferencesDTO): Response<ServiceResponse<String?>>
+    @POST("User/addAccountNPreferences.php")
+    suspend fun createAccountNPreferences(@Body createAccountNPreferences: CreateAccountNPreferences): Response<ServiceResponse<String>>
 
     @GET("User/login.php")
     suspend fun signIn(@Query("email") email:String, @Query("password") password:String) : Response<ServiceResponse<String?>>
@@ -45,7 +43,9 @@ interface ApiInterface {
     @GET("meal/addProduct.php")
     suspend fun addProduct(@Query("meal_type") mealType : String, @Query("email") email : String, @Query("quantity") quantity : Int,@Query("product_id") productId: Int, @Query("date") date: String) : Response<ServiceResponse<String>>
 
+    @POST("diary/add_daily_weight.php")
+    suspend fun addDailyWeight(@Body addDailyWeight : AddDailyWeight) : Response<ServiceResponse<String?>>
 
-
-
+    @POST("diary/add_consumed_calories.php")
+    suspend fun addConsumedCalories(@Body addConsumedCalories: AddConsumedCalories) : Response<ServiceResponse<String?>>
 }

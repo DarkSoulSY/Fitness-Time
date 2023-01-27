@@ -1,7 +1,6 @@
 package com.example.fitnesstime.ui.viewmodel
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,8 +9,7 @@ import com.example.fitnesstime.connection.RetrofitInstance
 import com.example.fitnesstime.enum.ActivityLevel
 import com.example.fitnesstime.enum.Gender
 import com.example.fitnesstime.enum.WeightPlanType
-import com.example.fitnesstime.ui.model.CreateAccountDTO
-import com.example.fitnesstime.ui.model.CreateAccountPreferencesDTO
+import com.example.fitnesstime.ui.model.CreateAccountNPreferences
 import com.example.fitnesstime.ui.repositories.UserAccountInformationRepository
 import kotlinx.coroutines.*
 import java.text.SimpleDateFormat
@@ -127,76 +125,53 @@ class UserSignUpInformationViewModel : ViewModel() {
 
     @OptIn(DelicateCoroutinesApi::class)
     fun createAccountAndAssociatedPreferences(context: Context){
-        Log.v("viewModel success 1", success.toString())
-        val createAccountDTO = CreateAccountDTO(
-            firstName.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
-            lastName.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
-            email.value!!.lowercase(),
-            password.value!!,
-            gender.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
-            height.value!!,
-            weight.value!!,
-            birthDate.value!!.replace('-', ':'),
-            phoneNumber.value!!
-        )
-
-        val cGoal = calculateCalories(
-            weight.value!!,
+        val cGoal = calculateCalories(weight.value!!,
             height.value!!,
             age.value!!,
             gender.value!!,
             weightPlanType.value!!,
-            weeklyActivity.value!!
-        )
+            weeklyActivity.value!!,
+            ratio.value)
 
-        val createAccountPreferencesDTO = CreateAccountPreferencesDTO(
-            email = email.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
-            weight_plan_type = weightPlanType.value!!.toLowerCase().replaceFirstChar {
-                if (it.isLowerCase()) it.titlecase(
-                    Locale.ROOT
-                ) else it.toString()
-            },
+        if(ratio.value == null)
+            _goalWeight.value = weight.value
+
+        val createAccountNPreferences = CreateAccountNPreferences(
+            first_name = firstName.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
+            last_name = lastName.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
+            email = email.value!!.lowercase(),
+            password = password.value!!,
+            gender = gender.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
+            height = height.value!!,
+            weight = weight.value!!,
+            birthday = birthDate.value!!.replace('-', ':'),
+            phone = phoneNumber.value!!,
+            weight_plan_type = weightPlanType.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
             weight_goal = goalWeight.value!!,
-            weekly_activity = weeklyActivity.value!!.toLowerCase().replaceFirstChar {
-                if (it.isLowerCase()) it.titlecase(
-                    Locale.ROOT
-                ) else it.toString()
-            },
-            caloric_plan_goal = cGoal
-        )
+            weekly_activity = weeklyActivity.value!!.toLowerCase().replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString() },
+            caloric_plan_goal = cGoal)
+
         //viewModelScope.launch {
         job = GlobalScope.launch(Dispatchers.IO) {
-            val response = async { userAccountInformationRepository.createAccount(createAccountDTO) }.await()
+            val response = userAccountInformationRepository.createAccountNPreferences(createAccountNPreferences)
             withContext(Dispatchers.Main){
-                if(response.isSuccessful)
-                {
-                    Toast.makeText(context,response.body()!!.Message.toString(),Toast.LENGTH_SHORT).show()
-                    success.value = response.body()!!.Success
-                }
-                else{
-                    onError(context, response.body()!!.Message.toString())
-                }
-            }
-            Log.v("viewModel success 2", success.toString())
-
-            val response2 = async { delay(1000L)
-                userAccountInformationRepository.addPreferences(createAccountPreferencesDTO) }.await()
-            withContext(Dispatchers.Main)
-            {
-                if(response2.isSuccessful){
-                    Toast.makeText(context,response2.body()!!.Message.toString(),Toast.LENGTH_SHORT).show()
-                    success.value = response.body()!!.Success
-                }
-                else{
-                    onError(context, response.body()!!.Message.toString())
+                response.apply {
+                    if(isSuccessful)
+                        body()!!.apply {
+                            if(Success) {
+                                Toast.makeText(context, Message, Toast.LENGTH_SHORT)
+                                success.value = response.body()!!.Success
+                            }
+                            else {
+                                Toast.makeText(context, Message, Toast.LENGTH_SHORT)
+                                success.value = response.body()!!.Success
+                            }
+                        }
                 }
             }
-            Log.v("viewModel success 3", success.toString())
         }
-        Log.v("viewModel success 4", success.toString())
-
     }
-    private fun calculateCalories(weight: Float, height: Float, age: Int, gender: String, plan: String, activityLevel: String): Int {
+    /*private fun calculateCalories(weight: Float, height: Float, age: Int, gender: String, plan: String, activityLevel: String): Int {
 
         val baseCalories: Float = when (gender) {
             Gender.Male.name -> 10 * weight + 6.25f * height - 5 * age + 5
@@ -220,6 +195,42 @@ class UserSignUpInformationViewModel : ViewModel() {
             WeightPlanType.LOSE_WEIGHT.description -> (maintenanceCalories - 250).toInt()
             else -> throw AssertionError()
         }
+    }*/
+    private fun calculateCalories(weight: Float, height: Float, age: Int, gender: String, plan: String, activityLevel: String, percent: Float? = null): Int {
+
+        val baseCalories: Float = when (gender) {
+            Gender.Male.name -> 10 * weight + 6.25f * height - 5 * age + 5
+            Gender.Female.name -> 10 * weight + 6.25f * height - 5 * age - 161
+            else -> throw AssertionError()
+        }
+
+        val activityFactor: Double = when (activityLevel) {
+            ActivityLevel.NOT_VERY_ACTIVE.description -> 1.375
+            ActivityLevel.LIGHTLY_ACTIVE.description -> 1.55
+            ActivityLevel.ACTIVE.description -> 1.725
+            ActivityLevel.VERY_ACTIVE.description -> 1.9
+            else -> throw AssertionError()
+        }
+        var percentage: Int = 0
+        if(percent != null)
+            percentage= when(percent){
+                0.2f -> 220
+                0.5f -> 550
+                0.8f -> 880
+                1.0f -> 1100
+                else -> {throw AssertionError()}
+            }
+
+
+        val maintenanceCalories = baseCalories * activityFactor
+        if(plan != WeightPlanType.MAINTAIN_WEIGHT.description && percent == null)
+            throw AssertionError("Percent is required for Gain or Lose weight")
+        return when (plan) {
+            WeightPlanType.MAINTAIN_WEIGHT.description -> maintenanceCalories.toInt()
+            WeightPlanType.GAIN_WEIGHT.description -> (maintenanceCalories + percentage).toInt()
+            WeightPlanType.LOSE_WEIGHT.description -> (maintenanceCalories - percentage).toInt()
+            else -> throw AssertionError()
+        }
     }
 
     fun calculateAge(dobString: String) {
@@ -231,10 +242,6 @@ class UserSignUpInformationViewModel : ViewModel() {
             age--
         }
         _age.value = age
-    }
-
-    private fun onError(context: Context, message: String) {
-        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
     override fun onCleared() {
         super.onCleared()

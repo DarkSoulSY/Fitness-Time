@@ -171,7 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
             android:backgroundTint="@color/Primary_Dark"
-            android:textColor="@color/white"
+            android:textColor="@color/on_background"
             android:text="Edit Profile" />
 
 

@@ -16,6 +16,7 @@
         android:textColor="@color/accent"
         android:layout_gravity="center"/>
     <EditText
+        android:inputType="text"
         android:id="@+id/search_engine"
         android:layout_marginTop="25dp"
         android:layout_marginStart="25dp"

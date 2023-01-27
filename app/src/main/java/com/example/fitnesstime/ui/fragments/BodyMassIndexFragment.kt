@@ -17,10 +17,7 @@ import com.example.fitnesstime.enum.Gender
 import com.example.fitnesstime.ui.viewmodel.BodyMassIndexViewModel
 import com.example.fitnesstime.ui.viewmodel.DashboardViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.math.RoundingMode
 import java.text.DecimalFormat
 
@@ -45,17 +42,22 @@ class BodyMassIndexFragment : Fragment() {
         val observer = Observer<Gender>{
             if (it != null){
                 df.roundingMode = RoundingMode.DOWN
-                GlobalScope.launch(Dispatchers.Main){
-                    val end = personalViewModel.calculateBMI()
-                    var i = 0.0
-                    while(i<=end)
-                    {
-                        //value animator
-                        delay(1L)
-                        binding.bodyMassIndexBmi.text = df.format(i).toString()
-                        i+=0.1
+                try {
+                    GlobalScope.launch(Dispatchers.Main){
+                        val end = personalViewModel.calculateBMI()
+                        var i = 0.0
+                        while(i<=end)
+                        {
+                            //value animator
+                            delay(1L)
+                            binding.bodyMassIndexBmi.text = df.format(i).toString()
+                            i+=0.1
+                        }
                     }
+                } catch (e: Exception) {
+
                 }
+
             }
         }
         personalViewModel.gender.observe(requireActivity(), observer)
@@ -73,7 +75,12 @@ class BodyMassIndexFragment : Fragment() {
     override fun onStart() {
         super.onStart()
         val email = sharedPreferences.getString("Email", null)
-        personalViewModel.setBodyMassIndexInformation(requireActivity(), email!!)
+        try {
+            personalViewModel.setBodyMassIndexInformation(requireActivity(), email!!)
+        } catch (e: Exception) {
+
+        }
+
     }
 
 }

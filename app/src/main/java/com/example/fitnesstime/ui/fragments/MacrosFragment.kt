@@ -72,55 +72,70 @@ class MacrosFragment : Fragment() {
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
             if (breakFast.value.isNullOrEmpty())
-                GlobalScope.launch(Dispatchers.IO) {
-                    val response = mealProductRepo.getMeals(
-                        "breakfast",
-                        email,
-                        LocalDateTime.now().format(formatter).toString()
-                    )
-                    withContext(Dispatchers.Main) {
-                        if (response.isSuccessful)
-                            if (response.body()!!.Success) {
-                                breakFast.value = response.body()!!.Data!!
+                try {
+                    GlobalScope.launch(Dispatchers.IO) {
+                        val response = mealProductRepo.getMeals(
+                            "breakfast",
+                            email,
+                            LocalDateTime.now().format(formatter).toString()
+                        )
+                        withContext(Dispatchers.Main) {
+                            if (response.isSuccessful)
+                                if (response.body()!!.Success) {
+                                    breakFast.value = response.body()!!.Data!!
 
 
-                            }
+                                }
+                        }
                     }
+                } catch (e: Exception) {
+
                 }
+
             if (lunch.value.isNullOrEmpty())
-                GlobalScope.launch(Dispatchers.IO) {
-                    val response = mealProductRepo.getMeals(
-                        "lunch",
-                        email,
-                        LocalDateTime.now().format(formatter).toString()
-                    )
-                    withContext(Dispatchers.Main) {
-                        if (response.isSuccessful)
-                            if (response.body()!!.Success) {
-                                lunch.value = response.body()!!.Data!!
+                try {
+                    GlobalScope.launch(Dispatchers.IO) {
+                        val response = mealProductRepo.getMeals(
+                            "lunch",
+                            email,
+                            LocalDateTime.now().format(formatter).toString()
+                        )
+                        withContext(Dispatchers.Main) {
+                            if (response.isSuccessful)
+                                if (response.body()!!.Success) {
+                                    lunch.value = response.body()!!.Data!!
 
 
-                            }
+                                }
+                        }
+
                     }
+                } catch (e: Exception) {
 
                 }
+
             if (dinner.value.isNullOrEmpty())
-                GlobalScope.launch(Dispatchers.IO) {
-                    val response = mealProductRepo.getMeals(
-                        "dinner",
-                        email,
-                        LocalDateTime.now().format(formatter).toString()
-                    )
-                    withContext(Dispatchers.Main) {
-                        if (response.isSuccessful)
-                            if (response.body()!!.Success) {
-                                dinner.value = response.body()!!.Data!!
+                try {
+                    GlobalScope.launch(Dispatchers.IO) {
+                        val response = mealProductRepo.getMeals(
+                            "dinner",
+                            email,
+                            LocalDateTime.now().format(formatter).toString()
+                        )
+                        withContext(Dispatchers.Main) {
+                            if (response.isSuccessful)
+                                if (response.body()!!.Success) {
+                                    dinner.value = response.body()!!.Data!!
 
 
-                            }
+                                }
 
+                        }
                     }
+                } catch (e: Exception) {
+
                 }
+
 
         }
     }

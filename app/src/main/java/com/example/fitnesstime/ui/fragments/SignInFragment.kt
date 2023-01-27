@@ -46,55 +46,33 @@ class SignInFragment : Fragment() {
             val email = binding.signinEmail.text.toString()
             val password = binding.signinPassword.text.toString()
 
-            GlobalScope.launch(Dispatchers.IO){
-                val response = userRepo.signIn(email, password)
-                withContext(Dispatchers.Main){
-                    if (response.body()!!.Success){
-                        sharedPreferences = requireActivity().getSharedPreferences("User Session", MODE_PRIVATE)
-                        sharedPreferences.edit().putString("Email", email).apply()
-                        sharedPreferences.edit().putString("Password", password).apply()
-                        sharedPreferences.edit().putBoolean("Logged", true).apply()
-                        Toast.makeText(requireContext(),response.body()!!.Message.toString(),Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_signInFragment_to_dashboardFragment)
-                    }
-                    else{
-                        sharedPreferences = requireActivity().getSharedPreferences("User Session", MODE_PRIVATE)
-                        sharedPreferences.edit().putBoolean("Logged", false).apply()
-                        Toast.makeText(requireContext(),response.body()!!.Message.toString(),Toast.LENGTH_SHORT).show()
+            try {
+                GlobalScope.launch(Dispatchers.IO){
+                    val response = userRepo.signIn(email, password)
+                    withContext(Dispatchers.Main){
+                        if (response.body()!!.Success){
+                            sharedPreferences = requireActivity().getSharedPreferences("User Session", MODE_PRIVATE)
+                            sharedPreferences.edit().putString("Email", email).apply()
+                            sharedPreferences.edit().putString("Password", password).apply()
+                            sharedPreferences.edit().putBoolean("Logged", true).apply()
+                            Toast.makeText(requireContext(),response.body()!!.Message.toString(),Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.action_signInFragment_to_dashboardFragment)
+                        }
+                        else{
+                            sharedPreferences = requireActivity().getSharedPreferences("User Session", MODE_PRIVATE)
+                            sharedPreferences.edit().putBoolean("Logged", false).apply()
+                            Toast.makeText(requireContext(),response.body()!!.Message.toString(),Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
+            } catch (e: Exception) {
+
             }
+
         }
         binding.doesnothaveanaccount.setOnClickListener {
             findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
         }
         super.onStart()
         }
-    /*private fun inquireAboutUser(user: LoginAccountDTO){
-        //Preparing Params
-        val request = LoginAccountDTO(email = user.email, password = user.password)
-        suspend {
-        val call = RetrofitInstance.retrofit.signInAccount(request.email, request.password)
-        call.enqueue(object : Callback<ServiceResponse<LoginAccountDTO>> {
-            override fun onResponse(call: Call<ServiceResponse<LoginAccountDTO>>, response: Response<ServiceResponse<LoginAccountDTO>>) {
-                response.body()?.let {
-                    if (response.isSuccessful) {
-
-                        Toast.makeText(context, response.body()!!.data!!.email + response.body()!!.Message, Toast.LENGTH_LONG).show()
-                        findNavController().navigate(R.id.action_signInFragment_to_dashboardFragment)
-                    }
-                    else
-                        Toast.makeText(context, response.body()!!.Success.toString() + response.body()!!.Message as String, Toast.LENGTH_LONG).show()
-
-                }
-
-
-            }
-            override fun onFailure(call: Call<ServiceResponse<LoginAccountDTO>>, t: Throwable) {
-                Toast.makeText(context, t.message, Toast.LENGTH_LONG).show()
-            }
-        })}
-
-    }*/
-
 }

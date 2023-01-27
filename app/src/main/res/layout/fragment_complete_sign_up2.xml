@@ -20,11 +20,13 @@
             android:orientation="vertical">
 
             <LinearLayout
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <LinearLayout
-                    android:id="@+id/viewgroup1"
+                    android:visibility="gone"
+                    android:id="@+id/view_group1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="70dp"
@@ -104,7 +106,7 @@
 
                 <LinearLayout
                     android:layout_margin="35dp"
-                    android:id="@+id/viewgroup2"
+                    android:id="@+id/view_group2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -141,11 +143,13 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/view_group3"
+                    android:visibility="gone"
                     android:layout_margin="35dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    app:layout_constraintTop_toBottomOf="@id/viewgroup2"
+                    app:layout_constraintTop_toBottomOf="@id/view_group2"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent">
 
@@ -174,15 +178,17 @@
 
                         </com.google.android.material.textfield.TextInputEditText>
                     </com.google.android.material.textfield.TextInputLayout>
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/completesignup2next"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/button_next"
-                        android:backgroundTint="@color/Primary_Dark"
-                        android:textColor="@color/white"
-                        android:layout_marginTop="50dp"/>
+
                 </LinearLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:layout_margin="30dp"
+                    android:id="@+id/completesignup2next"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/button_next"
+                    android:backgroundTint="@color/Primary_Dark"
+                    android:textColor="@color/on_background"
+                    android:layout_marginTop="50dp"/>
             </LinearLayout>
 
         </ScrollView>

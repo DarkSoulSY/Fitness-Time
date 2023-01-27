@@ -7,7 +7,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.fitnesstime.connection.RetrofitInstance
-import com.example.fitnesstime.ui.fragments.toSafeInt
+
 import com.example.fitnesstime.ui.model.AllMealsInformationAndQuantity
 import com.example.fitnesstime.ui.repositories.MealProductRepository
 import com.example.fitnesstime.ui.repositories.UserAccountInformationRepository
@@ -29,6 +29,9 @@ class DashboardViewModel : ViewModel() {
     private val _consumedCalories = MutableLiveData<Int>(0)
     val consumedCalories: LiveData<Int> = _consumedCalories
 
+    private val _remainingCalories = MutableLiveData<Int>()
+    val remainingCalories: LiveData<Int> = _remainingCalories
+
     private val _breakFast = MutableLiveData<List<AllMealsInformationAndQuantity>>()
     val breakFast: LiveData<List<AllMealsInformationAndQuantity>> = _breakFast
 
@@ -41,15 +44,20 @@ class DashboardViewModel : ViewModel() {
     fun calculateCalories(list1: List<AllMealsInformationAndQuantity>?, list2: List<AllMealsInformationAndQuantity>?, list3: List<AllMealsInformationAndQuantity>?) {
         var totalCalories = 0
         list1?.let {
-            totalCalories += it.sumOf { product -> product.calories.toSafeInt() * product.quantity.toSafeInt() }
+            totalCalories += it.sumOf { product -> product.calories.toInt() * product.quantity.toInt() }
         }
         list2?.let {
-            totalCalories += it.sumOf { product -> product.calories.toSafeInt() * product.quantity.toSafeInt() }
+            totalCalories += it.sumOf { product -> product.calories.toInt() * product.quantity.toInt() }
         }
         list3?.let {
-            totalCalories += it.sumOf { product -> product.calories.toSafeInt() * product.quantity.toSafeInt() }
+            totalCalories += it.sumOf { product -> product.calories.toInt() * product.quantity.toInt() }
         }
         _consumedCalories.value = totalCalories
+        setRemainingCalories()
+    }
+
+    fun setRemainingCalories(){
+        _remainingCalories.value = baseGoal.value?.minus(consumedCalories.value!!)
     }
 
     @OptIn(DelicateCoroutinesApi::class)

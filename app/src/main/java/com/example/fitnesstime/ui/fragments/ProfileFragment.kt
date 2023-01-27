@@ -1,7 +1,6 @@
 package com.example.fitnesstime.ui.fragments
 
 import android.content.Context.MODE_PRIVATE
-import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +11,6 @@ import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import androidx.navigation.fragment.findNavController
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentProfileBinding
 import com.example.fitnesstime.ui.home.Main
@@ -53,7 +51,12 @@ class ProfileFragment : Fragment() {
         sharedPreferences = requireActivity().getSharedPreferences("User Session", MODE_PRIVATE)
         val email = sharedPreferences.getString("Email", null)
         if (!email.isNullOrEmpty())
-            personalViewModel.setProfile(email)
+            try {
+                personalViewModel.setProfile(email)
+            } catch (e: Exception) {
+
+            }
+
 
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
         activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)!!.isGone = true
@@ -69,18 +72,15 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    fun showLogOutDialog(){
+    private fun showLogOutDialog(){
         MaterialAlertDialogBuilder(requireActivity())
             .setTitle("Log Out")
             .setMessage("Are you sure you want to log out?")
             .setNegativeButton("No") { dialog, _ -> dialog.cancel()}
-            .setPositiveButton("Yes", object: DialogInterface.OnClickListener{
-                override fun onClick(p0: DialogInterface?, p1: Int) {
-
-                    sharedPreferences.edit().clear().commit()
-                    (requireActivity() as Main).signOut()
-                }
-            })
+            .setPositiveButton("Yes") { _, _ ->
+                sharedPreferences.edit().clear().apply()
+                (requireActivity() as Main).signOut()
+            }
             .show()
     }
 

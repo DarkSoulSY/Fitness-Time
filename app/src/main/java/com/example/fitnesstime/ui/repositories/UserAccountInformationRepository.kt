@@ -1,15 +1,11 @@
 package com.example.fitnesstime.ui.repositories
 
 import com.example.fitnesstime.connection.ApiInterface
-import com.example.fitnesstime.ui.model.CreateAccountDTO
-import com.example.fitnesstime.ui.model.CreateAccountPreferencesDTO
+import com.example.fitnesstime.ui.model.CreateAccountNPreferences
 
 class UserAccountInformationRepository(private val api: ApiInterface) {
 
-
-    suspend fun createAccount(createAccountDTO: CreateAccountDTO) = api.createAccount(createAccountDTO)
-
-    suspend fun addPreferences(createAccountPreferencesDTO: CreateAccountPreferencesDTO) = api.addPreferences(createAccountPreferencesDTO)
+    suspend fun createAccountNPreferences(createAccountNPreferences: CreateAccountNPreferences) = api.createAccountNPreferences(createAccountNPreferences)
 
     suspend fun signIn(email: String, password: String) = api.signIn(email, password)
 

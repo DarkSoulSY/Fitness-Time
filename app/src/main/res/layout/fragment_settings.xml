@@ -18,6 +18,24 @@
             android:orientation="vertical"
             android:layout_margin="30dp">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Switch
+                    android:id="@+id/settings_mode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_baseline_brightness_medium_24"/>
+
+
+            </LinearLayout>
+
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profilepicture"
                 android:layout_height="90dp"
@@ -32,7 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Profile"
-                android:textColor="@color/white"
+                android:textColor="@color/on_background"
                 android:backgroundTint="@color/Primary_Dark"
                 android:layout_margin="10dp"
 
@@ -42,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Calories"
-                android:textColor="@color/white"
+                android:textColor="@color/on_background"
                 android:backgroundTint="@color/Primary_Dark"
                 android:layout_margin="10dp"
                 />
@@ -52,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Macros"
-                android:textColor="@color/white"
+                android:textColor="@color/on_background"
                 android:backgroundTint="@color/Primary_Dark"
                 android:layout_margin="10dp"
                 />
@@ -61,19 +79,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Edit your meteric information"
-                android:textColor="@color/white"
+                android:textColor="@color/on_background"
                 android:backgroundTint="@color/Primary_Dark"
                 android:layout_margin="10dp"
                 />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/settings_about"
-                android:textColor="@color/white"
+                android:textColor="@color/on_background"
                 android:backgroundTint="@color/Primary_Dark"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="About"
                 android:layout_margin="10dp"
                 />
+
         </LinearLayout>
     </ScrollView>
 

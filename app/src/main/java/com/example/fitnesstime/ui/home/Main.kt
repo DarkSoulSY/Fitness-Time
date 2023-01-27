@@ -3,38 +3,28 @@ package com.example.fitnesstime.ui.home
 
 import android.content.Intent
 import android.content.SharedPreferences
-import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.isGone
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.example.fitnesstime.R
-import com.example.fitnesstime.connection.RetrofitInstance
 import com.example.fitnesstime.databinding.ActivityMainBinding
-import com.example.fitnesstime.ui.fragments.DashboardFragment
-import com.example.fitnesstime.ui.fragments.WelcomingFragment
-import com.example.fitnesstime.ui.repositories.UserAccountInformationRepository
-import com.tbruyelle.rxpermissions2.RxPermissions
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.util.jar.Manifest
+import com.example.fitnesstime.network.NetworkConnection
 
 
 class Main : AppCompatActivity() {
     private lateinit var navController: NavController
-    private lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
     private lateinit var sharedPreferences: SharedPreferences
-    private var userRepo = UserAccountInformationRepository(RetrofitInstance.retrofit)
+
+
+    private lateinit var networkConnection: NetworkConnection
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,10 +33,15 @@ class Main : AppCompatActivity() {
 
         toolbar = findViewById(R.id.mystatusbar)
         setSupportActionBar(toolbar)
-
+        callNetworkConnection()
 
         sharedPreferences = getSharedPreferences("User Session", MODE_PRIVATE)
-        val editor = sharedPreferences.edit()
+
+
+        if(sharedPreferences.getBoolean("MODE", false))
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        else
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
     override fun onStart() {
@@ -80,10 +75,23 @@ class Main : AppCompatActivity() {
 
         super.onStart()
     }
+
     fun signOut() {
         Intent(this, Main::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
         }.let { startActivity(it) }
         finish()
+    }
+
+    private fun callNetworkConnection(){
+        networkConnection = NetworkConnection(application)
+        networkConnection.observe(this) { isConnected ->
+            binding.apply {
+                Connected.isGone = !isConnected
+                Disconnected.isGone = isConnected
+            }
+
+        }
+
     }
 }

@@ -65,15 +65,20 @@ class NutritionFactsFragment : Fragment() {
         var body : MutableLiveData<ServiceResponse<SingleProductNutritionInformation>> = MutableLiveData<ServiceResponse<SingleProductNutritionInformation>>()
 
         if(!requireArguments().isEmpty)
-        GlobalScope.launch(Dispatchers.IO){
-            val response = mealRepo.getOneProduct(requireArguments().getString("Product Name", null))
-            withContext(Dispatchers.Main){
-                if (response.isSuccessful){
-                    if (response.body()!!.Success)
-                         body.value = response.body()!!
+            try {
+                GlobalScope.launch(Dispatchers.IO){
+                    val response = mealRepo.getOneProduct(requireArguments().getString("Product Name", null))
+                    withContext(Dispatchers.Main){
+                        if (response.isSuccessful){
+                            if (response.body()!!.Success)
+                                body.value = response.body()!!
+                        }
+                    }
                 }
+            } catch (e: Exception) {
+
             }
-        }
+
         //val body = personalViewModel.getSingleProduct(this.requireArguments().getString("ProductName", null))
         binding.apply {
 
@@ -136,7 +141,7 @@ class NutritionFactsFragment : Fragment() {
     private fun setupSpinner(){
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter.createFromResource(requireActivity(), R.array.meal_type, android.R.layout.simple_spinner_item).also { adapter ->
+            ArrayAdapter.createFromResource(requireActivity(), R.array.meal_type, android.R.layout.simple_spinner_item).also { adapter ->
             // Specify the layout to use when the list of choices appears
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             // Apply the adapter to the spinner

@@ -99,6 +99,10 @@
             android:name="meal_type"
             app:argType="string"
             android:defaultValue="http://sohamerp.com/avo/avo_privacy_policy.html"/>
+        <argument
+            android:name="date"
+            app:argType="string"
+            android:defaultValue="http://sohamerp.com/avo/avo_privacy_policy.html"/>
     </fragment>
     <fragment
         android:id="@+id/bodyMassIndexFragment"

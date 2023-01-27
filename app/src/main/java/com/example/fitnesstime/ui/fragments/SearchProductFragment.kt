@@ -20,8 +20,6 @@ import com.example.fitnesstime.databinding.FragmentSearchProductBinding
 import com.example.fitnesstime.ui.model.SingleProductNutritionInformation
 import com.example.fitnesstime.ui.repositories.MealProductRepository
 import kotlinx.coroutines.*
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 import java.util.*
 
 class SearchProductFragment : Fragment() {
@@ -46,23 +44,33 @@ class SearchProductFragment : Fragment() {
         return binding.root
     }
 
+
+
     @RequiresApi(Build.VERSION_CODES.O)
     @OptIn(DelicateCoroutinesApi::class)
     override fun onStart() {
+
         super.onStart()
+
 
         val email = sharedPreferences.getString("Email", null)
         val mealType = arguments?.getString("meal_type", null)
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val date = arguments?.getString("date",null)
 
-        GlobalScope.launch(Dispatchers.IO) {
-            val response = mealProductRepository.getAllProduct()
-            withContext(Dispatchers.Main) {
-                if (response.isSuccessful and response.body()!!.Success) {
-                    items = response.body()!!.Data!!
+
+        try {
+            GlobalScope.launch(Dispatchers.IO) {
+                val response = mealProductRepository.getAllProduct()
+                withContext(Dispatchers.Main) {
+                    if (response.isSuccessful and response.body()!!.Success) {
+                        items = response.body()!!.Data!!
+                    }
                 }
             }
+        } catch (e: Exception) {
+
         }
+
 
         binding.apply {
 
@@ -97,15 +105,20 @@ class SearchProductFragment : Fragment() {
                         searchFirstContainer.isVisible = true
                         searchDone.isVisible = true
                         searchDone.setOnClickListener {
-                            if (!email.isNullOrEmpty() && !mealType.isNullOrEmpty() && itemNameInList > 0)
-                            GlobalScope.launch(Dispatchers.IO){
-                                val response = mealProductRepository.addProduct(mealType, email, 1, itemNameInList, LocalDateTime.now().format(formatter).toString())
-                                withContext(Dispatchers.Main){
-                                        if (response.isSuccessful)
-                                            Toast.makeText(requireContext(), response.body()!!.Message.toString(), Toast.LENGTH_SHORT).show()
+                            if (!email.isNullOrEmpty() && !mealType.isNullOrEmpty() && itemNameInList > 0 && date != null)
+                                try {
+                                    GlobalScope.launch(Dispatchers.IO){
+                                        val response = mealProductRepository.addProduct(mealType, email, 1, itemNameInList, date)
+                                        withContext(Dispatchers.Main){
+                                            if (response.isSuccessful)
+                                                Toast.makeText(requireContext(), response.body()!!.Message.toString(), Toast.LENGTH_SHORT).show()
 
+                                        }
+                                    }
+                                } catch (e: Exception) {
+                                    Toast.makeText(requireContext(), "No internet connection", Toast.LENGTH_LONG).show()
                                 }
-                            }
+
                         }
                     }
                 }

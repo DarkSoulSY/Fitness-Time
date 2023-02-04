@@ -13,9 +13,10 @@
 
         <com.github.mikephil.charting.charts.PieChart
             android:id="@+id/macros_ratios"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"/>
+            android:layout_marginTop="25dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_centerHorizontal="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,6 +57,7 @@
                 android:layout_marginBottom="10dp">
 
                 <TextView
+                    android:id="@+id/macros_carbs_color"
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_alignParentStart="true"
@@ -64,6 +66,7 @@
                     android:layout_centerInParent="true"/>
 
                 <TextView
+                    android:id="@+id/macros_carbs_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
@@ -71,13 +74,7 @@
                     android:text="Carbohydrates"
                     android:layout_centerInParent="true"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="115dp"
-                    android:text="(0)"
-                    android:layout_centerInParent="true"/>
+
 
                 <TextView
                     android:id="@+id/carbohydrates_total_consumed"
@@ -89,12 +86,12 @@
                     android:text="0%" />
 
                 <TextView
+                    android:id="@+id/carbohydrates_total_goal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/light_blue"
-                    android:text="50%"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/light_blue" />
 
             </RelativeLayout>
             <View
@@ -126,14 +123,6 @@
                     android:layout_centerInParent="true"/>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="43dp"
-                    android:text="(0)"
-                    android:layout_centerInParent="true"/>
-
-                <TextView
                     android:id="@+id/fat_total_consumed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -143,12 +132,13 @@
                     android:text="0%" />
 
                 <TextView
+                    android:id="@+id/fat_total_goal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/light_blue"
-                    android:text="50%"
                     android:layout_alignParentEnd="true"
-                    android:layout_centerInParent="true"/>
+                    android:layout_centerInParent="true"
+                    android:text=""
+                    android:textColor="@color/light_blue" />
 
             </RelativeLayout>
             <View
@@ -181,13 +171,6 @@
                     />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="70dp"
-                    android:text="(0)" />
-
-                <TextView
                     android:id="@+id/protein_total_consumed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -196,11 +179,12 @@
                     android:text="0%" />
 
                 <TextView
+                    android:id="@+id/protein_total_goal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/light_blue"
-                    android:text="50%"
-                    android:layout_alignParentEnd="true"/>
+                    android:layout_alignParentEnd="true"
+                    android:text=""
+                    android:textColor="@color/light_blue" />
 
             </RelativeLayout>
             <View

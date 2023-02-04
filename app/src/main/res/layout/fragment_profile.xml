@@ -63,6 +63,15 @@
                 android:layout_marginStart="50dp"
                 android:text=""
                 android:textSize="15sp" />
+            <EditText
+                android:id="@+id/profile_first_name_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="50dp"
+                android:text=""
+                android:textSize="15sp"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
@@ -109,6 +118,15 @@
                 android:layout_marginStart="50dp"
                 android:text=""
                 android:textSize="15sp" />
+            <EditText
+                android:id="@+id/profile_last_name_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="50dp"
+                android:text=""
+                android:textSize="15sp"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
@@ -167,6 +185,7 @@
             android:background="@color/accent" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/profile_edit_profile_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
@@ -176,6 +195,7 @@
 
 
         <TextView
+            android:id="@+id/profile_change_password_user"
             android:layout_alignParentStart="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -15,4 +15,6 @@ class MealProductRepository (private val api: ApiInterface){
     suspend fun getOneProduct(productName: String) = api.getOneProduct(productName)
 
     suspend fun addProduct(mealType : String, email : String, quantity : Int, productId: Int, date: String) = api.addProduct(mealType, email, quantity, productId, date)
+
+    suspend fun deleteProduct(email: String, date: String, productName: String, mealType: String) = api.deleteProduct(email, date, productName, mealType)
 }

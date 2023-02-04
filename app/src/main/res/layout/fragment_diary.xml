@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/FragmentBackground"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.fragments.DiaryFragment"
     android:orientation="vertical"
-    style="@style/FragmentBackground">
+    tools:context=".ui.fragments.DiaryFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -19,165 +19,203 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:layout_gravity="center_horizontal">
+                android:background="@color/on_background">
 
                 <ImageView
                     android:id="@+id/diary_left_arrow"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/ic_baseline_arrow_left_24"
-                    />
+                    android:src="@drawable/ic_baseline_arrow_left_24" />
+
                 <TextView
                     android:id="@+id/diary_date"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:gravity="center"
                     android:text="2023-01-28"
                     android:textSize="18dp"
-                    android:gravity="center"/>
+                    android:textColor="@color/accent"/>
+
                 <ImageView
                     android:id="@+id/diary_right_arrow"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:src="@drawable/ic_baseline_arrow_right_24"
-                    />
+                    android:src="@drawable/ic_baseline_arrow_right_24" />
             </LinearLayout>
 
             <TextView
-                android:background="@color/on_background"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/in_box_info"
+                android:paddingStart="15dp"
                 android:text="Calories Remaining"
-                android:textSize="20sp"
-                android:textStyle="bold"
                 android:textColor="@color/accent"
-                /> <!-- Calories Equation -->
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <!-- Calories Equation -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/on_background"
-                android:paddingTop="10dp"
                 android:layout_marginBottom="20dp"
-                >
+                android:background="@color/in_box_info"
+                android:paddingTop="10dp">
 
                 <LinearLayout
                     android:id="@+id/equation_container"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="2dp"
                     android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp">
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="15dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/diary_base_goal"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text=""
-                        android:textColor="@color/accent"
-                        android:textSize="18sp" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/diary_base_goal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text=""
+                            android:textColor="@color/accent"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:text="Goal"
+                            android:textColor="@color/accent"
+                            android:textSize="12sp" />
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="-"
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
+                        android:textColor="@color/accent"
+                        android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/diary_consumed_calories"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text=""
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/diary_consumed_calories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text=""
+                            android:textColor="@color/accent"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_weight="1"
+                            android:text="Food"
+                            android:textColor="@color/accent"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="+"
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
+                        android:textColor="@color/accent"
+                        android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/diary_burned_calories"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="0"
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/diary_burned_calories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:textColor="@color/accent"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Exercise"
+                            android:layout_gravity="center"
+                            android:textColor="@color/accent"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:text="="
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
+                        android:textColor="@color/accent"
+                        android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/diary_remaining_calories"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:orientation="vertical">
 
-                        android:textSize="18sp"
-                        android:textColor="@color/accent"/>
+                        <TextView
+                            android:id="@+id/diary_remaining_calories"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_gravity="center"
+                            android:textColor="@color/accent"
+                            android:textSize="18sp" />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Remaining"
+                            android:layout_gravity="center"
+                            android:textColor="@color/accent"
+                            android:textSize="12sp" />
+
+
+                    </LinearLayout>
 
 
                 </LinearLayout> <!-- Calories Equation -->
                 <LinearLayout
-                    app:layout_constraintTop_toBottomOf="@id/equation_container"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginStart="15dp"
-                    android:layout_marginEnd="15dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Base Goal"
-                        android:textSize="15sp" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Consumed"
-                        android:textSize="15sp" />
-
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Burned"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Remaining"
-                        android:textSize="15sp" />
-
+                    android:layout_marginEnd="15dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/equation_container">
 
 
                 </LinearLayout> <!-- Calories Equation Description -->
@@ -188,37 +226,45 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/on_background"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp">
+                android:background="@color/in_box_info"
+                android:orientation="vertical">
 
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="15dp"
                     android:text="Breakfast"
-                    android:textSize="25sp"
-                    android:textColor="@color/accent" />
+                    android:textColor="@color/accent"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/diary_breakfast_recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    tools:listitem="@layout/product_item_list"/>
+                    android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp" />
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:id="@+id/diary_add_breakfast_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Item"
+                    android:layout_marginTop="10dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
                     android:paddingBottom="5dp"
-                    android:textSize="15sp"
+                    android:text="Add Item"
                     android:textColor="@color/Primary_Dark"
-                    android:textStyle="bold"
-                    />
-
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
 
             </LinearLayout> <!-- First Recycler View -->
@@ -226,75 +272,91 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/on_background"
                 android:layout_marginTop="20dp"
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp">
+                android:background="@color/in_box_info"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="15dp"
                     android:text="Lunch"
-                    android:textSize="25sp"
                     android:textColor="@color/accent"
-                    android:layout_marginTop="20dp"
-                    />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/diary_lunch_recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    tools:listitem="@layout/product_item_list"/>
+                    android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp" />
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:id="@+id/diary_add_lunch_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Add Item"
-                    android:paddingBottom="5dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/Primary_Dark"
-                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
                     android:backgroundTint="@color/Secondary"
-                    />
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="5dp"
+                    android:text="Add Item"
+                    android:textColor="@color/Primary_Dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </LinearLayout> <!-- Second Recycler View -->
 
 
             <LinearLayout
-                android:paddingStart="15dp"
-                android:paddingEnd="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/on_background"
-                android:layout_marginTop="40dp">
+                android:layout_marginTop="20dp"
+                android:background="@color/in_box_info"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp"
                     android:text="Dinner"
-                    android:textSize="25sp"
                     android:textColor="@color/accent"
-                    android:layout_marginTop="20dp" />
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/diary_dinner_recycler"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    tools:listitem="@layout/product_item_list"/>
+                    android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="15dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="25dp" />
+
                 <TextView
-                    android:layout_marginTop="10dp"
-                    android:paddingBottom="5dp"
-                    android:textSize="15sp"
-                    android:textColor="@color/Primary_Dark"
-                    android:textStyle="bold"
                     android:id="@+id/diary_add_dinner_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingStart="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="5dp"
                     android:text="Add Item"
-                    tools:listitem="@layout/food_list_item"/>
+                    android:textColor="@color/Primary_Dark"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
             </LinearLayout> <!-- Third Recycler View -->
 
 

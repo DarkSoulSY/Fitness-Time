@@ -21,9 +21,12 @@ class MyRecyclerViewAdapter(private val history: List<Diary>): RecyclerView.Adap
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
+
         val currentItem = history[position]
-        holder.date.text = currentItem.date
-        holder.weight.text = currentItem.currentWeight + " Kg"
+        if (!currentItem.currentWeight.isNullOrBlank() && !currentItem.date.isNullOrBlank()){
+            holder.date.text = currentItem.date
+            holder.weight.text = currentItem.currentWeight + " Kg"
+        }
 
     }
 

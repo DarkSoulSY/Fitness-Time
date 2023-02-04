@@ -26,13 +26,14 @@ class SearchProductFragment : Fragment() {
 
 
     private lateinit var binding: FragmentSearchProductBinding
+
     //private val personalViewModel: ProductViewModel by activityViewModels()
     private lateinit var items: List<SingleProductNutritionInformation>
     private val api = RetrofitInstance.retrofit
     private var itemNameInList: Int = -1
     private var itemNoInList: String = ""
     private val mealProductRepository: MealProductRepository = MealProductRepository(api)
-    private lateinit var sharedPreferences : SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,7 +46,6 @@ class SearchProductFragment : Fragment() {
     }
 
 
-
     @RequiresApi(Build.VERSION_CODES.O)
     @OptIn(DelicateCoroutinesApi::class)
     override fun onStart() {
@@ -55,7 +55,7 @@ class SearchProductFragment : Fragment() {
 
         val email = sharedPreferences.getString("Email", null)
         val mealType = arguments?.getString("meal_type", null)
-        val date = arguments?.getString("date",null)
+        val date = arguments?.getString("date", null)
 
 
         try {
@@ -68,7 +68,6 @@ class SearchProductFragment : Fragment() {
                 }
             }
         } catch (e: Exception) {
-
         }
 
 
@@ -78,7 +77,14 @@ class SearchProductFragment : Fragment() {
 
                 val bundle = Bundle()
                 bundle.putString("Product Name", itemNoInList)
-                findNavController().navigate(R.id.action_searchProductFragment_to_nutritionFactsFragment, bundle)
+                bundle.putString("date", date)
+                bundle.putString("meal_type", mealType)
+                bundle.putInt("Product Id", itemNameInList)
+
+                findNavController().navigate(
+                    R.id.action_searchProductFragment_to_nutritionFactsFragment,
+                    bundle
+                )
             }
 
             searchEngine.addTextChangedListener(object : TextWatcher {
@@ -95,31 +101,50 @@ class SearchProductFragment : Fragment() {
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    items.filter {
-                        it.productName.lowercase(Locale.getDefault()).contains(searchEngine.text.toString().lowercase(Locale.getDefault()))
-                    }.forEach {
-                        itemNoInList = it.productName
-                        itemNameInList = it.id.toInt()
-                        searchProductName.text = it.productName
-                        searchProductCalories.text = it.calories
-                        searchFirstContainer.isVisible = true
-                        searchDone.isVisible = true
-                        searchDone.setOnClickListener {
-                            if (!email.isNullOrEmpty() && !mealType.isNullOrEmpty() && itemNameInList > 0 && date != null)
-                                try {
-                                    GlobalScope.launch(Dispatchers.IO){
-                                        val response = mealProductRepository.addProduct(mealType, email, 1, itemNameInList, date)
-                                        withContext(Dispatchers.Main){
-                                            if (response.isSuccessful)
-                                                Toast.makeText(requireContext(), response.body()!!.Message.toString(), Toast.LENGTH_SHORT).show()
+                    try {
+                        items.filter {
+                            it.productName.lowercase(Locale.getDefault()).contains(
+                                searchEngine.text.toString().lowercase(Locale.getDefault())
+                            )
+                        }.forEach {
+                            itemNoInList = it.productName
+                            itemNameInList = it.id.toInt()
+                            searchProductName.text = it.productName
+                            searchProductCalories.text = it.calories
+                            searchFirstContainer.isVisible = true
+                            searchDone.setOnClickListener {
+                                if (!email.isNullOrEmpty() && !mealType.isNullOrEmpty() && itemNameInList > 0 && date != null)
+                                    try {
+                                        GlobalScope.launch(Dispatchers.IO) {
+                                            val response = mealProductRepository.addProduct(
+                                                mealType,
+                                                email,
+                                                1,
+                                                itemNameInList,
+                                                date
+                                            )
+                                            withContext(Dispatchers.Main) {
+                                                if (response.isSuccessful) {
+                                                    Toast.makeText(
+                                                        requireContext(),
+                                                        response.body()!!.Message.toString(),
+                                                        Toast.LENGTH_SHORT
+                                                    ).show()
 
+                                                }
+                                            }
                                         }
+                                    } catch (e: Exception) {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "No internet connection",
+                                            Toast.LENGTH_LONG
+                                        ).show()
                                     }
-                                } catch (e: Exception) {
-                                    Toast.makeText(requireContext(), "No internet connection", Toast.LENGTH_LONG).show()
-                                }
-
+                            }
                         }
+                    } catch (e: Exception) {
+
                     }
                 }
             })

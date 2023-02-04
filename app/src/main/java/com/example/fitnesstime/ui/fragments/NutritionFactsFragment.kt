@@ -1,5 +1,7 @@
 package com.example.fitnesstime.ui.fragments
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -34,7 +37,8 @@ class NutritionFactsFragment : Fragment() {
     private lateinit var binding: FragmentNutritionFactsBinding
     private val personalViewModel: ProductViewModel by activityViewModels()
     private val api = RetrofitInstance.retrofit
-    private val mealRepo = MealProductRepository(api)
+    private val mealProductRepository = MealProductRepository(api)
+    private lateinit var sharedPreferences:SharedPreferences
 
     private val spinner: Spinner? = activity?.findViewById<Spinner>(R.id.nutrition_meal)
 
@@ -45,7 +49,7 @@ class NutritionFactsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentNutritionFactsBinding.inflate(inflater, container, false)
         setupSpinner()
-
+        sharedPreferences = requireActivity().getSharedPreferences("User Session", Context.MODE_PRIVATE)
         return binding.root
     }
 
@@ -60,6 +64,30 @@ class NutritionFactsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+        val email = sharedPreferences.getString("Email", null)
+        val mealType = arguments?.getString("meal_type", null)
+        val date = arguments?.getString("date",null)
+        val productName = arguments?.getString("Product Name", null)
+        val productId = arguments?.getInt("Product Id", -1)
+
+        binding.nutritionAddItem.setOnClickListener{
+            if (!email.isNullOrEmpty() && !mealType.isNullOrEmpty() && date != null&& productId != null)
+                try {
+                    GlobalScope.launch(Dispatchers.IO){
+                        val response = mealProductRepository.addProduct(mealType, email, 1, productId, date)
+                        withContext(Dispatchers.Main){
+                            if (response.isSuccessful)
+                                Toast.makeText(requireContext(), response.body()!!.Message.toString(), Toast.LENGTH_SHORT).show()
+
+                        }
+                    }
+                } catch (e: Exception) {
+                    Toast.makeText(requireContext(), "No internet connection", Toast.LENGTH_LONG).show()
+                }
+        }
+    }
     override fun onStart() {
         super.onStart()
         var body : MutableLiveData<ServiceResponse<SingleProductNutritionInformation>> = MutableLiveData<ServiceResponse<SingleProductNutritionInformation>>()
@@ -67,7 +95,7 @@ class NutritionFactsFragment : Fragment() {
         if(!requireArguments().isEmpty)
             try {
                 GlobalScope.launch(Dispatchers.IO){
-                    val response = mealRepo.getOneProduct(requireArguments().getString("Product Name", null))
+                    val response = mealProductRepository.getOneProduct(requireArguments().getString("Product Name", null))
                     withContext(Dispatchers.Main){
                         if (response.isSuccessful){
                             if (response.body()!!.Success)

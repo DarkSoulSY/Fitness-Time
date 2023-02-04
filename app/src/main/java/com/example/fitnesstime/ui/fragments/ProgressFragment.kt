@@ -21,14 +21,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnesstime.R
 import com.example.fitnesstime.adapters.MyRecyclerViewAdapter
 import com.example.fitnesstime.connection.RetrofitInstance
-import com.example.fitnesstime.data.DailyWeight
 import com.example.fitnesstime.databinding.FragmentProgressBinding
 import com.example.fitnesstime.ui.model.AddDailyWeight
+import com.example.fitnesstime.ui.model.Diary
 import com.example.fitnesstime.ui.repositories.DiaryRepository
 import com.example.fitnesstime.ui.viewmodel.ProgressViewModel
+import com.github.mikephil.charting.components.XAxis
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.Dispatchers
@@ -43,7 +46,7 @@ class ProgressFragment : Fragment() {
 
 
     private lateinit var binding: FragmentProgressBinding
-    private var newArrayList = mutableListOf<DailyWeight>()
+    private var newArrayList = mutableListOf<Diary>()
     private val imageId = mutableListOf<Int>()
     val weight = mutableListOf<String>()
     private val date = mutableListOf<String>()
@@ -64,8 +67,10 @@ class ProgressFragment : Fragment() {
         binding.progressRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.progressRecyclerView.setHasFixedSize(true)
         personalViewModel.diaryRecords.observe(requireActivity(), Observer {
-            if(!it.isNullOrEmpty()){
+            if (!it.isNullOrEmpty()) {
                 binding.progressRecyclerView.adapter = MyRecyclerViewAdapter(it)
+                getUserdata()
+                setUpLineChart()
             }
         })
 
@@ -79,33 +84,16 @@ class ProgressFragment : Fragment() {
         val email = sharedPreferences.getString("Email", null)
         if (!email.isNullOrBlank())
             try {
-                personalViewModel.setDiaryRecords(requireContext(),email)
+                personalViewModel.setDiaryRecords(requireContext(), email)
             } catch (e: Exception) {
 
             }
 
 
-
-
-        weight.addAll(listOf(
-            "90",
-            "70",
-            "80"
-
-        ))
-        date.addAll(listOf(
-            "1992-01-20",
-            "2005-01-20",
-            "2010-01-20"
-
-        ))
-
         newArrayList = mutableListOf()
-        getUserdata()
-        setUpLineChart()
-
         super.onStart()
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
@@ -115,25 +103,57 @@ class ProgressFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun getUserdata(){
-        for (i in imageId.indices){
-            val dailyWeight = DailyWeight(imageId[i],weight[i],date[i])
-            newArrayList.add(dailyWeight)
-        }
+    private fun getUserdata() {
+
+        for (i in personalViewModel.diaryRecords.value!!)
+            if (!i.date.isNullOrEmpty() && !i.currentWeight.isNullOrEmpty()) {
+                var diary = Diary(i.currentWeight, i.date)
+                newArrayList.add(diary)
+            }
     }
 
     private fun setUpLineChart() {
         var entries: ArrayList<Entry> = ArrayList()
-        entries.add(Entry(1f,80f))
-        entries.add(Entry(2f,90f))
-        entries.add(Entry(3f,100f))
+        for (i in 0..newArrayList.size)
+            entries.add(Entry(i.toFloat(), i.toFloat()))
+
+        var date: MutableList<String> = mutableListOf()
+        var weight: MutableList<String> = mutableListOf()
+        for (i in personalViewModel.diaryRecords.value!!)
+            if (!i.currentWeight.isNullOrBlank()) {
+                date.add(i.date)
+                weight.add(i.currentWeight.toString())
+            }
 
 
         var dataSet: LineDataSet = LineDataSet(entries, "Weight Entries")
-        var dataSets: ArrayList<ILineDataSet> =  ArrayList()
+        var dataSets: ArrayList<ILineDataSet> = ArrayList()
         dataSets.add(dataSet)
 
         var data: LineData = LineData(dataSets)
+
+        binding.weightChart.xAxis.valueFormatter = IndexAxisValueFormatter(date)
+        binding.weightChart.axisLeft.valueFormatter = IndexAxisValueFormatter(weight)
+
+        binding.weightChart.apply {
+            setTouchEnabled(true)
+            isDragEnabled = true
+            setScaleEnabled(true)
+            setPinchZoom(true)
+            setDrawGridBackground(true)
+            extraLeftOffset = 15F
+            extraRightOffset = 15F
+            xAxis.setDrawGridLines(false)
+            axisLeft.setDrawGridLines(false)
+            axisRight.setDrawGridLines(false)
+            axisRight.isEnabled = false
+            xAxis.granularity = 1f;
+            xAxis.setCenterAxisLabels(true);
+            xAxis.isEnabled = true;
+            xAxis.setDrawGridLines(false);
+            xAxis.position = XAxis.XAxisPosition.BOTTOM;
+        }
+
         binding.weightChart.data = data
         binding.weightChart.invalidate()
 
@@ -150,7 +170,7 @@ class ProgressFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun buildDialog(){
+    private fun buildDialog() {
         val dialogBuilder = AlertDialog.Builder(requireContext())
         val contactPopupView: View = layoutInflater.inflate(R.layout.progress_add_weight, null)
         weightEdit = contactPopupView.findViewById(R.id.progress_add_current_weight)
@@ -160,27 +180,33 @@ class ProgressFragment : Fragment() {
         dialogBuilder.setView(contactPopupView)
         dialogBuilder.create()
             .setTitle("Add your current weight.")
-            val alertDialog = dialogBuilder.show()
+        val alertDialog = dialogBuilder.show()
 
         add.setOnClickListener {
             val email = sharedPreferences.getString("Email", null)
 
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
-            if (!email.isNullOrBlank())
+            if (!email.isNullOrBlank() && !weightEdit.text.toString().isNullOrBlank())
                 try {
                     GlobalScope.launch(Dispatchers.IO) {
                         val response = diaryRepo.addDailyWeight(
-                            AddDailyWeight( email = email,
+                            AddDailyWeight(
+                                email = email,
                                 date = LocalDateTime.now().format(formatter).toString(),
-                                current_weight = weightEdit.text.toString().toFloat())
+                                current_weight = weightEdit.text.toString().toFloat()
+                            )
                         )
-                        withContext(Dispatchers.Main){
-                            if(response.isSuccessful){
+                        withContext(Dispatchers.Main) {
+                            if (response.isSuccessful) {
                                 response.body()!!.apply {
-                                    if(Success)
-                                        Toast.makeText(requireContext(), Message, Toast.LENGTH_SHORT).show()
-                                    personalViewModel.setDiaryRecords(requireContext(),email)
+                                    if (Success)
+                                        Toast.makeText(
+                                            requireContext(),
+                                            Message,
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    personalViewModel.setDiaryRecords(requireContext(), email)
                                 }
 
                             }
@@ -198,8 +224,6 @@ class ProgressFragment : Fragment() {
         }
 
     }
-
-
 
 
 }

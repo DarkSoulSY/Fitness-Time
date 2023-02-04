@@ -33,11 +33,8 @@ class WelcomingFragment : Fragment() {
 
         networkConnection = NetworkConnection(requireActivity().application)
         networkConnection.observe(requireActivity()) { isConnected ->
-            if (isConnected)
+            if (isConnected){
                 checkLoginStatus()
-            else{
-                (requireActivity() as Main).binding.Disconnected.isGone = false
-                (requireActivity() as Main).binding.Connected.isGone = true
             }
         }
         return binding.root
@@ -65,10 +62,12 @@ class WelcomingFragment : Fragment() {
         val email = sharedPreferences.getString("Email", null)
         val password = sharedPreferences.getString("Password", null)
         binding.apply {
-
             if (!email.isNullOrBlank() && !password.isNullOrBlank()) {
-                findNavController().navigate(R.id.action_welcomingFragment_to_dashboardFragment)
+                //findNavController().navigate(R.id.action_welcomingFragment_to_dashboardFragment)
+                findNavController().navigate(R.id.dashboardFragment)
             }
+            else
+                wlcFragment.visibility = View.VISIBLE
         }
     }
 

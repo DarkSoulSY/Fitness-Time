@@ -32,6 +32,7 @@ class Validator {
                         "\none special character @ # '\' $ % ^ & + =", Snackbar.LENGTH_LONG).setTextMaxLines(4)
                     .show()
 
+
             return matcher.matches()
         }
     }

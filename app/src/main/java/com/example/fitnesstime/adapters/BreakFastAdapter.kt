@@ -33,6 +33,5 @@ class BreakFastAdapter(private val item: List<AllMealsInformationAndQuantity>): 
 
         val productName: TextView = itemView.findViewById(R.id.diary_product_name)
         val calories: TextView = itemView.findViewById(R.id.diary_product_calories1)
-
     }
 }

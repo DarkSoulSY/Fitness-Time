@@ -3,19 +3,18 @@ package com.example.fitnesstime.ui.fragments
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentBodyMassIndexBinding
 import com.example.fitnesstime.enum.Gender
 import com.example.fitnesstime.ui.viewmodel.BodyMassIndexViewModel
-import com.example.fitnesstime.ui.viewmodel.DashboardViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.*
 import java.math.RoundingMode
@@ -26,32 +25,31 @@ class BodyMassIndexFragment : Fragment() {
     private lateinit var binding: FragmentBodyMassIndexBinding
     private lateinit var sharedPreferences: SharedPreferences
     private val personalViewModel: BodyMassIndexViewModel by activityViewModels()
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
+
+    @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
         binding = FragmentBodyMassIndexBinding.inflate(inflater, container, false)
-        sharedPreferences = requireActivity().getSharedPreferences("User Session", Context.MODE_PRIVATE)
+        sharedPreferences =
+            requireActivity().getSharedPreferences("User Session", Context.MODE_PRIVATE)
 
         val df = DecimalFormat("#.#")
-        val observer = Observer<Gender>{
-            if (it != null){
+        val observer = Observer<Gender> {
+            if (it != null) {
                 df.roundingMode = RoundingMode.DOWN
                 try {
-                    GlobalScope.launch(Dispatchers.Main){
+                    GlobalScope.launch(Dispatchers.Main) {
                         val end = personalViewModel.calculateBMI()
                         var i = 0.0
-                        while(i<=end)
-                        {
+                        while (i <= end) {
                             //value animator
                             delay(1L)
                             binding.bodyMassIndexBmi.text = df.format(i).toString()
-                            i+=0.1
+                            i += 0.1
                         }
                     }
                 } catch (e: Exception) {

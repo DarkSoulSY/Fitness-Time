@@ -167,6 +167,18 @@
             android:name="Product Name"
             app:argType="string"
             android:defaultValue="http://sohamerp.com/avo/avo_privacy_policy.html"/>
+        <argument
+            android:name="Product Id"
+            app:argType="integer"
+            />
+        <argument
+            android:name="meal_type"
+            app:argType="string"
+            android:defaultValue="http://sohamerp.com/avo/avo_privacy_policy.html"/>
+        <argument
+            android:name="date"
+            app:argType="string"
+            android:defaultValue="http://sohamerp.com/avo/avo_privacy_policy.html"/>
     </fragment>
     <fragment
         android:id="@+id/editMacrosAndCaloriesFragment"
@@ -181,12 +193,12 @@
     <fragment
         android:id="@+id/macrosFragment"
         android:name="com.example.fitnesstime.ui.fragments.MacrosFragment"
-        android:label="fragment_macros"
+        android:label="Macros"
         tools:layout="@layout/fragment_macros" />
     <fragment
         android:id="@+id/searchProductFragment"
         android:name="com.example.fitnesstime.ui.fragments.SearchProductFragment"
-        android:label="fragment_search_product"
+        android:label="Search"
         tools:layout="@layout/fragment_search_product" >
         <action
             android:id="@+id/action_searchProductFragment_to_nutritionFactsFragment"

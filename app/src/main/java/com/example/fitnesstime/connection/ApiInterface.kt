@@ -4,10 +4,7 @@ import androidx.annotation.Nullable
 import com.example.fitnesstime.ui.fragments.AddConsumedCalories
 import com.example.fitnesstime.ui.model.*
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface ApiInterface {
 
@@ -48,4 +45,17 @@ interface ApiInterface {
 
     @POST("diary/add_consumed_calories.php")
     suspend fun addConsumedCalories(@Body addConsumedCalories: AddConsumedCalories) : Response<ServiceResponse<String?>>
+
+    @GET("User/getMacros.php")
+    suspend fun getMacros(@Query("email") email: String) : Response<ServiceResponse<Macros>>
+
+    @GET("profile/EditProfile.php")
+    suspend fun editProfile(@Query("email") email: String, @Query("password") password: String, @Nullable @Query("first_new") firstName: String?, @Nullable @Query("last_new") lastName: String?) : Response<ServiceResponse<String>>
+
+    @GET("meal/deleteProduct.php")
+    suspend fun deleteProduct(@Query("email") email: String, @Query("date") date: String, @Query("product_name") productName: String, @Query("meal_type") mealType: String) : Response<ServiceResponse<String?>>
+
+    @GET("profile/EditPassword.php")
+    suspend fun changePassword(@Query("email") email : String, @Query("password") oldpassword: String, @Query("new_password") newPassword: String) : Response<ServiceResponse<String?>>
+
 }

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Diary(
     @SerializedName("current_weight")
-    var currentWeight: String,
+    var currentWeight: String?,
     @SerializedName("date")
     var date : String
 )

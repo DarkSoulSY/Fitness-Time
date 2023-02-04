@@ -2,31 +2,28 @@ package com.example.fitnesstime.ui.fragments
 
 
 import android.content.Context.MODE_PRIVATE
-import android.content.Context.SENSOR_SERVICE
 import android.content.SharedPreferences
-import android.hardware.Sensor
-import android.hardware.SensorEvent
-import android.hardware.SensorEventListener
-import android.hardware.SensorManager
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.example.fitnesstime.R
 import com.example.fitnesstime.databinding.FragmentDashboardBinding
 import com.example.fitnesstime.ui.viewmodel.DashboardViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 
-class DashboardFragment : Fragment(), SensorEventListener{
+class DashboardFragment : Fragment(){
 
     private lateinit var binding: FragmentDashboardBinding
     private lateinit var sharedPreferences: SharedPreferences
@@ -34,10 +31,13 @@ class DashboardFragment : Fragment(), SensorEventListener{
 
     //private var userRepo = UserAccountInformationRepository(RetrofitInstance.retrofit)
 
-    private var sensorManager: SensorManager? = null
-    private var running = false
-    private var totalSteps = 0f
-    private var previousTotalSteps = 0f
+    @RequiresApi(Build.VERSION_CODES.O)
+    private var currentDate: MutableLiveData<LocalDate> = MutableLiveData<LocalDate>(LocalDate.now())
+    @RequiresApi(Build.VERSION_CODES.O)
+    private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
+
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +53,7 @@ class DashboardFragment : Fragment(), SensorEventListener{
             }
 
         }
-        sensorManager = requireActivity().getSystemService(SENSOR_SERVICE) as SensorManager
+
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -115,37 +115,12 @@ class DashboardFragment : Fragment(), SensorEventListener{
 
     }
 
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
 
-        running = true
-        val stepSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
-
-        if(stepSensor == null){
-            Toast.makeText(context, "No Sensor Detected on this device", Toast.LENGTH_SHORT).show()
-        }
-        else{
-            sensorManager?.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI)
-        }
     }
-
-    override fun onSensorChanged(p0: SensorEvent?) {
-        if(running)
-            p0?.let {
-                totalSteps = p0.values[0]
-            }
-        val currentSteps = totalSteps.toInt() - previousTotalSteps.toInt()
-    }
-
-    override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-    }
-
-    fun resetSteps(){
-        previousTotalSteps = totalSteps
-    }
-
-
 
 
 }

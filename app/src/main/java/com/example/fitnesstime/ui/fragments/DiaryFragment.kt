@@ -14,11 +14,14 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnesstime.R
 import com.example.fitnesstime.adapters.BreakFastAdapter
 import com.example.fitnesstime.adapters.DinnerAdapter
 import com.example.fitnesstime.adapters.LunchAdapter
+import com.example.fitnesstime.adapters.SwipeToDeleteCallback
 import com.example.fitnesstime.connection.RetrofitInstance
 import com.example.fitnesstime.databinding.FragmentDiaryBinding
 import com.example.fitnesstime.ui.model.AllMealsInformationAndQuantity
@@ -26,11 +29,13 @@ import com.example.fitnesstime.ui.repositories.DiaryRepository
 import com.example.fitnesstime.ui.repositories.MealProductRepository
 import com.example.fitnesstime.ui.repositories.UserAccountInformationRepository
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.*
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
+@Suppress("RedundantSamConstructor")
 class DiaryFragment : Fragment() {
 
     private lateinit var binding: FragmentDiaryBinding
@@ -45,12 +50,13 @@ class DiaryFragment : Fragment() {
     private val diaryRepo = DiaryRepository(api)
 
     private lateinit var sharedPreferences: SharedPreferences
-    private var consumedCalories = MutableLiveData<Int>(0)
-    private var remainingCalories = MutableLiveData<Int>()
-    private var baseGoal = MutableLiveData<Int>(0)
+    private var consumedCalories = MutableLiveData(0)
+    private var remainingCalories = MutableLiveData(0)
+    private var baseGoal = MutableLiveData(0)
 
     @RequiresApi(Build.VERSION_CODES.O)
     private val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
     @RequiresApi(Build.VERSION_CODES.O)
     private var date: MutableLiveData<LocalDate> = MutableLiveData<LocalDate>(LocalDate.now())
 
@@ -75,7 +81,7 @@ class DiaryFragment : Fragment() {
         binding = FragmentDiaryBinding.inflate(inflater, container, false)
 
         val email = sharedPreferences.getString("Email", null)
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+
 
         try {
             getLists()
@@ -83,31 +89,38 @@ class DiaryFragment : Fragment() {
 
         }
         breakFast.observe(requireActivity(), Observer {
-            if (!it.isNullOrEmpty()) {
+            if (it != null) {
                 calculateCalories(breakFast.value, lunch.value, dinner.value)
-                binding.diaryBreakfastRecycler.layoutManager =
-                    LinearLayoutManager(requireContext())
-                binding.diaryBreakfastRecycler.setHasFixedSize(true)
-                binding.diaryBreakfastRecycler.adapter = BreakFastAdapter(breakFast.value!!)
+                binding.diaryBreakfastRecycler.apply {
+                    layoutManager = LinearLayoutManager(requireContext())
+                    setHasFixedSize(true)
+                    adapter = BreakFastAdapter(breakFast.value!!)
+                    removeItem(binding.diaryBreakfastRecycler, breakFast, "breakfast")
+
+                }
             }
         })
         lunch.observe(requireActivity(), Observer {
-            if (!it.isNullOrEmpty()) {
+            if (it != null) {
                 calculateCalories(breakFast.value, lunch.value, dinner.value)
-                binding.diaryLunchRecycler.layoutManager =
-                    LinearLayoutManager(requireContext())
-                binding.diaryLunchRecycler.setHasFixedSize(true)
-                binding.diaryLunchRecycler.adapter = LunchAdapter(lunch.value!!)
+                binding.diaryLunchRecycler.apply {
+                    layoutManager = LinearLayoutManager(requireContext())
+                    setHasFixedSize(true)
+                    adapter = LunchAdapter(lunch.value!!)
+                    removeItem(binding.diaryLunchRecycler, lunch, "lunch")
+                }
             }
         })
         dinner.observe(requireActivity(), Observer {
-            if (!it.isNullOrEmpty()) {
-
+            if (it != null) {
                 calculateCalories(breakFast.value, lunch.value, dinner.value)
-                binding.diaryDinnerRecycler.layoutManager =
-                    LinearLayoutManager(requireContext())
-                binding.diaryDinnerRecycler.setHasFixedSize(true)
-                binding.diaryDinnerRecycler.adapter = DinnerAdapter(dinner.value!!)
+                binding.diaryDinnerRecycler.apply {
+                    layoutManager =
+                        LinearLayoutManager(requireContext())
+                    setHasFixedSize(true)
+                    adapter = DinnerAdapter(dinner.value!!)
+                    removeItem(binding.diaryDinnerRecycler, dinner, "dinner")
+                }
             }
         })
 
@@ -134,14 +147,13 @@ class DiaryFragment : Fragment() {
                     LocalDateTime.now().format(formatter).toString(),
                     consumedCalories.value!!
                 )
-                if (email != null)
-                    try {
-                        GlobalScope.launch(Dispatchers.IO) {
-                            val response = diaryRepo.addConsumedCalories(cCalories)
-                        }
-                    } catch (e: Exception) {
-
+                try {
+                    GlobalScope.launch(Dispatchers.IO) {
+                        diaryRepo.addConsumedCalories(cCalories)
                     }
+                } catch (e: Exception) {
+
+                }
             }
         })
         remainingCalories.observe(requireActivity(), Observer {
@@ -151,7 +163,7 @@ class DiaryFragment : Fragment() {
 
         binding.diaryDate.text = date.value!!.format(formatter).toString()
 
-        val observer = Observer<LocalDate>{
+        val observer = Observer<LocalDate> {
             if (it != null)
                 binding.diaryDate.text = date.value!!.format(formatter).toString()
         }
@@ -160,11 +172,12 @@ class DiaryFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         (activity as AppCompatActivity?)!!.supportActionBar!!.show()
         activity?.findViewById<BottomNavigationView>(R.id.bottomNavigationView)!!.isVisible = true
-
+        getLists()
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -172,9 +185,9 @@ class DiaryFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onResume() {
         super.onResume()
-
+        getLists()
         binding.apply {
-            diaryLeftArrow.setOnClickListener{
+            diaryLeftArrow.setOnClickListener {
                 date.value = date.value!!.minusDays(1)
                 dinner.value = null
                 lunch.value = null
@@ -192,7 +205,7 @@ class DiaryFragment : Fragment() {
 
 
             }
-            diaryRightArrow.setOnClickListener{
+            diaryRightArrow.setOnClickListener {
                 date.value = date.value!!.plusDays(1)
                 dinner.value = null
                 lunch.value = null
@@ -350,6 +363,49 @@ class DiaryFragment : Fragment() {
         }
     }
 
+    @OptIn(DelicateCoroutinesApi::class)
+    fun removeItem(
+        recyclerView: RecyclerView,
+        list: MutableLiveData<List<AllMealsInformationAndQuantity>?>,
+        mealType: String
+    ) {
+        val swipeToDeleteCallback = object : SwipeToDeleteCallback() {
+            @RequiresApi(Build.VERSION_CODES.O)
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val position = viewHolder.adapterPosition
+                val mealObject = list.value!!.toMutableList()[position]
+                val email = sharedPreferences.getString("Email", null)
+                val btm : BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigationView)
+                try {
+                    GlobalScope.launch(Dispatchers.IO) {
+                        val response = mealProductRepo.deleteProduct(
+                            email!!,
+                            date.value!!.toString(),
+                            mealObject.product_name,
+                            mealType
+                        )
+                        withContext(Dispatchers.Main) {
+                            if (response.isSuccessful)
+                                if (response.body()!!.Success)
+                                    Snackbar.make(
+                                        requireView(),
+                                        "Deleted item.",
+                                        Snackbar.LENGTH_SHORT
+                                    ).setAnchorView(btm)
+                                        .show()
+                            list.value = list.value!!.toMutableList().apply { removeAt(position) }.toList()
+                            recyclerView.adapter?.notifyItemRemoved(position)
+                            getLists()
+                        }
+                    }
+                } catch (e: Exception) {
+                }
+
+            }
+        }
+        val itemTouchHelper = ItemTouchHelper(swipeToDeleteCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
 }
 
 /*fun String?.toSafeInt(): Int{

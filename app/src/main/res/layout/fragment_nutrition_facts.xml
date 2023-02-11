@@ -36,7 +36,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -60,7 +61,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -83,7 +85,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:visibility="gone">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -123,7 +126,7 @@
                         android:text="0%"
                         android:textColor="@color/Secondary"
                         android:layout_gravity="center"
-                        />
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/nutrition_carbs_grams"
@@ -159,7 +162,7 @@
                         android:text="0%"
                         android:textColor="@color/Secondary"
                         android:layout_gravity="center"
-                        />
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/nutrition_fats_grams"
@@ -195,7 +198,7 @@
                         android:text="0%"
                         android:textColor="@color/Secondary"
                         android:layout_gravity="center"
-                        />
+                        android:visibility="gone"/>
 
                     <TextView
                         android:id="@+id/nutrition_proteins_grams"
@@ -227,16 +230,17 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
+                android:gravity="center"
                 android:text="Nutrition Facts"
                 android:textColor="@color/accent"
-                android:textSize="18sp"
-                android:gravity="center"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/show_hide_facts"

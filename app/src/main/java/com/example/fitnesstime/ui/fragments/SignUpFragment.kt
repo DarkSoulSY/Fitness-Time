@@ -53,7 +53,7 @@ class SignUpFragment : Fragment() {
                     Validator.isValidPassword(signupPassword.text.toString(), binding.root)) {
 
                     if (!Patterns.EMAIL_ADDRESS.matcher(signupEmail.text.toString()).matches())
-                        Toast.makeText(activity, "${signupEmail.hint} email should follow: \n username@domain.domain! \n Structure!", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, "${signupEmail.hint} email should follow: \n username@domain.domain \n Structure!", Toast.LENGTH_SHORT).show()
                     else
                         //If the passwords are matching
                         if (signupPassword.text.toString() == signupConfirmPassword.text.toString()){

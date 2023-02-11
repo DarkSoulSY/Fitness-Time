@@ -1,6 +1,7 @@
 package com.example.fitnesstime.ui.repositories
 
 import com.example.fitnesstime.connection.ApiInterface
+import com.example.fitnesstime.ui.model.ChangePassword
 import com.example.fitnesstime.ui.model.CreateAccountNPreferences
 
 class UserAccountInformationRepository(private val api: ApiInterface) {
@@ -19,6 +20,6 @@ class UserAccountInformationRepository(private val api: ApiInterface) {
 
     suspend fun editProfile(email: String, password: String, firstName: String?, lastName: String?) = api.editProfile(email, password, firstName, lastName)
 
-    suspend fun changePassword(email: String, oldPassword: String, newPassword: String) = api.changePassword(email, oldPassword, newPassword)
+    suspend fun changePassword(changePassword: ChangePassword) = api.changePassword(changePassword)
 
 }

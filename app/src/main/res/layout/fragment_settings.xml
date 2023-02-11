@@ -63,6 +63,7 @@
                 android:textColor="@color/on_background"
                 android:backgroundTint="@color/Primary_Dark"
                 android:layout_margin="10dp"
+                android:visibility="gone"
                 />
 
             <com.google.android.material.button.MaterialButton
@@ -82,6 +83,7 @@
                 android:textColor="@color/on_background"
                 android:backgroundTint="@color/Primary_Dark"
                 android:layout_margin="10dp"
+                android:visibility="gone"
                 />
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/settings_about"

@@ -81,8 +81,6 @@ class DiaryFragment : Fragment() {
         binding = FragmentDiaryBinding.inflate(inflater, container, false)
 
         val email = sharedPreferences.getString("Email", null)
-
-
         try {
             getLists()
         } catch (e: Exception) {
@@ -300,10 +298,7 @@ class DiaryFragment : Fragment() {
                                 baseGoal.value = response.body()!!.Data!!.toInt()
                     }
                 }
-            } catch (e: Exception) {
-
-            }
-
+            } catch (e: Exception) { }
             if (breakFast.value.isNullOrEmpty())
                 try {
                     GlobalScope.launch(Dispatchers.IO) {
@@ -319,10 +314,7 @@ class DiaryFragment : Fragment() {
                                 }
                         }
                     }
-                } catch (e: Exception) {
-
-                }
-
+                } catch (e: Exception) { }
             if (lunch.value.isNullOrEmpty())
                 try {
                     GlobalScope.launch(Dispatchers.IO) {
@@ -338,10 +330,7 @@ class DiaryFragment : Fragment() {
                                 }
                         }
                     }
-                } catch (e: Exception) {
-
-                }
-
+                } catch (e: Exception) { }
             if (dinner.value.isNullOrEmpty())
                 try {
                     GlobalScope.launch(Dispatchers.IO) {
@@ -357,9 +346,7 @@ class DiaryFragment : Fragment() {
                                 }
                         }
                     }
-                } catch (e: Exception) {
-
-                }
+                } catch (e: Exception) { }
         }
     }
 

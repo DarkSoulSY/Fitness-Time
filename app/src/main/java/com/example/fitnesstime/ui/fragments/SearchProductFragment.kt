@@ -88,10 +88,7 @@ class SearchProductFragment : Fragment() {
             }
 
             searchEngine.addTextChangedListener(object : TextWatcher {
-                override fun afterTextChanged(s: Editable?) {
-
-                }
-
+                override fun afterTextChanged(s: Editable?) {}
                 override fun beforeTextChanged(
                     s: CharSequence?,
                     start: Int,
@@ -99,7 +96,6 @@ class SearchProductFragment : Fragment() {
                     after: Int
                 ) {
                 }
-
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     try {
                         items.filter {
@@ -116,36 +112,20 @@ class SearchProductFragment : Fragment() {
                                 if (!email.isNullOrEmpty() && !mealType.isNullOrEmpty() && itemNameInList > 0 && date != null)
                                     try {
                                         GlobalScope.launch(Dispatchers.IO) {
-                                            val response = mealProductRepository.addProduct(
-                                                mealType,
-                                                email,
-                                                1,
-                                                itemNameInList,
-                                                date
-                                            )
+                                            val response = mealProductRepository.addProduct(mealType, email, 1, itemNameInList, date)
                                             withContext(Dispatchers.Main) {
                                                 if (response.isSuccessful) {
-                                                    Toast.makeText(
-                                                        requireContext(),
-                                                        response.body()!!.Message.toString(),
-                                                        Toast.LENGTH_SHORT
-                                                    ).show()
+                                                    Toast.makeText(requireContext(), response.body()!!.Message.toString(), Toast.LENGTH_SHORT).show()
 
                                                 }
                                             }
                                         }
                                     } catch (e: Exception) {
-                                        Toast.makeText(
-                                            requireContext(),
-                                            "No internet connection",
-                                            Toast.LENGTH_LONG
-                                        ).show()
+                                        Toast.makeText(requireContext(), "No internet connection", Toast.LENGTH_LONG).show()
                                     }
                             }
                         }
-                    } catch (e: Exception) {
-
-                    }
+                    } catch (e: Exception) { }
                 }
             })
 

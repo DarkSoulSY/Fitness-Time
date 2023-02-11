@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/FragmentBackground"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.fragments.ProgressFragment">
+    tools:context=".ui.fragments.ProgressFragment"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@android:color/white">
 
         <View
             android:layout_width="match_parent"
@@ -57,8 +59,13 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginBottom="15dp"
-            android:background="@color/in_box_info" />
+            android:background="@android:color/transparent"
+
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@color/backgroundC"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,6 +91,6 @@
                 android:paddingEnd="10dp" />
         </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</ScrollView>
 
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/FragmentBackground"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    style="@style/FragmentBackground">
+    android:layout_height="match_parent">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/first"
@@ -37,8 +37,8 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="25dp"
-        android:text="Add"
         android:backgroundTint="@color/Primary_Dark"
+        android:text="Add"
 
         android:textColor="@color/on_background" />
 
@@ -53,7 +53,7 @@
         android:layout_marginEnd="25dp"
         android:layout_marginBottom="25dp"
         android:backgroundTint="@color/Primary_Dark"
-        android:text="Cancle"
+        android:text="Cancel"
         android:textColor="@color/on_background" />
 
 

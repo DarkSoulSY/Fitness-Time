@@ -13,6 +13,7 @@
 
 
     <color name="transparent">#80000000</color>
+    <color name="transparent1">#00ffffff</color>
 
 
     <color name="Primary">#29b6f6</color>

@@ -17,6 +17,4 @@ class DiaryRepository(private val api: ApiInterface) {
 
     suspend fun addConsumedCalories(addConsumedCalories: AddConsumedCalories) = api.addConsumedCalories(addConsumedCalories)
 
-
-
 }

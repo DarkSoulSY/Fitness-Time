@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -40,6 +41,14 @@ class BodyMassIndexFragment : Fragment() {
         val df = DecimalFormat("#.#")
         val observer = Observer<Gender> {
             if (it != null) {
+                if (it == Gender.Male) {
+                    binding.linearLayout2.isGone = false
+                    binding.linearLayout3.isGone = true
+                }
+                else {
+                    binding.linearLayout2.isGone = true
+                    binding.linearLayout3.isGone = false
+                }
                 df.roundingMode = RoundingMode.DOWN
                 try {
                     GlobalScope.launch(Dispatchers.Main) {

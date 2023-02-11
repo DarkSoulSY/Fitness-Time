@@ -196,7 +196,8 @@ class UserSignUpInformationViewModel : ViewModel() {
             else -> throw AssertionError()
         }
     }*/
-    private fun calculateCalories(weight: Float, height: Float, age: Int, gender: String, plan: String, activityLevel: String, percent: Float? = null): Int {
+    private fun calculateCalories(weight: Float, height: Float, age: Int,
+    gender: String, plan: String, activityLevel: String, percent: Float? = null): Int {
 
         val baseCalories: Float = when (gender) {
             Gender.Male.name -> 10 * weight + 6.25f * height - 5 * age + 5
@@ -220,7 +221,6 @@ class UserSignUpInformationViewModel : ViewModel() {
                 1.0f -> 1100
                 else -> {throw AssertionError()}
             }
-
 
         val maintenanceCalories = baseCalories * activityFactor
         if(plan != WeightPlanType.MAINTAIN_WEIGHT.description && percent == null)

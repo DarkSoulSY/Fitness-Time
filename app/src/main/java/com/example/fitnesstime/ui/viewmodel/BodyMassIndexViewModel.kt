@@ -34,6 +34,7 @@ class BodyMassIndexViewModel : ViewModel() {
 
 
 
+
     fun setBodyMassIndexInformation(context: Context, email: String){
         GlobalScope.launch(Dispatchers.IO) {
             val response = userAccountInformationRepository.getBodyMassIndexInfo(email)

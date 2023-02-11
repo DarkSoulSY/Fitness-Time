@@ -76,7 +76,6 @@ class DashboardViewModel : ViewModel() {
     @RequiresApi(Build.VERSION_CODES.O)
 
     fun getLists(email: String){
-
         if (!email.isNullOrBlank()) {
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
             GlobalScope.launch(Dispatchers.IO){
@@ -116,7 +115,6 @@ class DashboardViewModel : ViewModel() {
 
                             }
                     }
-
                 }
             if (dinner.value.isNullOrEmpty())
                 GlobalScope.launch(Dispatchers.IO) {

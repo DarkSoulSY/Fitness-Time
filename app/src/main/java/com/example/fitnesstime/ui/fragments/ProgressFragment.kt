@@ -2,6 +2,7 @@ package com.example.fitnesstime.ui.fragments
 
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -113,10 +114,6 @@ class ProgressFragment : Fragment() {
     }
 
     private fun setUpLineChart() {
-        var entries: ArrayList<Entry> = ArrayList()
-        for (i in 0..newArrayList.size)
-            entries.add(Entry(i.toFloat(), i.toFloat()))
-
         var date: MutableList<String> = mutableListOf()
         var weight: MutableList<String> = mutableListOf()
         for (i in personalViewModel.diaryRecords.value!!)
@@ -124,6 +121,15 @@ class ProgressFragment : Fragment() {
                 date.add(i.date)
                 weight.add(i.currentWeight.toString())
             }
+
+        var entries: ArrayList<Entry> = ArrayList()
+
+        for (i in 0 until newArrayList.size){
+            entries.add(Entry(i.toFloat(), newArrayList[i].currentWeight!!.toFloat()))
+
+        }
+
+
 
 
         var dataSet: LineDataSet = LineDataSet(entries, "Weight Entries")
@@ -133,7 +139,7 @@ class ProgressFragment : Fragment() {
         var data: LineData = LineData(dataSets)
 
         binding.weightChart.xAxis.valueFormatter = IndexAxisValueFormatter(date)
-        binding.weightChart.axisLeft.valueFormatter = IndexAxisValueFormatter(weight)
+        //binding.weightChart.axisLeft.valueFormatter = IndexAxisValueFormatter(weight)
 
         binding.weightChart.apply {
             setTouchEnabled(true)
@@ -152,6 +158,11 @@ class ProgressFragment : Fragment() {
             xAxis.isEnabled = true;
             xAxis.setDrawGridLines(false);
             xAxis.position = XAxis.XAxisPosition.BOTTOM;
+            dataSet.setDrawValues(false)
+            xAxis.setCenterAxisLabels(false)
+
+
+
         }
 
         binding.weightChart.data = data
@@ -187,34 +198,38 @@ class ProgressFragment : Fragment() {
 
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
 
-            if (!email.isNullOrBlank() && !weightEdit.text.toString().isNullOrBlank())
-                try {
-                    GlobalScope.launch(Dispatchers.IO) {
-                        val response = diaryRepo.addDailyWeight(
-                            AddDailyWeight(
-                                email = email,
-                                date = LocalDateTime.now().format(formatter).toString(),
-                                current_weight = weightEdit.text.toString().toFloat()
+            if (weightEdit.text.toString().toFloat() > 0 && weightEdit.text.toString().toFloat() < 300) {
+                if (!email.isNullOrBlank() && !weightEdit.text.toString().isNullOrBlank())
+                    try {
+                        GlobalScope.launch(Dispatchers.IO) {
+                            val response = diaryRepo.addDailyWeight(
+                                AddDailyWeight(
+                                    email = email,
+                                    date = LocalDateTime.now().format(formatter).toString(),
+                                    current_weight = weightEdit.text.toString().toFloat()
+                                )
                             )
-                        )
-                        withContext(Dispatchers.Main) {
-                            if (response.isSuccessful) {
-                                response.body()!!.apply {
-                                    if (Success)
-                                        Toast.makeText(
-                                            requireContext(),
-                                            Message,
-                                            Toast.LENGTH_SHORT
-                                        ).show()
-                                    personalViewModel.setDiaryRecords(requireContext(), email)
-                                }
+                            withContext(Dispatchers.Main) {
+                                if (response.isSuccessful) {
+                                    response.body()!!.apply {
+                                        if (Success)
+                                            Toast.makeText(
+                                                requireContext(),
+                                                Message,
+                                                Toast.LENGTH_SHORT
+                                            ).show()
+                                        personalViewModel.setDiaryRecords(requireContext(), email)
+                                    }
 
+                                }
                             }
                         }
-                    }
-                } catch (e: Exception) {
+                    } catch (e: Exception) {
 
-                }
+                    }
+            }
+            else
+                Toast.makeText(requireContext(), "Please enter a weight between the range: 0 to 300 KG", Toast.LENGTH_SHORT).show()
 
             alertDialog?.dismiss()
         }

@@ -71,6 +71,7 @@ class CompleteSignUp1Fragment : Fragment() {
                     calculateAge(it.toString())
                     })
                 age.observe(requireActivity(), Observer {
+
                         completeAgeValue.text = (it.toString())
                     })
             }
@@ -90,11 +91,16 @@ class CompleteSignUp1Fragment : Fragment() {
                         //Fill User View Model with Data
                         sharedViewModel.apply {
                             //setAge(completeAge.text.toString().toInt())
-                            setHeight(completeHeight.text.toString().toFloat())
+                            if (completeHeight.text.toString().toFloat() > 65f && completeHeight.text.toString().toFloat() < 272f) {
+                                setHeight(completeHeight.text.toString().toFloat())
+                                findNavController().navigate(R.id.action_completeSignUp1Fragment_to_completeSignUp2Fragment)
+                            }
+                            else
+                                Toast.makeText(requireContext(), "Height Should be from 65 to 272", Toast.LENGTH_SHORT).show()
                         }
 
                         //Moving to complete sign up 2!
-                        findNavController().navigate(R.id.action_completeSignUp1Fragment_to_completeSignUp2Fragment)
+
                     } else
                         Toast.makeText(
                             activity,
@@ -111,4 +117,5 @@ class CompleteSignUp1Fragment : Fragment() {
         val myFormat = "yyyy-MM-dd"
         return SimpleDateFormat(myFormat, Locale.getDefault())
     }
+
 }

@@ -26,6 +26,7 @@ import com.example.fitnesstime.connection.RetrofitInstance
 import com.example.fitnesstime.databinding.FragmentProfileBinding
 import com.example.fitnesstime.ui.home.Main
 import com.example.fitnesstime.ui.model.AddDailyWeight
+import com.example.fitnesstime.ui.model.ChangePassword
 import com.example.fitnesstime.ui.repositories.UserAccountInformationRepository
 import com.example.fitnesstime.ui.viewmodel.ProfileViewModel
 import com.example.fitnesstime.utilities.Validator
@@ -120,16 +121,15 @@ class ProfileFragment : Fragment() {
                     val password = sharedPreferences.getString("Password", null)
 
                     var firstName: String? = binding.profileFirstNameEdit.text.toString()
-                    var lastName: String? = profileLastNameEdit.text.toString()
+                    var lastName: String? = binding.profileLastNameEdit.text.toString()
 
                     if (firstName == "")
                         firstName = null
                     if (lastName == "")
                         lastName = null
-                    if (!(firstName == profileFirstNameEdit.text.toString() && lastName == profileLastNameEdit.text.toString()))
+                    if (!(firstName == binding.profileFirstName.text.toString() && lastName == profileLastName.text.toString()))
                         GlobalScope.launch(Dispatchers.IO) {
-                            val response =
-                                userRepo.editProfile(email!!, password!!, firstName, lastName)
+                            val response = userRepo.editProfile(email!!, password!!, firstName, lastName)
                             withContext(Dispatchers.Main) {
                                 if (response.isSuccessful)
                                     if (response.body()!!.Success) {
@@ -192,36 +192,52 @@ class ProfileFragment : Fragment() {
         change.setOnClickListener {
             val email = sharedPreferences.getString("Email", null)
             val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+            if (newPassword.text.toString() == confirmPassword.text.toString()) {
+                if (!email.isNullOrBlank() && Validator.isValidPassword(
+                        newPassword.text.toString(),
+                        contactPopupView
+                    )
+                ) {
+                    try {
+                        GlobalScope.launch(Dispatchers.IO) {
+                            val response = userRepo.changePassword(
+                                ChangePassword(
+                                    email = email,
+                                    password = oldPassword.text.toString(),
+                                    new_password = newPassword.text.toString()
+                                )
+                            )
+                            withContext(Dispatchers.Main) {
+                                if (response.isSuccessful) {
+                                    response.body()!!.apply {
+                                        if (Success) {
+                                            Snackbar.make(
+                                                contactPopupView,
+                                                Message!!,
+                                                Snackbar.LENGTH_SHORT
+                                            ).show()
+                                            alertDialog?.dismiss()
+                                        } else
+                                            Snackbar.make(
+                                                contactPopupView,
+                                                Message!!,
+                                                Snackbar.LENGTH_SHORT
+                                            ).show()
 
-            if (!email.isNullOrBlank() && Validator.isValidPassword(newPassword.text.toString(), contactPopupView) && newPassword.text.toString() == confirmPassword.text.toString())
-                try {
-                    GlobalScope.launch(Dispatchers.IO) {
-                        val response = userRepo.changePassword(
-                            email,
-                            oldPassword.text.toString(),
-                            newPassword.text.toString()
-                        )
-                        withContext(Dispatchers.Main) {
-                            if (response.isSuccessful) {
-                                response.body()!!.apply {
-                                    if (Success)
-                                        Snackbar.make(
-                                            requireView(),
-                                            Message!!,
-                                            Snackbar.LENGTH_SHORT
-                                        ).show()
-                                    alertDialog?.dismiss()
+                                    }
+
                                 }
-
                             }
                         }
-                    }
-                } catch (e: Exception) {
+                    } catch (e: Exception) {
 
+                    }
                 }
 
-
-        }
+            }
+            else
+                Snackbar.make(contactPopupView, "New password and confirm password fields must match!", Snackbar.LENGTH_SHORT).show()
+            }
 
         cancel.setOnClickListener {
             alertDialog?.dismiss()

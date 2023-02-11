@@ -242,22 +242,24 @@ class MacrosFragment : Fragment() {
             totalProtein += it.Protein.toSafeMacroInt()
             totalCarbohydrates += it.Total_Carbs.toSafeMacroInt()
             totalFat += it.Total_Fat.toSafeMacroInt()
-            totalCalories += it.calories.toSafeMacroInt()
+            //totalCalories += it.calories.toSafeMacroInt()
         }
 
         lunch.value?.forEach {
             totalProtein += it.Protein.toSafeMacroInt()
             totalCarbohydrates += it.Total_Carbs.toSafeMacroInt()
             totalFat += it.Total_Fat.toSafeMacroInt()
-            totalCalories += it.calories.toSafeMacroInt()
+            //totalCalories += it.calories.toSafeMacroInt()
         }
 
         dinner.value?.forEach {
             totalProtein += it.Protein.toSafeMacroInt()
             totalCarbohydrates += it.Total_Carbs.toSafeMacroInt()
             totalFat += it.Total_Fat.toSafeMacroInt()
-            totalCalories += it.calories.toSafeMacroInt()
+            //totalCalories += it.calories.toSafeMacroInt()
         }
+
+        totalCalories = totalProtein + totalCarbohydrates + totalFat
         val proteinPercentage = (totalProtein.toFloat() / totalCalories.toFloat()) * 100
         val carbohydratesPercentage = (totalCarbohydrates.toFloat() / totalCalories.toFloat()) * 100
         val fatPercentage = (totalFat.toFloat() / totalCalories.toFloat()) * 100

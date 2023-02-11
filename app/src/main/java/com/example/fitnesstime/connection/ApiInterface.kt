@@ -55,7 +55,7 @@ interface ApiInterface {
     @GET("meal/deleteProduct.php")
     suspend fun deleteProduct(@Query("email") email: String, @Query("date") date: String, @Query("product_name") productName: String, @Query("meal_type") mealType: String) : Response<ServiceResponse<String?>>
 
-    @GET("profile/EditPassword.php")
-    suspend fun changePassword(@Query("email") email : String, @Query("password") oldpassword: String, @Query("new_password") newPassword: String) : Response<ServiceResponse<String?>>
+    @POST("profile/EditPassword.php")
+    suspend fun changePassword(@Body changePassword: ChangePassword) : Response<ServiceResponse<String?>>
 
 }
